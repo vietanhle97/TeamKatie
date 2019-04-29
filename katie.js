@@ -91,18 +91,18 @@ function answerQuestion(){
 	myInput.val('');
 	}		
 };
-function check_available(){
-	var check_all = document.getElementById('check_all');
-	var check_corr = document.getElementById('check_corr');
-	var check_wrong = document.getElementById('check_wrong');
+function All(){
+	var all = document.getElementById('All');
 	var numRows = countRow();
-	if (check_all.checked == true){
+	if (all.checked == true){
 		for(i=0;i<numRows;i++){
 			myTable.rows[i].style.display = '';
 		}
 	}
-	
-	else if (check_corr.checked == true){
+};
+function Available(){
+	var available = document.getElementById('Available');
+	if (available.checked == true){
 		var numRows = countRow();
 		for(i=0;i<numRows;i++){
 			var row = myTable.rows[i];
@@ -114,8 +114,10 @@ function check_available(){
 		}
 		
 	}
-	
-	else if (check_wrong.checked == true){
+};
+function Unavailable() {
+	var unavailable	= document.getElementById('Unavailable')
+	if (unavailable.checked == true){
 		var numRows = countRow();
 		for(i=0;i<numRows;i++){
 			var row = myTable.rows[i];
