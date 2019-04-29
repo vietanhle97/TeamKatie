@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>KATIE</title>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />  
+    <link href="./katie.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Laila" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+  </head>
+  </head>
+  <body>
+    <!--Your HTML here-->
+    <h1>WELCOME TO KATIE!!! Learning boardgame is easyyyyy!!!!!</h1>
+    <table id ="myTable">
+      <tr>
+        <td id='katie__game'><i class="fas fa-search" style="font-size: 2em;"></i></td>
+        <td>
+            <form class="ui-widget" onSubmit="return false;">
+                <input id='katie__category' size="60" height = "200" placeholder="Search the game...">
+            </form>
+        </td>
+        <td><button type="button" id='search' onclick="answerQuestion()">Search</button></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <label class="container">
+            <input type="radio" id = 'check_all' checked = 'true' name="radio" onclick="check_available()">
+            <span class="checkmark"></span>
+            All
+          </label>
+          <label class="container">
+            <input type="radio" id = 'check_corr' name="radio" onclick="check_available()">
+            <span class="checkmark"></span>
+            Available
+          </label>
+          <label class="container">
+            <input type="radio" id = 'check_wrong' name="radio" onclick="check_available()x">
+            <span class="checkmark"></span>
+            Unavailable
+          </label>
+      </td>
+      <td></td>
+      </tr>
+      <tr>
+        <th>Game</th>
+        <th>Category</th>
+        <th>Availability</th>
+        <th></th>
+      </tr>
+    </table>
+
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.js"></script>
+    <script src="jquery/js/jquery-1.9.0.min.js"></script>
+    <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script src="./game_category.js"></script>
+    <script src="./katie.js"></script>
+  </body>
+</html>

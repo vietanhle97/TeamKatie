@@ -1,0 +1,84 @@
+body {
+    background-image: url("Katie.jpg");
+    background-color: #FFFFFF;
+    background-size: cover;                      /* <------ */
+    /*background-repeat:   no-repeat;
+    background-position: center center;  */            /* optional, center the image */
+}
+
+/*your code here*/
+h1{
+	font-family: "Laila";
+	font-size: 3em;
+	text-align: center;
+  background-image: linear-gradient(to left, yellow, deeppink, violet, indigo, blue, green, orange, red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+table {
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+}
+th {
+  font-family: "Laila";
+  padding: 3px;
+  text-align: center;
+  border-top: 25px;
+  font-size: 1.7em;
+  background-image: linear-gradient(to left, rgb(255,255,0), violet, blue, rgb(255,20,147), indigo, rgb(255, 69, 0),  green, red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+td{
+  font-family: "Laila";
+  padding: 3px;
+  text-align: center;	
+  font-size: 1.4em;
+  font-weight: bold;
+}
+#katie__game{
+  color: orange;
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+#katie__category{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 4px;
+
+}
+#search{
+  font-weight: bold;
+  font-family: "Laila";
+  font-size: 22px;
+  border-radius: 5px;
+}
+#Link{
+  font-family: "Laila";
+  font-size: 16px;
+  border-radius: 5px;
+}
+#cell{
+  width: auto;
+}
+#correct{
+	color: green;
+}
+#wrong{
+	color: red;
+}
+.ui-autocomplete {
+     max-height: 200px;
+     overflow-y: auto;
+     overflow-x: hidden;
+ }
+ 
+ * html .ui-autocomplete {
+     height: 200px;
+ }
+
