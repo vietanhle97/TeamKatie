@@ -64,7 +64,17 @@ function pr_loadComments(commentSpan);
 //Add a comment into an edition
 function pr_addEditionComment(name,username,text);
 
+//string string string
+//Delete a comment in a edition, if there are multiple comments with same attribute, delete the first one
+function pr_deleteEditionComment(name,username,text);
+
+
 //string string integer integer string string
 //Add a comment into a span inside a section of edition
-function pr_addEditionSectionCommentSpan(name,section,start,end,username,text);
+//If the span does not exist, create it
+function pr_addEditionSectionCommentSpanComment(name,section,start,end,username,text);
+
+//string string integer integer string string
+//delete a comment of a span inside a section of edition, behave the same way as deleteEditionComment
+function pr_addEditionSectionCommentSpanComment(name,section,start,end,username,text);
 

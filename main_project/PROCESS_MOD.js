@@ -109,6 +109,9 @@ function pr_loadComments(commentSpan){
 
 function pr_loadEditionComments(name){
 	var returnList = [];
+	if(pr_editionsDict[name]["comments-list"] == null){
+		pr_editionsDict[name]["comments-list"] = {};
+	}
 	var values = Object.values(pr_editionsDict[name]["comments-list"]);
 	for(i = 0; i < values.length; i++){
 		returnList.push(values[i]);
@@ -122,17 +125,31 @@ function pr_addEditionComment(name,username,text){
 	pr_editionsDict[name]["comments-list"][n] = {"user": username, "text": text};
 }
 
+function pr_deleteEditionComment(name,username,text){
+	var comments = pr_loadEditionComments(name);
+	for(var i = 0; i < comments.length; i++){
+		if(comments[i].user == username && comments[i].text == text){
+			comments.splice(i,1);
+			break;
+		}
+	}
+	db_clearEditionComments(name);
+	db_loadEditions(pr_editionsDict);
+	setTimeout(function(){
+	for(var i = 0; i < comments.length; i++){
+		pr_addEditionComment(name,comments[i].user,comments[i].text);
+	}
+	db_loadEditions(pr_editionsDict);
+	},1000);
+}
 
-function pr_addEditionSectionCommentSpan(name,section,start,end,username,text){
-	console.log(pr_editionsDict[name][section]["comment-spans-list"]);
+function pr_addEditionSectionCommentSpanComment(name,section,start,end,username,text){
 	if(pr_editionsDict[name][section]["comment-spans-list"] == null){
 		pr_editionsDict[name][section]["comment-spans-list"] = {};
 	}
 	if(pr_editionsDict[name][section]["comment-spans-list"][start+"-"+end] == null){
 		pr_editionsDict[name][section]["comment-spans-list"][start+"-"+end] = {};
 	}
-	console.log(pr_editionsDict[name][section]["comment-spans-list"]);
-	console.log(pr_editionsDict[name][section]["comment-spans-list"][start + "-" + end]);
 	var commentSpan = pr_editionsDict[name][section]["comment-spans-list"][start+"-"+end];
 	if(commentSpan["comments-list"] == null){
 		commentSpan["comments-list"] = {};
@@ -148,6 +165,30 @@ function pr_addEditionSectionCommentSpan(name,section,start,end,username,text){
 	db_addEditionSectionComment(name,section,start,end,newCommentSpan);
 }
 
+function pr_deleteEditionSectionCommentSpanComment(name,section,start,end,username,text){
+	if(pr_editionsDict[name][section]["comment-spans-list"] == null) return;
+	if(pr_editionsDict[name][section]["comment-spans-list"][start+"-"+end] == null) return;
+	var commentSpan = pr_editionsDict[name][section]["comment-spans-list"][start+"-"+end];
+
+	var comments = pr_loadComments(commentSpan);
+	console.log(comments);
+	for(var i = 0; i < comments.length; i++){
+		if(comments[i].user == username && comments[i].text == text){
+			comments.splice(i,1);
+			break;
+		}
+	}
+	console.log(comments);
+	db_clearCommentSpanComments(name,section,start,end);
+	db_loadEditions(pr_editionsDict);
+	setTimeout(function(){
+	for(var i = 0; i < comments.length; i++){
+		pr_addEditionSectionCommentSpanComment(name,section,start,end,comments[i].user,comments[i].text);
+	}
+	db_loadEditions(pr_editionsDict);
+	},2000);
+}
+
 async function test(){
 	pr_loadCategories(pr_categoriesDict);
 	pr_loadGames(pr_gamesDict);
@@ -158,8 +199,5 @@ async function test(){
 	for(var i = 0; i < a_list.length; i++){
 		console.log(pr_loadComments(a_list[i]));
 	}
-	console.log(pr_loadEditionComments("Exploding Kitten Normal Edition"));
-	//pr_addEditionComment("Exploding Kitten Normal Edition","user1","oh, i'm testing");
-	//pr_addEditionSectionCommentSpan("Exploding Kitten Normal Edition","briefing",0,1,"user2","oh, i'm commenting into briefing");
 }
 test();

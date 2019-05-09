@@ -97,3 +97,12 @@ function db_addEditionComment(name,comment,pos){
 function db_addEditionSectionComment(name,section,start,end,newSpan){
 	db_database.ref('/editions/'+ name +"/"+section + "/comment-spans-list/"+start+"-"+end).set(newSpan);	
 }
+
+function db_clearEditionComments(name){
+	db_database.ref('/editions/'+ name +"/comments-list").set(null);	
+}
+
+function db_clearCommentSpanComments(name,section,start,end){
+	console.log("clearing in ", '/edition/' + name +"/" + section + "/comment-spans-list/" + start + "-" + end)
+	db_database.ref('/editions/' + name +"/" + section + "/comment-spans-list/" + start + "-" + end).set(null);
+}
