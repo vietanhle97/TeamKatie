@@ -16,4 +16,4 @@ function pr_loadCategoryImage(name);
 
 //string -> list[string]
 //take a category name, return list of the games in that category
-function pr_loadCategoryGameList(name);
+function pr_loadCategoryGamesList(name);

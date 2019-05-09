@@ -15,7 +15,7 @@ function pr_loadCategoryImage(name){
 }
 
 
-function pr_loadCategoryGameList(name){
+function pr_loadCategoryGamesList(name){
 	var returnList = [];
 	var size = Object.keys(pr_categoriesDict[name]['games-list']).length;
 	for(i = 0; i < size; i++){
