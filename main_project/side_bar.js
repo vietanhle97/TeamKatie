@@ -10,7 +10,7 @@ function openNav(sidebar, tab) {
   }
   else if(tab == 'comment_tab'){
     close_tab('menu_link');
-    open_tab('myForm') = 'block';
+    open_tab('myForm');
   }
   else{
     close_tab('myForm');
