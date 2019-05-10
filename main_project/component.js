@@ -7,6 +7,12 @@ function create_div_to_carousel(n, name, link){
     new_div.className = "game";
     var new_div_2 = document.createElement('div');
     new_div_2.className = "shadow p-2 mb-1 bg-white rounded grid-item";
+    new_div_2.addEventListener("click", function(){
+      $(".popup_show").fadeIn();
+      var img_show = document.getElementById("pop_up_img");
+      img_show.setAttribute('src',link);
+      console.log(link);
+    })
     new_div_2.style.backgroundImage = 'url("' + link + '")';
     var span = document.createElement("span");
     span.className = "caption";
@@ -25,7 +31,16 @@ function create_div_to_carousel(n, name, link){
 
     var new_div_3 = document.createElement('div');
     new_div_3.className = "shadow p-2 mb-1 bg-white rounded grid-item";
+    new_div_3.addEventListener("click", function(){
+      // $(".img-show img").attr("src", link);
+      $(".popup_show").fadeIn();
+      var img_show = document.getElementById("pop_up_img");
+      console.log(link);
+      img_show.setAttribute('src',link);
+      console.log(link);
+    })
     new_div_3.style.backgroundImage = 'url("' + link + '")';
+
 
     var span = document.createElement("span");
     span.className = "caption";
@@ -170,6 +185,9 @@ function display(){
     add_to_carousel(exploding[i]['card'].toUpperCase(), exploding[i]['img'])
   }
 }
+$("span, .overlay").click(function () {
+        $(".popup_show").fadeOut();
+    });
 setTimeout(display,2000);
 
 

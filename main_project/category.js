@@ -2,14 +2,25 @@ function create_div_to_carousel(n, name, link){
   var new_div = document.createElement('div');
   if (n==1){
     new_div.className = "game";
+    var connect = document.createElement('a');
+    connect.setAttribute('href','');
+    connect.id = name;
+    connect.addEventListener('mousedown', function(){
+      var next_destination = document.getElementById(name);
+      next_destination.href = "Edition page.html"
+    })
+
     var new_div_2 = document.createElement('div');
     new_div_2.className = "shadow p-2 mb-1 bg-white rounded grid-item";
     new_div_2.style.backgroundImage = 'url("' + link + '")';
+    
     var span = document.createElement("span");
     span.className = "caption";
     span.appendChild(document.createTextNode(name));
-    new_div.appendChild(new_div_2);
-    new_div.appendChild(span);
+    connect.appendChild(new_div_2);
+    connect.appendChild(span);
+
+    new_div.appendChild(connect);
   }
   else{
     new_div.className = "carousel-item";
@@ -20,6 +31,14 @@ function create_div_to_carousel(n, name, link){
     var new_div_2 = document.createElement('div');
     new_div_2.className = "game";
 
+    var connect = document.createElement('a');
+    connect.setAttribute('href','');
+    connect.id = name;
+    connect.addEventListener('mousedown', function(){
+      var next_destination = document.getElementById(name);
+      next_destination.href = "Edition page.html"
+    })
+
     var new_div_3 = document.createElement('div');
     new_div_3.className = "shadow p-2 mb-1 bg-white rounded grid-item";
     new_div_3.style.backgroundImage = 'url("' + link + '")';
@@ -28,8 +47,10 @@ function create_div_to_carousel(n, name, link){
     span.className = "caption";
     span.appendChild(document.createTextNode(name));
 
-    new_div_2.appendChild(new_div_3);
-    new_div_2.appendChild(span);
+
+    connect.appendChild(new_div_3);
+    connect.appendChild(span);
+    new_div_2.appendChild(connect);
     new_div_1.appendChild(new_div_2);
     new_div.appendChild(new_div_1);
   }
@@ -50,7 +71,6 @@ function add_to_carousel(name, link){
     li.setAttribute("data-slide-to", num_carousels);
     ul.appendChild(li);
     var new_div = create_div_to_carousel(0, name, link);
-    new_div.id = name;
     if (num_carousels == 0){
       new_div.className += " active"  
     }
@@ -59,7 +79,6 @@ function add_to_carousel(name, link){
   }
   else{
     var new_div = create_div_to_carousel(1, name, link);
-    new_div.id = name;
     container[num_carousels-1].appendChild(new_div);
   }
 }
@@ -98,7 +117,6 @@ role_play = [{name: 'Internal Affair', img: "https://i.imgur.com/fWxq1Vi.png" },
 
 function display_game(category){
   var games_in_category = pr_loadCategoryGamesList(category);
-  console.log(games_in_category);
   for(i=0;i<games_in_category.length;i++){
     console.log(games_in_category[i]);
     var game_img = pr_loadGameImage(games_in_category[i]);
@@ -115,11 +133,8 @@ function check(){
   else if(x == 'Card Game'){
     display_game('Card');
   }
-  else if(x == 'Role Playing Game'){
-    display_game(role_play);
-  }
 }
-
+ 
 var $progressBar = $('.progress-bar');
 var $progress = $('.progress');
 setTimeout(function() {
