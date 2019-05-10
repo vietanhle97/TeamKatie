@@ -1,7 +1,7 @@
 function add_to_banner(category, img_url){
 	var banner = document.getElementById("banner");
 	var link = document.createElement('a');
-	link.setAttribute('href','')
+	link.setAttribute('href','');
 	link.className = 'category';
 	link.id = category;
 	var img = document.createElement('img');
