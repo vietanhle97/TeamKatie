@@ -76,23 +76,15 @@ function pr_loadEditions(name){
 
 
 function pr_loadEditionImage(name){
-	console.log(pr_editionsDict[name])
-	console.log(pr_editionsDict[name]['image-url'])
 	return pr_gamesDict[name]['image-url'];
 }
 function pr_loadEditionSectionText(name,sectionName){
 	sectionName = sectionName.toLowerCase();
-	console.log(pr_editionsDict[name])
-	console.log(pr_editionsDict[name][sectionName])
-	console.log(pr_editionsDict[name][sectionName]["text"])
 	return pr_editionsDict[name][sectionName]["text"];
 }
 
 function pr_loadEditionSectionCommentSpans(name,sectionName){
 	sectionName = sectionName.toLowerCase();
-	console.log(pr_editionsDict[name])
-	console.log(pr_editionsDict[name][sectionName])
-	console.log(pr_editionsDict[name][sectionName]["comment-spans-list"])
 	var commentSpansList = pr_editionsDict[name][sectionName]["comment-spans-list"];
 
 	var returnList = [];
@@ -100,7 +92,6 @@ function pr_loadEditionSectionCommentSpans(name,sectionName){
 	for(i = 0; i < keys.length; i++){
 		returnList.push(commentSpansList[keys[i]]);
 	}
-	console.log(returnList);
 	return returnList;
 }
 
@@ -177,14 +168,12 @@ function pr_deleteEditionSectionCommentSpanComment(name,section,start,end,userna
 	var commentSpan = pr_editionsDict[name][section]["comment-spans-list"][start+"-"+end];
 
 	var comments = pr_loadComments(commentSpan);
-	console.log(comments);
 	for(var i = 0; i < comments.length; i++){
 		if(comments[i].user == username && comments[i].text == text){
 			comments.splice(i,1);
 			break;
 		}
 	}
-	console.log(comments);
 	db_clearCommentSpanComments(name,section,start,end);
 	db_loadEditions(pr_editionsDict);
 	setTimeout(function(){
@@ -200,7 +189,5 @@ async function test(){
 	pr_loadGames(pr_gamesDict);
 	pr_loadUsers(pr_usersDict);
 	pr_loadEditions(pr_editionsDict);
-	await sleep(5000)
-	console.log(pr_loadAllCategories());
 }
 test();
