@@ -1,5 +1,5 @@
 var slideIndex
-var game_name = "Exploding Kitten";
+var game_name = sessionStorage.getItem("Game");
 document.getElementById("game").innerHTML = game_name.toUpperCase();
 function openNav() {
   document.getElementById("mySidebar").style.width = "300px";
