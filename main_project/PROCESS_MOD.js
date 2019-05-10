@@ -194,10 +194,6 @@ async function test(){
 	pr_loadGames(pr_gamesDict);
 	pr_loadUsers(pr_usersDict);
 	pr_loadEditions(pr_editionsDict);
-	await sleep(2000);
-	var a_list = pr_loadEditionSectionCommentSpans("Exploding Kitten Normal Edition","background");
-	for(var i = 0; i < a_list.length; i++){
-		console.log(pr_loadComments(a_list[i]));
-	}
+	
 }
 test();

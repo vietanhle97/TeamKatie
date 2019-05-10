@@ -1,0 +1,15 @@
+.pop_up_sticker_container{
+	z-index: 999;
+	display: none;	
+}
+.dim_layer{
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.50);
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.pop_up_sticker{
+	padding: 20%;
+}
