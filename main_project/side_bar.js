@@ -1,6 +1,6 @@
 function openNav(sidebar, tab) {
   var style = document.getElementById(sidebar).style;
-  style.width = "250px";
+  style.width = "275px";
   style.shadow = "10px 10px";
   style.background="black";
   style.opacity ="0.8";

@@ -23,6 +23,10 @@ function pr_loadGameImage(name);
 
 function pr_loadGameCategoriesList(name);
 
+//string -> list[string]
+//take a game name, return list of editions of the game
+function pr_loadGameEditionsList(name);
+
 
 
 

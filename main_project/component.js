@@ -1,3 +1,6 @@
+
+
+
 function create_div_to_carousel(n, name, link){
   var new_div = document.createElement('div');
   if (n==1){
@@ -42,7 +45,9 @@ function set_multiple_attribute(element, name, value){
     element.setAttribute(name[i],value[i])
   }
 }
-function add_to_collapse(name, head, carousel){
+
+
+function add_to_collapse(name, head, carousel,text){
   var header = "'" + head + "'"
   var id = '#' + name;
 
@@ -82,6 +87,7 @@ function add_to_collapse(name, head, carousel){
 
   var card_body = document.createElement('div')
   card_body.className = 'card-body';
+  card_body.innerHTML = text;
 
 
   if(name=='Components'){
@@ -96,7 +102,7 @@ function add_to_collapse(name, head, carousel){
   all_content.appendChild(collapse);
 }
 var a = ['Briefing']
-var lis = ['Briefing', 'BackGround', 'Objectives', 'Rule', 'Setup', 'Tips'];
+var lis = ['Briefing', 'BackGround', 'Objective', 'Components', 'Rules', 'Setup', 'Tips'];
 
 var carousel = `<div id="katie_carousel" class="carousel slide" data-ride="carousel" data-interval="false">
               <!-- Indicators -->
@@ -113,19 +119,8 @@ var carousel = `<div id="katie_carousel" class="carousel slide" data-ride="carou
                 </a>
           </div>`;
 
-add_to_collapse('Briefing',1,carousel);
-add_to_collapse('BackGround',2,carousel);
-add_to_collapse('Objectives',3,carousel);
-add_to_collapse('Components',4,carousel);
-add_to_collapse('Rule',5,carousel);
-add_to_collapse('Setup',6,carousel);
-add_to_collapse('Tips',7,carousel);
 
-
-
-
-
-function add_to_carousel(name, link){
+async function add_to_carousel(name, link){
   var show = document.getElementsByClassName('carousel-inner')[0];
   var carousels = document.getElementsByClassName('carousel-item');
   var container = document.getElementsByClassName('grid-container');
@@ -167,12 +162,15 @@ exploding = [{card: 'Defuse', img: 'https://pbs.twimg.com/media/Czz0Lj0UcAEzKZu.
             {card: 'Catermelon', img: "https://i.imgur.com/6WCn12H.png"}]
 
 function display(){
+  for(var i = 0; i < lis.length; i++){
+    add_to_collapse(lis[i],i + 1,carousel,pr_loadEditionSectionText("Exploding Kitten Normal Edition",lis[i]));
+  }
+
   for(i=0;i<exploding.length;i++){
     add_to_carousel(exploding[i]['card'].toUpperCase(), exploding[i]['img'])
   }
 }
-
-display();
+setTimeout(display,2000);
 
 
 
