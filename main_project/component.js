@@ -51,8 +51,10 @@ function add_to_collapse(name, head, carousel,text){
   var header = "'" + head + "'"
   var id = '#' + name;
 
-  var collapse = document.getElementById('collapse');
-  
+  var all_content = document.getElementById('col-9');
+
+  var collapse = document.createElement('div');
+  collapse.id = 'collapse';
 
   var card = document.createElement('div');
   //card.className = 'card';
@@ -96,6 +98,8 @@ function add_to_collapse(name, head, carousel,text){
 
   collapse.appendChild(card);
   collapse.appendChild(data);
+
+  all_content.appendChild(collapse);
 }
 var a = ['Briefing']
 var lis = ['Briefing', 'BackGround', 'Objective', 'Components', 'Rules', 'Setup', 'Tips'];
