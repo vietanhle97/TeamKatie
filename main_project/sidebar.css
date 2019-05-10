@@ -23,6 +23,9 @@
 .full{
   padding-top: 15px;
 }
+.link_icon:hover{
+  color: #228be6;
+}
 .btn-circle {
   background-color: #295FA6;  
 	margin-left: 7%; 
