@@ -44,27 +44,28 @@ function set_multiple_attribute(element, name, value){
 }
 function add_to_collapse(name, head, carousel){
   var header = "'" + head + "'"
+  var id = '#' + name;
 
   var collapse = document.getElementById('collapse');
   
 
   var card = document.createElement('div');
-  card.className = 'card';
-
+  //card.className = 'card';
+  set_multiple_attribute(card, ['class','data-toggle','data-target','aria-expanded','aria-controls'],
+                        ['card btn-link','collapse', id, 'true', name])
 
   var card_header = document.createElement('div');
   card_header.className = 'card-header';
   card_header.id = header;
-
 
   var h5 = document.createElement('h5');
   h5.className = 'mb-0';
 
 
   var button = document.createElement('button');
-  var id = '#' + name;
   set_multiple_attribute(button, ['class','data-toggle','data-target','aria-expanded','aria-controls'],
                         ['btn btn-link','collapse', id, 'true', name])
+
 
   button.appendChild(document.createTextNode(name));
   h5.appendChild(button);

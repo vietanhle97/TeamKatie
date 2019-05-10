@@ -16,7 +16,7 @@ function add_to_banner(category, img_url){
 }
 
 function display_category(){
-	var categories = all_categories();
+	var categories = pr_loadAllCategories();
 	for(i=0;i<categories.length;i++){
 		var img = pr_loadCategoryImage(categories[i]);
 		var category = categories[i] + ' Game'
