@@ -6,7 +6,7 @@ h1{
   margin-bottom: 50px;
 }
 .grid-container {
-  margin-left: 13%; 
+  margin-left: 5%; 
   display: grid;
   grid-column-gap: 20px;
   grid-row-gap: 100px; 
@@ -43,14 +43,14 @@ h1{
 	background-color: white;
 }
 .carousel-control-next{
-  top: 50%;
+  top: 310px;
   right: 0%;
   width: 50px;
   height: 100px;
 }
 
 .carousel-control-prev{
-  top: 50%;
+  top: 310px;
   left: 0%;
   width: 50px;
   height: 100px;

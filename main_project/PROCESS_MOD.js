@@ -76,10 +76,11 @@ function pr_loadEditions(name){
 
 
 function pr_loadEditionImage(name){
-	return pr_gamesDict[name]['image-url'];
+	return pr_editionsDict[name]['image-url'];
 }
 function pr_loadEditionSectionText(name,sectionName){
 	sectionName = sectionName.toLowerCase();
+	console.log(name,pr_editionsDict)
 	return pr_editionsDict[name][sectionName]["text"];
 }
 
