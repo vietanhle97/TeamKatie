@@ -1,0 +1,101 @@
+/*body {
+    background-image: url("main.jpg");
+    background-size: cover;      
+    background-repeat: no-repeat;
+}*/
+
+#icon_search{
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+.navbar{
+	height: 70px;
+}
+.navbar-brand{
+	padding-top: 5px;
+	padding-right: 20px;
+	font-family: "Helvetica Neue"
+	font-weight: bold;
+	font-size: 24px;
+}
+#banner{
+	padding-top: 40px;
+	width: 50%;
+	margin: auto;
+	overflow-x: scroll;
+	display: flex; 
+}
+.category{
+	padding-right: 22px;
+}
+.full{
+	padding-top: 15px;
+}
+.half {
+  width: 50%;
+  margin-left: 25%;
+}
+.quarter{
+	width: 25%;
+	margin-left: 38%;
+}
+.nav-item{
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+#webname{
+	font-family: "Helvetica Neue";
+	font-size: 80px;
+	text-align: center;
+	padding-bottom: 35px;
+	font-style: normal; 
+	font-variant: normal; 
+	font-weight: 700; 
+	line-height: 26.4px;
+	padding-top: 50px; 
+}
+
+#slogan{
+	font-family: "Helvetica Neue";
+	font-size: 35px;
+	text-align: center;
+	padding: 20px;
+	font-style: normal; 
+	font-variant: normal; 
+	font-weight: 700; 
+	line-height: 26.4px;
+}
+
+.caption {
+	font-family: "Helvetica Neue";
+    display: block;
+    text-align: center;
+    padding: 3px;
+    font-weight: bold;
+}
+.btn-outline-secondary:hover{
+ 	background-color: #228be6;
+  	color: white;
+}
+.link_icon:hover{
+	color: #228be6;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

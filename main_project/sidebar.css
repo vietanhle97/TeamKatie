@@ -1,0 +1,117 @@
+.fa-search{
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+.navbar{
+  height: 70px;
+}
+.navbar-brand{
+  padding-top: 5px;
+  padding-right: 20px;
+  font-family: "Helvetica Neue"
+  font-weight: bold;
+  font-size: 24px;
+}
+.nav-item{
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.full{
+  padding-top: 15px;
+}
+.btn-circle {
+  background-color: #295FA6;  
+	margin-left: 7%; 
+  width: 50px;
+  height: 50px;
+  border-radius: 35px;
+  font-size: 13px;
+}
+.btn-circle:hover{
+  background-color: #228be6;
+}
+.btn-circle i{
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar {
+  top: 0;
+  height: 100%;
+  width: 7%;
+  position: fixed;
+  z-index: 1;
+  top: 30;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.2s;
+  padding-top: 60px;
+}
+#menu_link{
+  display: none;
+}
+.menu{
+  border-radius: 35px;
+}
+.menu a{
+  padding: 8px 8px 8px 32px;
+  margin-top: 5px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+  transition: 0.0s;
+  margin-left: 5%; 
+  font-family: "Helvetica Neue";
+}
+.menu a:hover {
+  background-color: grey;
+}
+#back_tab{
+  margin-top: 50px;
+}
+#menu_tab{
+  margin-top: 20px;
+}
+#comment_tab{
+  margin-top: 20px;
+}
+#back_button{
+  margin-left: 7px;
+}
+#menu_button{
+  margin-left: 7px;
+}
+#comment_button{
+  margin-left: 7px;
+}
+.chat-popup {
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  display: none;
+  margin-top: 20px;
+  width: 230px;
+  bottom: 0px;
+  right: 7px;
+  margin-left: 7px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+  text-align: center;
+}
+.btn-outline-secondary:hover{
+  background-color: #228be6;
+  color: white;
+}
+.comment_title{
+  background-color: #228be6;
+  padding-top: 5px;
+  margin-top: 2px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+}
