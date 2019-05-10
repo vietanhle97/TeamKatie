@@ -1,0 +1,236 @@
+/*Navigation bar format*/
+#icon_search{
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+.navbar{
+  height: 70px;
+}
+.navbar-brand{
+  padding-top: 5px;
+  padding-right: 20px;
+  font-family: "Helvetica Neue"
+  font-weight: bold;
+  font-size: 24px;
+}
+/*Sidebar format*/
+.btn-circle {
+    margin-top: 80px;
+	  margin-left: 5%; 
+    width: 50px;
+    height: 50px;
+    padding: 5px 0px;
+    border-radius: 35px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+.sidebar {
+  height: 100%;
+  width: 5%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  overflow-x: hidden;
+  transition: 0.2s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: transparent;
+  display: block;
+  transition: 0.0s;
+  margin-left: 5%; 
+  font-family: "Helvetica Neue";
+}
+.fa-fw{
+	padding-right: 15px;
+}
+.sidebar a: hover {
+  color: white;
+}
+
+/*Main body format*/
+body { 
+  padding-bottom: 70px; 
+  background-image:;
+  background-color: #eeeeee;
+  background-size: cover;            
+}
+
+/*Header format*/
+h1{
+  font-family: "Helvetica Neue";
+  font-size: 3em;
+  text-align: center;
+  background-image: linear-gradient(to left, #041723, #041723);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+h2{
+  font-family: "Helvetica Neue";
+  font-size: 2.5em;
+  text-align: center;
+  background-image: linear-gradient(to left, #041723, #041723);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/*Spyroll format*/
+.grid-container{
+  height:50px;
+}
+
+* {box-sizing:border-box}
+body {
+  position: relative;
+  }
+ul.nav-pills {
+  top: 200px;
+  position: fixed;
+}
+div.col-8 div {
+  height: auto;
+}
+
+/*Collapsing panel format*/
+.wrap-collapsible {
+  margin-bottom: 1.2rem 0;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+.lbl-toggle {
+  display: block;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 2rem;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1rem;
+  color: #A78B0E;
+  background: #FBE042;
+
+  cursor: pointer;
+
+  border-radius: 7px;
+  transition: all 0.25s ease-out;
+}
+
+.lbl-toggle:hover {
+  color: #7C5A0B;
+  background: #FFFF50;
+}
+
+.lbl-toggle::after {
+  content: '\2795';
+  color: currentColor;
+  display: inline-block;
+  vertical-align: middle;
+  float:right;
+  transform: translateY(-2px);
+  transition: transform .2s ease-out;
+}
+
+.toggle:checked + .lbl-toggle::after {
+  transform: rotate(180deg) translateX(-3px);
+  content: "\2796"
+}
+
+.collapsible-content {
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height .25s ease-in-out;
+}
+
+.toggle:checked + .lbl-toggle + .collapsible-content {
+  max-height: 350px;
+  min-height: 70px;
+}
+
+.toggle:checked + .lbl-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.collapsible-content .content-inner {
+  background: rgba(250, 224, 66, .2);
+  border-bottom: 1px solid rgba(250, 224, 66, .45);
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  padding: .5rem 1rem;
+}
+.nav-item1{
+  margin-left:50px;
+  width:250px;
+}
+.nav-item1:hover{
+  background-color: #dddddd;
+}
+
+.active{
+  background-color: white;
+  border-right: 5px solid #0EAFFF;
+}
+/* Thumbnail bar*/
+.row:after {
+  content: "";
+  clear: both;
+  overflow:auto;
+  width: auto;
+  height:auto;
+  display: table;
+  align-items: center;
+  justify-content: center;
+}
+
+/* At most 5 columns*/
+.column {
+  float: left;
+  width: 20%;
+  margin: auto;
+  padding:5px;
+}
+
+/* Thumbnail transparency effect */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+/*Collapse all button*/
+.btn {
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  float:right
+}
+
+/* Green */
+.success {
+  border-color: #4CAF50;
+  color: green;
+}
+
+.success:hover {
+  background-color: #4CAF50;
+  color: white;
+}

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>KATIE</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />  
+    <link href="./info.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Laila" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+  </head>
+  <body>
+
+	<nav class="shadow p-3 mb-4 rounded navbar navbar-expand-md navbar-light bg-light fixed-top">
+    	  <a class="navbar-brand" href="#">
+        	<div class="Logo">
+          		<img src ="https://i.imgur.com/CIOf1lj.png">
+        	</div>
+      	</a>
+
+      	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        	<span class="navbar-toggler-icon"></span>
+      	</button>
+
+      	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+        	<div class="input-group full mb-3">
+          		<div class="input-group-prepend">
+            		<button class="btn btn-outline-secondary" type="button">
+              		<i class="fas fa-search" id="icon_search" style="font-size: 1.25em;"></i>
+            	  </button>
+          	  </div>
+          		<input type="text" class="form-control" placeholder="Search for board games..." aria-label="" aria-describedby="basic-addon1">
+        	</div>
+      	</div>
+
+      	<div>
+     		  <ul class="navbar-nav mr-auto">
+        		<li class="nav-item">
+          		<a class="nav-link" href="#"><i class="fas fa-edit" style="font-size: 1.75em;" data-toggle="tooltip" title="Create tutorial!"></i></a>
+        		</li>
+
+        		<li class="nav-item">
+          		<a class="nav-link" href="#"><i class="fas fa-shopping-cart" style="font-size: 1.75em;"data-toggle="tooltip" title="Purchase"></i>
+          		</a>
+        		</li>
+
+        		<li class="nav-item">
+          		<a class="nav-link" href="#"><i class="fas fa-user" style="font-size: 1.75em;"data-toggle="tooltip" title="Manage profile"></i>
+          		</a>
+        		</li>
+
+        		<li class="nav-item"><a class="nav-link" href="#"></a></li>
+        	</ul>
+      	</div>
+  </nav>
+  <br><br><br>
+  <nav class="col-sm-3 col-8"></nav>
+	<div class="row">
+		<div class="col">
+	    	<div id="mySidebar" class="sidebar" onmouseleave="closeNav()" height="100%">
+	      		<button type="button" class="btn btn-info btn-circle btn-lg" onmouseenter="openNav()" data-toggle="tooltip" title="Settings"><i class="fas fa-bars" style="font-size: 2em;"></i></button> 
+	        	<a class="sidebar_link" href="#"><i class="fas fa-edit fa-fw" style="font-size: 1em;"></i>Create Tutorial</a>
+	        	<a class="sidebar_link" href="#"><i class="fas fa-book-reader fa-fw" style="font-size: 1em;"></i>Read Tutorial</a>
+	    	</div>
+	  </div>
+  </div>
+  <body data-spy="scroll" data-target="#myScrollspy" data-offset="70">
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-sm-3 col-" id="myScrollspy">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item1" >
+              <a class="nav-link active" href="#section1" onclick='choose("1",true)'>Briefing</a>
+            </li>
+            <li class="nav-item1">
+              <a class="nav-link" href="#section2" onclick='choose("3",true)'>Background</a>
+            </li>
+            <li class="nav-item1">
+              <a class="nav-link" href="#section3" onclick='choose("3",true)'>Objective</a>
+            </li>
+            <li class="nav-item1">
+              <a class="nav-link" href="#section4" onclick='choose("4",true)'>Components</a>
+            </li>
+            <li class="nav-item1">
+              <a class="nav-link" href="#section5" onclick='choose("5",true)'>Rules</a>
+            </li>
+            <li class="nav-item1">
+              <a class="nav-link" href="#section6" onclick='choose("6",true)'>Setup</a>
+            </li>
+            <li class="nav-item1">
+              <a class="nav-link" href="#section7" onclick='choose("7",true)'>Tips</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="col-sm-9 col-8">
+          <h1 style="padding-top: 50px">EXPLODING KITTEN </h1>
+          <h2>NORMAL EDITION</h2>
+          <button class="btn success" onclick="total()">Collapse/Expand All</button>
+          <div id="section1" class="sec" style="padding-top:70px">    
+            <div class="wrap-collapsible">
+              <input id="collapsible1" class="toggle" type="checkbox" checked>
+              <label for="collapsible1" class="lbl-toggle" tabindex="0">Briefing</label>
+              <div class="collapsible-content">
+                <div class="content-inner">
+                  <p>
+                    Briefing content
+                    <br><br><br><br><br>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="section2" class="sec" style="padding-top:70px"> 
+            <div class="wrap-collapsible">
+              <input id="collapsible2" class="toggle" type="checkbox">
+              <label for="collapsible2" class="lbl-toggle" tabindex="0">Background</label>
+              <div class="collapsible-content">
+                <div class="content-inner">
+                  <p>
+                    Content
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>       
+          <div id="section3" class="sec" style="padding-top:70px">         
+            <div class="wrap-collapsible">
+              <input id="collapsible3" class="toggle" type="checkbox">
+              <label for="collapsible3" class="lbl-toggle" tabindex="0">Objective</label>
+              <div class="collapsible-content">
+                <div class="content-inner">
+                  <p>
+                      <br><br><br><br><br>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="section4" class="sec" style="padding-top:70px">         
+            <div class="wrap-collapsible">
+              <input id="collapsible4" class="toggle" type="checkbox">
+              <label for="collapsible4" class="lbl-toggle" tabindex="0">Components</label>
+              <div class="collapsible-content">
+                <div class="content-inner">
+                  <p>
+                    Content
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>      
+          <div id="section5" class="sec" style="padding-top:70px">         
+            <div class="wrap-collapsible">
+              <input id="collapsible5" class="toggle" type="checkbox">
+              <label for="collapsible5" class="lbl-toggle" tabindex="0">Rules</label>
+              <div class="collapsible-content">
+                <div class="content-inner">
+                  <p>
+                    Content
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="section6" class="sec" style="padding-top:70px">         
+            <div class="wrap-collapsible">
+              <input id="collapsible6" class="toggle" type="checkbox">
+              <label for="collapsible6" class="lbl-toggle" tabindex="0">Setup</label>
+              <div class="collapsible-content">
+                <div class="content-inner">
+                  <p>
+                    Content
+                    <br><br><br><br><br>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="section7" class="sec" style="padding-top:70px">         
+            <div class="wrap-collapsible">
+              <input id="collapsible7" class="toggle" type="checkbox">
+              <label for="collapsible7" class="lbl-toggle" tabindex="0">Tips</label>
+              <div class="collapsible-content">
+                <div class="content-inner">
+                  <p>
+                    Content 
+                    THis is content
+                  </p>
+                </div>
+              </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="column">
+                  <img class="demo cursor" src="img1.png" style="width:100%" onclick="" alt="Normal">
+                </div>
+                <div class="column"> 
+                  <img class="demo cursor" src="img2.png" style="width:100%" onclick="" alt="NSFW">
+                </div>
+                <div class="column">
+                  <img class="demo cursor" src="img3.png" style="width:100%" onclick="" alt="Imploding">
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.js"></script>
+    <script src="jquery/js/jquery-1.9.0.min.js"></script>
+    <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script src="./game_category.js"></script>
+    <script src="./edition.js"></script>
+  </body>
+</html>
