@@ -1,7 +1,6 @@
 var pr_categoriesDict = {};
 var pr_gamesDict = {};
 var pr_usersDict = {};
-
 /*categories*/
 
 function pr_loadCategories(name){
@@ -9,11 +8,17 @@ function pr_loadCategories(name){
 }
 
 function pr_loadCategoryImage(name){
-	console.log(pr_categoriesDict[name])
-	console.log(pr_categoriesDict[name]['image-url'])
 	return pr_categoriesDict[name]['image-url'];
 }
 
+function all_categories(){
+	var categories = [];
+	var categories_list = Object.keys(pr_categoriesDict);
+	for (i=0;i<categories_list.length;i++){
+		categories.push(categories_list[i]);
+	}
+	return categories;
+}
 
 function pr_loadCategoryGamesList(name){
 	var returnList = [];
@@ -21,7 +26,7 @@ function pr_loadCategoryGamesList(name){
 	for(i = 0; i < size; i++){
 		returnList.push(pr_categoriesDict[name]['games-list'][i])
 	}
-	console.log(returnList);
+	return returnList;
 }
 
 
@@ -31,8 +36,6 @@ function pr_loadGames(name){
 }
 
 function pr_loadGameImage(name){
-	console.log(pr_gamesDict[name])
-	console.log(pr_gamesDict[name]['image-url'])
 	return pr_gamesDict[name]['image-url'];
 }
 
@@ -48,6 +51,5 @@ async function test(){
 	pr_loadGames(pr_gamesDict);
 	pr_loadUsers(pr_usersDict);
 	await sleep(1000);
-	document.getElementById('test_image').src = pr_loadGameImage("Exploding Kitten");
 }
 test();

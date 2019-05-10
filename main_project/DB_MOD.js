@@ -7,15 +7,16 @@ function sleep(ms) {
 
 
 var firebaseConfig = {
-    apiKey: "AIzaSyDehZhofR5fM5pVmotx0mWCcXoLZ_6ud-0",
-    authDomain: "database-template-fe015.firebaseapp.com",
-    databaseURL: "https://database-template-fe015.firebaseio.com",
-    projectId: "database-template-fe015",
-    storageBucket: "database-template-fe015.appspot.com",
-    messagingSenderId: "376870337642",
-    appId: "1:376870337642:web:162b42d82eabf27c"
+    apiKey: "AIzaSyBcvCd-WRd3Rg_qvTOemaLcqv7ybNjjRzI",
+    authDomain: "teamkatie-3d32d.firebaseapp.com",
+    databaseURL: "https://teamkatie-3d32d.firebaseio.com",
+    projectId: "teamkatie-3d32d",
+    storageBucket: "teamkatie-3d32d.appspot.com",
+    messagingSenderId: "378994974940",
+    appId: "1:378994974940:web:6034581b53ec1046"
   };
-firebase.initializeApp(firebaseConfig);
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
 
 var db_database = firebase.database();
 

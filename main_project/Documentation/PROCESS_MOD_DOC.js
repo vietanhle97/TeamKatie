@@ -11,7 +11,7 @@ function pr_loadGameImage(name);
 
 
 //string -> string
-//take a category name, return image of the game
+//take a category name, return image of the category
 function pr_loadCategoryImage(name);
 
 //string -> list[string]
