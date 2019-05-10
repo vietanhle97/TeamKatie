@@ -8,7 +8,7 @@ function create_div_to_carousel(n, name, link){
     connect.addEventListener('mousedown', function(){
       var next_destination = document.getElementById(name);
       next_destination.href = "Edition page.html";
-      sessionStorage.setItem("Game", name);
+      sessionStorage.setItem("game", name);
     })
 
     var new_div_2 = document.createElement('div');
@@ -38,7 +38,7 @@ function create_div_to_carousel(n, name, link){
     connect.addEventListener('mousedown', function(){
       var next_destination = document.getElementById(name);
       next_destination.href = "Edition page.html";
-      sessionStorage.setItem("Game", name);
+      sessionStorage.setItem("game", name);
     })
 
     var new_div_3 = document.createElement('div');
