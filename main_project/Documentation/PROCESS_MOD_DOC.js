@@ -13,7 +13,6 @@ var comment_object = {	"user": string,
 
 
 
-
 //string -> string
 //take a game name, return image of the game
 
@@ -28,8 +27,6 @@ function pr_loadGameCategoriesList(name);
 
 
 
-
-
 //string -> string
 //take a category name, return image of the category
 function pr_loadCategoryImage(name);
@@ -37,6 +34,13 @@ function pr_loadCategoryImage(name);
 //string -> list[string]
 //take a category name, return list of the games in that category
 function pr_loadCategoryGamesList(name);
+
+
+//-> list[string]
+//take a list of categories
+
+function pr_loadAllCategories();
+
 
 
 

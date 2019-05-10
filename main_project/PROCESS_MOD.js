@@ -15,6 +15,10 @@ function pr_loadCategoryImage(name){
 	return pr_categoriesDict[name]['image-url'];
 }
 
+function pr_loadAllCategories(){
+	return Object.keys(pr_categoriesDict);
+}
+
 
 function pr_loadCategoryGamesList(name){
 	var returnList = [];
@@ -69,6 +73,8 @@ function pr_loadUsers(name){
 function pr_loadEditions(name){
 	db_loadEditions(name)
 }
+
+
 function pr_loadEditionImage(name){
 	console.log(pr_editionsDict[name])
 	console.log(pr_editionsDict[name]['image-url'])
@@ -194,10 +200,7 @@ async function test(){
 	pr_loadGames(pr_gamesDict);
 	pr_loadUsers(pr_usersDict);
 	pr_loadEditions(pr_editionsDict);
-	await sleep(2000);
-	var a_list = pr_loadEditionSectionCommentSpans("Exploding Kitten Normal Edition","background");
-	for(var i = 0; i < a_list.length; i++){
-		console.log(pr_loadComments(a_list[i]));
-	}
+	await sleep(5000)
+	console.log(pr_loadAllCategories());
 }
 test();
