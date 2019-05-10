@@ -1,6 +1,7 @@
 var slideIndex
+
 var game_name = sessionStorage.getItem('Game');
-console.log(game_name);
+
 document.getElementById("game").innerHTML = game_name.toUpperCase();
 function openNav() {
   document.getElementById("mySidebar").style.width = "300px";
@@ -99,7 +100,7 @@ function load_button(i,name){
 function load_all_pic(name){
   var edition_list = pr_loadGameEditionsList(name);
   var len = edition_list.length
-  for(i=len-1;i>=0;i--){
+  for(i=0;i<len;i++){
     desc = pr_loadEditionSectionText(edition_list[i],'briefing');
     load_pic(i,edition_list[i],len,desc);
     load_button(i,edition_list[i].replace(name,""));

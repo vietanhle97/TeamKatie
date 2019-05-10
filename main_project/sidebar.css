@@ -58,9 +58,6 @@
 #menu_link{
   display: none;
 }
-.menu{
-  border-radius: 35px;
-}
 .menu a{
   padding: 8px 8px 8px 32px;
   margin-top: 5px;

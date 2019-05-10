@@ -84,5 +84,5 @@ function pr_addEditionSectionCommentSpanComment(name,section,start,end,username,
 
 //string string integer integer string string
 //delete a comment of a span inside a section of edition, behave the same way as deleteEditionComment
-function pr_addEditionSectionCommentSpanComment(name,section,start,end,username,text);
+function pr_deleteEditionSectionCommentSpanComment(name,section,start,end,username,text);
 

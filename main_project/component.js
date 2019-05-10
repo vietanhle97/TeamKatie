@@ -1,4 +1,20 @@
+var currentTutorialName = "Exploding Kitten Normal Edition";
+var currentSpan = {"section": null, "start": null, "end": null};
 
+function createSpan(name){
+  var selectedRange = window.getSelection().getRangeAt(0);
+  var startPos = selectedRange.startOffset;
+  var endPos = selectedRange.endOffset;
+  if(startPos >= endPos) {
+    closeNav("mySidebar");
+    return;
+  }
+  currentSpan.section = name;
+  currentSpan.start = startPos;
+  currentSpan.end = endPos;
+  openNav("mySidebar", 'comment_tab');
+  console.log(currentSpan)
+}
 
 
 function create_div_to_carousel(n, name, link){
@@ -67,6 +83,7 @@ function add_to_collapse(name, head, carousel,text){
   var id = '#' + name;
 
   var all_content = document.getElementById('col-9');
+  console.log(all_content)
 
   var collapse = document.createElement('div');
   collapse.id = 'collapse';
@@ -103,6 +120,9 @@ function add_to_collapse(name, head, carousel,text){
   var card_body = document.createElement('div')
   card_body.className = 'card-body';
   card_body.innerHTML = text;
+  card_body.setAttribute("section-name",name);
+  card_body.addEventListener("mouseup",function(){
+                                      createSpan(this.getAttribute("section-name"))});
 
 
   if(name=='Components'){
@@ -189,7 +209,6 @@ $("span, .overlay").click(function () {
         $(".popup_show").fadeOut();
     });
 setTimeout(display,2000);
-
 
 
 
