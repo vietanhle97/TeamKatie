@@ -22,8 +22,7 @@
 
 
   <body>
-    <div>
-      <nav class="shadow p-3 mb-1 rounded navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="shadow p-3 mb-1 rounded navbar navbar-expand-sm navbar-light" style="background-color: hsl(220,50%,50%)">
         <a class="navbar-brand" href="main.html">
             <div>
               <img style="width:60px; height:60px; border-radius: 30px;"src="https://i.imgur.com/XOhlvz6.png?1">
@@ -34,15 +33,15 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <div class="input-group full mb-3">
-            <div class="input-group-prepend">
-              <button class="btn btn-outline-secondary" type="button">
-                <i class="fas fa-search" id="icon_search" style="font-size: 1.25em;"></i>
-              </button>
+            <div class="input-group full mb-3">
+                <div class="input-group-prepend">
+                  <button style = "background-color: white; border-color: white, border-left-color:black"class="btn btn-outline-secondary" type="button">
+                      <i class="fas fa-search" id="icon_search" style="font-size: 1.25em;"></i>
+                  </button>
+                </div>
+                <input type="text" class="form-control" placeholder="Search for board games..." aria-label="" aria-describedby="basic-addon1">
             </div>
-            <input type="text" class="form-control" placeholder="Search for board games..." aria-label="" aria-describedby="basic-addon1">
           </div>
-        </div>
 
         <div>
           <ul class="navbar-nav mr-auto">
@@ -65,11 +64,9 @@
           </ul>
         </div>
       </nav>
-
       <div class="progress">
         <div class="progress-bar" id="progress_bar" role="progressbar" style="width:0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
-    </div>
 
 
     <div id="banner" class="bg-grey rounded">

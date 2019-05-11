@@ -2,7 +2,8 @@ var currentTutorialName = "Exploding Kitten Normal Edition";
 var currentSpan = {"section": null, "start": null, "end": null};
 var currentUsername = "user1";
 var currentUserImage = "https://i.stack.imgur.com/ahCDf.png?s=328&g=1";
-
+var edition = sessionStorage.getItem('edition');
+document.getElementById('content').innerHTML = edition;
 chatbox_username = currentUsername;
 chatbox_userImage = currentUserImage;
 
@@ -34,7 +35,8 @@ function create_div_to_carousel(n, name, link){
       $(".popup_show").fadeIn();
       var img_show = document.getElementById("pop_up_img");
       img_show.setAttribute('src',link);
-      console.log(link);
+      var instruction = document.getElementById('pop_up_text');
+      instruction.innerHTML = 'asdadsgasjgfakjldhfslkajdhfaks';
     })
     new_div_2.style.backgroundImage = 'url("' + link + '")';
     var span = document.createElement("span");
@@ -58,9 +60,9 @@ function create_div_to_carousel(n, name, link){
       // $(".img-show img").attr("src", link);
       $(".popup_show").fadeIn();
       var img_show = document.getElementById("pop_up_img");
-      console.log(link);
       img_show.setAttribute('src',link);
-      console.log(link);
+      var instruction = document.getElementById('pop_up_text');
+      instruction.innerHTML = 'asdadsgasjgfakjldhfslkajdhfaks';
     })
     new_div_3.style.backgroundImage = 'url("' + link + '")';
 

@@ -4,7 +4,7 @@
     background-repeat: no-repeat;
 }*/
 
-#icon_search{
+.fa-search{
   -moz-transform: scaleX(-1);
   -o-transform: scaleX(-1);
   -webkit-transform: scaleX(-1);
@@ -13,14 +13,24 @@
   -ms-filter: "FlipH";
 }
 .navbar{
-	height: 70px;
+  height: 70px;
 }
 .navbar-brand{
-	padding-top: 5px;
-	padding-right: 20px;
-	font-family: "Helvetica Neue"
-	font-weight: bold;
-	font-size: 24px;
+  padding-top: 5px;
+  padding-right: 20px;
+  font-family: "Helvetica Neue"
+  font-weight: bold;
+  font-size: 24px;
+}
+.nav-item{
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.full{
+  padding-top: 15px;
+}
+.link_icon:hover{
+  color: white;
 }
 #banner{
 	padding-top: 40px;
@@ -82,10 +92,6 @@
  	background-color: #228be6;
   	color: white;
 }
-.link_icon:hover{
-	color: #228be6;
-}
-
 
 
 

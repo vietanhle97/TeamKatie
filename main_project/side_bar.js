@@ -47,12 +47,19 @@ function closeNav(sidebar) {
   style.width = "5%";
   style.background="hsla(220,50%,30%,0.1)";
   style.opacity ="";
-  close_tab('myForm');
   close_tab('menu_link');
+  close_tab('myForm');
+  
 }
 function open_tab(tab){
-  document.getElementById(tab).style.display = 'block';
+  var open_tab = document.getElementById(tab);
+  if(open_tab){
+    open_tab.style.display = 'block';
+  }
 }
 function close_tab(tab){
-  document.getElementById(tab).style.display = 'none';
+  var close_tab = document.getElementById(tab);
+  if(close_tab){
+    close_tab.style.display = 'none';
+  }
 }

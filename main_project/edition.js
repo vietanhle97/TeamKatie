@@ -88,12 +88,23 @@ function load_pic(i,name,len,des){
 function load_button(i,name){
   var col = document.createElement('div');
   col.className="columnT";
+  var connect = document.createElement('a');
+  connect.setAttribute('href', "");
+  connect.id = name;
+
   var btn = document.createElement('button');
   btn.className="button"; 
   btn.style.width="100%";
   btn.addEventListener("mouseover",function(){currentSlide(i+1)});
   btn.innerHTML=name;
-  col.appendChild(btn);
+  var edition = game_name + name;
+  btn.addEventListener('click', function(){
+    sessionStorage.setItem('edition', edition);
+    document.getElementById(name).href = 'component.html';
+
+  })
+  connect.appendChild(btn);
+  col.appendChild(connect);
   document.getElementById("rowT").appendChild(col);
 }
 
