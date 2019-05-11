@@ -44,8 +44,8 @@ function closeNav(sidebar) {
   back_button_var.style.position = "relative";
   back_button_var.style.left = "0px";
   var style = document.getElementById(sidebar).style;
-  style.width = "7%";
-  style.background="transparent";
+  style.width = "5%";
+  style.background="hsla(220,50%,30%,0.1)";
   style.opacity ="";
   close_tab('myForm');
   close_tab('menu_link');
