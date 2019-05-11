@@ -106,12 +106,14 @@ h1{
 }
 
 
+.commentSpan{
+  background-color: hsla(60,80%,80%,80%);
 
-
-
-
-
-
+}
+.commentSpan:hover{
+  cursor: pointer;
+  background-color: hsla(60,90%,70%,100%);
+}
 
 
 

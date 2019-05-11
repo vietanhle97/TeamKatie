@@ -1,6 +1,7 @@
 var chatbox_username = "alalasld";
 var chatbox_userImage = "alalasld";
-function chatbox_insertChat(username,leftOrRight,text,userImage){
+var chatbox_currentSpan = {"section": "main", "start": null, "end": null};
+function chatbox_insertChat(editionName,username,leftOrRight,text,userImage){
 
 	var innerPlaceHolder = document.createElement('div')
 	 if (leftOrRight.toLowerCase() == "left"){
@@ -34,6 +35,17 @@ function chatbox_insertChat(username,leftOrRight,text,userImage){
 
 	chatBox.append(innerPlaceHolder);
 }
+function chatbox_userInsertChat(editionName,username,leftOrRight,text,userImage){
+	if(chatbox_currentSpan["section"] == "main"){
+		pr_addEditionComment(editionName,username,text);
+	}
+	else {
+		pr_addEditionSectionCommentSpanComment(editionName,chatbox_currentSpan["section"],
+			chatbox_currentSpan["start"],chatbox_currentSpan["end"],username,text);
+	}
+
+	chatbox_insertChat(editionName,username,leftOrRight,text,userImage);
+}
 function chatbox_clearChat(){
 	var chatBox = document.getElementById("myForm-chatField-chatList");
 	while(chatBox.childNodes.length) chatBox.removeChild(chatBox.childNodes[0]);
@@ -42,7 +54,7 @@ function chatbox_clearChat(){
 
 document.getElementById("myForm-chatField-submitButton").onclick = function(){
 	if($("#myForm-chatField-submitBox").val() != "")
-	chatbox_insertChat(chatbox_username,"right",$("#myForm-chatField-submitBox").val(), chatbox_userImage);
+	chatbox_userInsertChat(chatbox_username,"right",$("#myForm-chatField-submitBox").val(), chatbox_userImage);
 	$("#myForm-chatField-submitBox").val("");
 };
 

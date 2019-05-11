@@ -1,7 +1,7 @@
 //object Span object
 var span_object = {"start": integer,
 			"end": integer,
-			"comment-list": list[Comment_object]};
+			"comments-list": list[Comment_object]};
 
 //object Comment object
 var comment_object = {	"user": string,
@@ -51,12 +51,15 @@ function pr_loadAllCategories();
 
 //string -> string
 //take a edition name, return image of the edition
-
 function pr_loadEditionImage(name);
+
+//string -> list[comment_object]
+//load edition comment
+function pr_loadEditionComments(name);
+
 
 //string string -> string
 //take a edition name and section name, return text of section of the game
-
 function pr_loadEditionSectionText(name,sectionName);
 
 //string string -> list[span_object];
