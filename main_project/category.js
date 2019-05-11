@@ -136,24 +136,7 @@ function check(){
     display_game('Card');
   }
 }
- 
-var $progressBar = $('.progress-bar');
-var $progress = $('.progress');
-setTimeout(function() {
-    $progressBar.css('width', '25%');
-    setTimeout(function() {
-        $progressBar.css('width', '50%');
-        setTimeout(function() {
-            $progressBar.css('width', '75%');
-            setTimeout(function(){
-              $progressBar.css('width', '100%');
-              check();
-              $progress.css('display', 'none');
-            }, 500)
-        }, 500); // WAIT 2 seconds
-    }, 500); // WAIT 1 seconds
-}, 500); // WAIT 1 second
-
+test(check);
 
 
 

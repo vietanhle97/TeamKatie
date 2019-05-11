@@ -2,11 +2,35 @@ var currentTutorialName = sessionStorage.getItem('edition');
 var currentUsername = "user1";
 var currentUserImage = "https://i.stack.imgur.com/ahCDf.png?s=328&g=1";
 var component_spanListDict = {};
-document.getElementById('content').innerHTML = edition;
+var component_sectionContent = {};
+var component_sectionBody = {};
+
+document.getElementById('content').innerHTML = currentTutorialName;
 chatbox_username = currentUsername;
 chatbox_userImage = currentUserImage;
 
+function component_loadSpanHTML(name,text){
+  var newText = "", lastTime = 0;
+  for(var i = 0; i < component_spanListDict[name].length; i++){
+    var ll = component_spanListDict[name][i]["start"];
+    var rr = parseInt(component_spanListDict[name][i]["end"]);
+    newText =  newText + text.substring(lastTime,ll) + `<span class = "commentSpan" onclick = \"`
+    + `component_loadCommentSpanComments(\'` + name + `\',` + i +`)\">` +
+            text.substring(ll,rr+1) + 
+            '</span>';
+    lastTime = rr+1;
+    console.log(ll,rr,text.substring(ll,rr+1),newText);
+  }
+  newText = newText + text.substring(lastTime,text.length);
+  return newText;
+}
+
+function component_spanListUpdate(name){
+    component_spanListDict[name] = pr_loadEditionSectionCommentSpans(currentTutorialName,name);
+}
+
 function component_loadCommentSpanComments(section,i){
+  document.getElementById("comment-title-content").innerHTML = section;
   chatbox_currentSpan["section"] = section;
   chatbox_currentSpan["start"] = component_spanListDict[section][i]["start"];
   chatbox_currentSpan["end"] = component_spanListDict[section][i]["end"];
@@ -23,6 +47,7 @@ function component_loadCommentSpanComments(section,i){
   }
 }
 function component_loadEditionComments(name){
+  document.getElementById("comment-title-content").innerHTML = name + " (Discusion)";
   chatbox_currentSpan["section"] = "main";
   openNav("mySidebar", 'comment_tab');
   chatbox_clearChat();
@@ -49,6 +74,9 @@ function userDragSpan(name){
   chatbox_currentSpan.section = name;
   chatbox_currentSpan.start = startPos;
   chatbox_currentSpan.end = endPos;
+  component_spanListDict[name].push({"start":startPos,"end":endPos, "comments-list": []});
+  component_spanListDict[name].sort((a, b) => (a.start > b.start) ? 1 : -1);
+  component_sectionBody[name].innerHTML = component_loadSpanHTML(name,component_sectionContent[name])
   console.log(startPos,endPos);
   openNav("mySidebar", 'comment_tab');
   chatbox_clearChat();
@@ -157,19 +185,10 @@ function add_to_collapse(name, head, carousel,text){
 
   var card_body = document.createElement('div')
   card_body.className = 'card-body';
-  component_spanListDict[name] = pr_loadEditionSectionCommentSpans(currentTutorialName,name);
-  console.log(text);
-  var newText = "", lastTime = 0;
-  for(var i = 0; i < component_spanListDict[name].length; i++){
-    newText =  newText + text.substring(lastTime,component_spanListDict[name][i]["start"]) + `<span class = "commentSpan" onclick = \"`
-    + `component_loadCommentSpanComments(\'` + name + `\',` + i +`)\">` +
-            text.substring(component_spanListDict[name][i]["start"],component_spanListDict[name][i]["end"] + 1) + 
-            '</span>';
-    lastTime = component_spanListDict[name][i]["end"] + 1;
-    console.log(newText);
-  }
-  newText = newText + text.substring(lastTime,text.length);
-  console.log(newText);
+  component_sectionContent[name] = text;
+  component_sectionBody[name] = card_body;
+  component_spanListUpdate(name);
+  newText = component_loadSpanHTML(name,text);
   card_body.innerHTML = newText;
   card_body.setAttribute("section-name",name);
   card_body.addEventListener("mouseup",function(){
@@ -248,7 +267,10 @@ exploding = [{card: 'Defuse', img: 'https://pbs.twimg.com/media/Czz0Lj0UcAEzKZu.
             {card: 'Rainbow cat', img: "https://i.imgur.com/z7BG3zq.png"},
             {card: 'Catermelon', img: "https://i.imgur.com/6WCn12H.png"}]
 
-function display(){
+function component_display(){
+  console.log(currentTutorialName);
+  if(currentTutorialName == null)
+    currentTutorialName = "Exploding Kitten Normal Edition";
   for(var i = 0; i < lis.length; i++){
     add_to_collapse(lis[i],i + 1,carousel,pr_loadEditionSectionText(currentTutorialName,lis[i]));
   }
@@ -265,7 +287,7 @@ $("span, .overlay").click(function () {
 });
 
 
-setTimeout(display,5000);
+test(component_display)
 
 
 

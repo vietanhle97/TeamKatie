@@ -70,8 +70,8 @@ function pr_loadUsers(name){
 
 /*editions*/
 
-function pr_loadEditions(name){
-	db_loadEditions(name)
+function pr_loadEditions(name,callback){
+	db_loadEditions(name,callback)
 }
 
 
@@ -85,6 +85,7 @@ function pr_loadEditionSectionText(name,sectionName){
 }
 
 function pr_loadEditionSectionCommentSpans(name,sectionName){
+	console.log(sectionName)
 	sectionName = sectionName.toLowerCase();
 	console.log(name,sectionName,pr_editionsDict[name][sectionName]);
 	if(pr_editionsDict[name][sectionName]["comment-spans-list"] == null){
@@ -128,7 +129,7 @@ function pr_addEditionComment(name,username,text){
 	pr_editionsDict[name]["comments-list"][n] = {"user": username, "text": text};
 }
 
-function pr_deleteEditionComment(name,username,text){
+function pr_deleteEditionComment(name,username,text,callback){
 	var comments = pr_loadEditionComments(name);
 	for(var i = 0; i < comments.length; i++){
 		if(comments[i].user == username && comments[i].text == text){
@@ -142,12 +143,13 @@ function pr_deleteEditionComment(name,username,text){
 	for(var i = 0; i < comments.length; i++){
 		pr_addEditionComment(name,comments[i].user,comments[i].text);
 	}
-	db_loadEditions(pr_editionsDict);
+	db_loadEditions(pr_editionsDict,callback);
 	},1000);
 }
 
 function pr_addEditionSectionCommentSpanComment(name,section,start,end,username,text){
-	console.log(name,section)
+	section = section.toLowerCase();
+
 	if(pr_editionsDict[name][section]["comment-spans-list"] == null){
 		pr_editionsDict[name][section]["comment-spans-list"] = {};
 	}
@@ -169,7 +171,10 @@ function pr_addEditionSectionCommentSpanComment(name,section,start,end,username,
 	db_addEditionSectionComment(name,section,start,end,newCommentSpan);
 }
 
-function pr_deleteEditionSectionCommentSpanComment(name,section,start,end,username,text){
+function pr_deleteEditionSectionCommentSpanComment(name,section,start,end,username,text,callback){
+	section = section.toLowerCase();
+
+	console.log(name,section)
 	if(pr_editionsDict[name][section]["comment-spans-list"] == null) return;
 	if(pr_editionsDict[name][section]["comment-spans-list"][start+"-"+end] == null) return;
 	var commentSpan = pr_editionsDict[name][section]["comment-spans-list"][start+"-"+end];
@@ -187,14 +192,13 @@ function pr_deleteEditionSectionCommentSpanComment(name,section,start,end,userna
 	for(var i = 0; i < comments.length; i++){
 		pr_addEditionSectionCommentSpanComment(name,section,start,end,comments[i].user,comments[i].text);
 	}
-	db_loadEditions(pr_editionsDict);
+	db_loadEditions(pr_editionsDict,callback);
 	},2000);
 }
 
-async function test(){
+async function test(callback){
 	pr_loadCategories(pr_categoriesDict);
 	pr_loadGames(pr_gamesDict);
 	pr_loadUsers(pr_usersDict);
-	pr_loadEditions(pr_editionsDict);
+	pr_loadEditions(pr_editionsDict,callback);
 }
-test();

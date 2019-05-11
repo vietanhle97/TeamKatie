@@ -40,7 +40,6 @@ var bar_timer = 0;
 function progress(){
 	if(bar_timer == 20) {
 		$progress.css('display','none');
-		display_category(); 
 		return;}
 
 	bar_timer++
@@ -51,7 +50,7 @@ function progress(){
 	setTimeout(progress, 100);
 }
 progress();
-
+test(display_category)
 
 // setTimeout(function() {
 //     $progressBar.css('width', '25%');

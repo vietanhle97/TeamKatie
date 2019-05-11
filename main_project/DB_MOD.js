@@ -85,9 +85,9 @@ function db_loadEditionsHelper(snapshot,a_dict){
 		a_dict[key] = value;
 	})
 }
-function db_loadEditions(a_dict){
+function db_loadEditions(a_dict,callback = function(){}){
 	db_database_editions.once('value').then(function(snapshot){
-		db_loadEditionsHelper(snapshot,a_dict)});
+		db_loadEditionsHelper(snapshot,a_dict)}).then(function() {callback()});
 }
 
 function db_addEditionComment(name,comment,pos){

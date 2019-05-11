@@ -121,8 +121,8 @@ function load_all_pic(name){
   }
 }
 
-setTimeout(function(){
+test(function(){
   load_all_pic(game_name);
   document.getElementById("left").addEventListener("click",function(){plusSlides(-1)});
   document.getElementById("right").addEventListener("click",function(){plusSlides(1)});
-}, 2000);
+});
