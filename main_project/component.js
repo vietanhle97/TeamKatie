@@ -19,7 +19,6 @@ function component_loadSpanHTML(name,text){
             text.substring(ll,rr+1) + 
             '</span>';
     lastTime = rr+1;
-    console.log(ll,rr,text.substring(ll,rr+1),newText);
   }
   newText = newText + text.substring(lastTime,text.length);
   return newText;
@@ -35,7 +34,6 @@ function component_loadCommentSpanComments(section,i){
   chatbox_currentSpan["start"] = component_spanListDict[section][i]["start"];
   chatbox_currentSpan["end"] = component_spanListDict[section][i]["end"];
 
-  openNav("mySidebar", 'comment_tab');
   chatbox_clearChat();
   for (var j = 0;j<component_spanListDict[section][i]["comments-list"].length;j++){
       var text = component_spanListDict[section][i]["comments-list"][j]["text"];
@@ -49,7 +47,6 @@ function component_loadCommentSpanComments(section,i){
 function component_loadEditionComments(name){
   document.getElementById("comment-title-content").innerHTML = name + " (Discusion)";
   chatbox_currentSpan["section"] = "main";
-  openNav("mySidebar", 'comment_tab');
   chatbox_clearChat();
   var commentList = pr_loadEditionComments(name);
   for (var j = 0;j<commentList.length;j++){
@@ -78,7 +75,6 @@ function userDragSpan(name){
   component_spanListDict[name].push({"start":startPos,"end":endPos, "comments-list": []});
   component_spanListDict[name].sort((a, b) => (a.start > b.start) ? 1 : -1);
   component_sectionBody[name].innerHTML = component_loadSpanHTML(name,component_sectionContent[name])
-  console.log(startPos,endPos);
   openNav("mySidebar", 'comment_tab');
   chatbox_clearChat();
 }
@@ -97,7 +93,6 @@ function create_div_to_carousel(n, name, link){
       img_show.setAttribute('src',link);
       var instruction = document.getElementById('popup_text');
       var text = find_text(name);
-      console.log(text)
       instruction.innerHTML ='';
       add_to_span('popup_text', text);
       
@@ -130,7 +125,6 @@ function create_div_to_carousel(n, name, link){
       var instruction = document.getElementById('popup_text');
 
       var text = find_text(name);
-      console.log(text);
       instruction.innerHTML = '';
       add_to_span('popup_text', text);
 
@@ -307,7 +301,6 @@ function add_to_span(instruction, text){
   for(i=0;i<split.length;i++){
     if(span_list.includes(split[i])){
 
-      console.log(split[i]);
 
 
       var span = document.createElement('span');
@@ -317,7 +310,6 @@ function add_to_span(instruction, text){
 
         var img = this.innerHTML;
         var name = '#carousel' + img.toUpperCase();
-        console.log($(name));
         $(name).trigger( "click" );
       })
       instruct.appendChild(span);
@@ -331,7 +323,6 @@ function add_to_span(instruction, text){
 
 
 function component_display(){
-  console.log(currentTutorialName);
   if(currentTutorialName == null)
     currentTutorialName = "Exploding Kitten Normal Edition";
   for(var i = 0; i < lis.length; i++){

@@ -10,8 +10,6 @@ function pr_loadCategories(name){
 }
 
 function pr_loadCategoryImage(name){
-	console.log(pr_categoriesDict[name])
-	console.log(pr_categoriesDict[name]['image-url'])
 	return pr_categoriesDict[name]['image-url'];
 }
 
@@ -26,7 +24,6 @@ function pr_loadCategoryGamesList(name){
 	for(i = 0; i < size; i++){
 		returnList.push(pr_categoriesDict[name]['games-list'][i])
 	}
-	console.log(returnList);
 	return returnList;
 }
 
@@ -37,8 +34,6 @@ function pr_loadGames(name){
 }
 
 function pr_loadGameImage(name){
-	console.log(pr_gamesDict[name])
-	console.log(pr_gamesDict[name]['image-url'])
 	return pr_gamesDict[name]['image-url'];
 }
 
@@ -48,7 +43,6 @@ function pr_loadGameCategoriesList(name){
 	for(i = 0; i < size; i++){
 		returnList.push(pr_gamesDict[name]['categories-list'][i])
 	}
-	console.log(returnList);
 	return returnList;
 }
 
@@ -58,7 +52,6 @@ function pr_loadGameEditionsList(name){
 	for(i = 0; i < size; i++){
 		returnList.push(pr_gamesDict[name]['editions-list'][i])
 	}
-	console.log(returnList);
 	return returnList;
 }
 
@@ -80,14 +73,11 @@ function pr_loadEditionImage(name){
 }
 function pr_loadEditionSectionText(name,sectionName){
 	sectionName = sectionName.toLowerCase();
-	console.log(name,pr_editionsDict)
 	return pr_editionsDict[name][sectionName]["text"];
 }
 
 function pr_loadEditionSectionCommentSpans(name,sectionName){
-	console.log(sectionName)
 	sectionName = sectionName.toLowerCase();
-	console.log(name,sectionName,pr_editionsDict[name][sectionName]);
 	if(pr_editionsDict[name][sectionName]["comment-spans-list"] == null){
 		return [];
 	}
@@ -112,7 +102,6 @@ function pr_loadComments(commentSpan){
 
 function pr_loadEditionComments(name){
 	var returnList = [];
-	console.log(name);
 	if(pr_editionsDict[name]["comments-list"] == null){
 		pr_editionsDict[name]["comments-list"] = {};
 	}
@@ -174,7 +163,6 @@ function pr_addEditionSectionCommentSpanComment(name,section,start,end,username,
 function pr_deleteEditionSectionCommentSpanComment(name,section,start,end,username,text,callback){
 	section = section.toLowerCase();
 
-	console.log(name,section)
 	if(pr_editionsDict[name][section]["comment-spans-list"] == null) return;
 	if(pr_editionsDict[name][section]["comment-spans-list"][start+"-"+end] == null) return;
 	var commentSpan = pr_editionsDict[name][section]["comment-spans-list"][start+"-"+end];
