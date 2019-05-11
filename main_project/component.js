@@ -187,7 +187,7 @@ async function add_to_carousel(name, link){
 exploding = [{card: 'Defuse', img: 'https://pbs.twimg.com/media/Czz0Lj0UcAEzKZu.png'},
             {card: 'Explode', img: "https://i.imgur.com/KV40QE4.png"},
             {card: 'Nope', img: "https://pbs.twimg.com/media/CT1SNvIWoAAstvS.jpg"},
-            {card: 'Card', img: "https://techanimate.com/wp-content/uploads/2018/08/attack-card.png"},
+            {card: 'Attack', img: "https://i.imgur.com/wn5hzMH.png"},
             {card: 'Shuffle', img: "https://pbs.twimg.com/media/CbxlnVdUEAERmru.png"},
             {card: 'See The Future', img: "https://pbs.twimg.com/media/B-J0nBACMAAr71J.png"},
             {card: 'Skip', img: "https://pbs.twimg.com/media/C9T-953XUAIa4Eu.jpg"},

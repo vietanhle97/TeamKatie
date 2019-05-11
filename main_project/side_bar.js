@@ -2,6 +2,7 @@ var menu_button_var = document.getElementById("menu_button");
 var comment_button_var = document.getElementById("comment_button");
 var back_button_var = document.getElementById("back_button");
 var nav_bar_menu = document.getElementById("nav-bar-menu");
+
 function openNav(sidebar, tab) {
   var style = document.getElementById(sidebar).style;
   style.width = "275px";
