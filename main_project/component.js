@@ -2,7 +2,7 @@ var currentTutorialName = sessionStorage.getItem('edition');
 var currentUsername = "user1";
 var currentUserImage = "https://i.stack.imgur.com/ahCDf.png?s=328&g=1";
 var component_spanListDict = {};
-document.getElementById('content').innerHTML = edition;
+document.getElementById('content').innerHTML = currentTutorialName;
 chatbox_username = currentUsername;
 chatbox_userImage = currentUserImage;
 
