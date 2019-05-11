@@ -86,6 +86,10 @@ function pr_loadEditionSectionText(name,sectionName){
 
 function pr_loadEditionSectionCommentSpans(name,sectionName){
 	sectionName = sectionName.toLowerCase();
+	console.log(name,sectionName,pr_editionsDict[name][sectionName]);
+	if(pr_editionsDict[name][sectionName]["comment-spans-list"] == null){
+		return [];
+	}
 	var commentSpansList = pr_editionsDict[name][sectionName]["comment-spans-list"];
 
 	var returnList = [];
@@ -107,6 +111,7 @@ function pr_loadComments(commentSpan){
 
 function pr_loadEditionComments(name){
 	var returnList = [];
+	console.log(name);
 	if(pr_editionsDict[name]["comments-list"] == null){
 		pr_editionsDict[name]["comments-list"] = {};
 	}
@@ -142,6 +147,7 @@ function pr_deleteEditionComment(name,username,text){
 }
 
 function pr_addEditionSectionCommentSpanComment(name,section,start,end,username,text){
+	console.log(name,section)
 	if(pr_editionsDict[name][section]["comment-spans-list"] == null){
 		pr_editionsDict[name][section]["comment-spans-list"] = {};
 	}

@@ -1,12 +1,43 @@
-var currentTutorialName = "Exploding Kitten Normal Edition";
-var currentSpan = {"section": null, "start": null, "end": null};
+var currentTutorialName = sessionStorage.getItem('edition');
 var currentUsername = "user1";
 var currentUserImage = "https://i.stack.imgur.com/ahCDf.png?s=328&g=1";
-var edition = sessionStorage.getItem('edition');
+var component_spanListDict = {};
 document.getElementById('content').innerHTML = edition;
 chatbox_username = currentUsername;
 chatbox_userImage = currentUserImage;
-console.log(document.URL);
+
+
+function component_loadCommentSpanComments(section,i){
+  chatbox_currentSpan["section"] = section;
+  chatbox_currentSpan["start"] = component_spanListDict[section][i]["start"];
+  chatbox_currentSpan["end"] = component_spanListDict[section][i]["end"];
+
+  openNav("mySidebar", 'comment_tab');
+  chatbox_clearChat();
+  for (var j = 0;j<component_spanListDict[section][i]["comments-list"].length;j++){
+      var text = component_spanListDict[section][i]["comments-list"][j]["text"];
+      var username = component_spanListDict[section][i]["comments-list"][j]["user"];
+      var leftOrRight;
+      if(username == currentUsername) leftOrRight = "right";
+      else leftOrRight = "left";
+      chatbox_insertChat(currentTutorialName,username,leftOrRight,text,currentUserImage);
+  }
+}
+function component_loadEditionComments(name){
+  chatbox_currentSpan["section"] = "main";
+  openNav("mySidebar", 'comment_tab');
+  chatbox_clearChat();
+  var commentList = pr_loadEditionComments(name);
+  for (var j = 0;j<commentList.length;j++){
+      var text = commentList[j]["text"];
+      var username = commentList[j]["user"];
+      var leftOrRight;
+      if(username == currentUsername) leftOrRight = "right";
+      else leftOrRight = "left";
+      chatbox_insertChat(currentTutorialName,username,leftOrRight,text,currentUserImage);
+  }
+}
+
 
 function userDragSpan(name){
   var selectedRange = window.getSelection().getRangeAt(0);
@@ -14,14 +45,15 @@ function userDragSpan(name){
   var endPos = selectedRange.endOffset;
   if(startPos >= endPos) {
     closeNav("mySidebar");
+    component_loadEditionComments(currentTutorialName);
     return;
   }
-  currentSpan.section = name;
-  currentSpan.start = startPos;
-  currentSpan.end = endPos;
+  chatbox_currentSpan.section = name;
+  chatbox_currentSpan.start = startPos;
+  chatbox_currentSpan.end = endPos;
+  console.log(startPos,endPos);
   openNav("mySidebar", 'comment_tab');
   chatbox_clearChat();
-  console.log(currentSpan)
 }
 
 
@@ -104,7 +136,6 @@ function add_to_collapse(name, head, carousel,text){
   var id = '#' + name;
 
   var all_content = document.getElementById('col-9');
-  console.log(all_content)
 
   var collapse = document.createElement('div');
   collapse.id = 'collapse';
@@ -140,10 +171,24 @@ function add_to_collapse(name, head, carousel,text){
 
   var card_body = document.createElement('div')
   card_body.className = 'card-body';
-  card_body.innerHTML = text;
+  component_spanListDict[name] = pr_loadEditionSectionCommentSpans(currentTutorialName,name);
+  console.log(text);
+  var newText = "", lastTime = 0;
+  for(var i = 0; i < component_spanListDict[name].length; i++){
+    newText =  newText + text.substring(lastTime,component_spanListDict[name][i]["start"]) + `<span class = "commentSpan" onclick = \"`
+    + `component_loadCommentSpanComments(\'` + name + `\',` + i +`)\">` +
+            text.substring(component_spanListDict[name][i]["start"],component_spanListDict[name][i]["end"] + 1) + 
+            '</span>';
+    lastTime = component_spanListDict[name][i]["end"] + 1;
+    console.log(newText);
+  }
+  newText = newText + text.substring(lastTime,text.length);
+  console.log(newText);
+  card_body.innerHTML = newText;
   card_body.setAttribute("section-name",name);
   card_body.addEventListener("mouseup",function(){
-                                      userDragSpan(this.getAttribute("section-name"))});
+                                      userDragSpan(this.getAttribute("section-name"))
+                                    });
 
 
   if(name=='Components'){
@@ -275,8 +320,7 @@ function display(){
   for(i=0;i<exploding.length;i++){
     add_to_carousel(exploding[i]['card'].toUpperCase(), exploding[i]['img'])
   }
-  chatbox_insertChat("user1","right","oh oh lalalal","https://i.stack.imgur.com/ahCDf.png?s=328&g=1")
-  chatbox_insertChat("user1","left","duong cong em do ma\n oh oh la la\n ngap tran sexy lady hey", "https://i.stack.imgur.com/ahCDf.png?s=328&g=1")
+  component_loadEditionComments(currentTutorialName);
 }
 
 
