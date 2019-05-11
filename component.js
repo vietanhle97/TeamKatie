@@ -15,7 +15,7 @@ function component_loadSpanHTML(name,text){
     var ll = component_spanListDict[name][i]["start"];
     var rr = parseInt(component_spanListDict[name][i]["end"]);
     newText =  newText + text.substring(lastTime,ll) + `<span class = "commentSpan" onclick = \"`
-    + `openNav("mySidebar", 'comment_tab'); ` + `component_loadCommentSpanComments(\'` + name + `\',` + i +`)\">` +
+    + `openNav('mySidebar', 'comment_tab'); ` + `component_loadCommentSpanComments(\'` + name + `\',` + i +`)\">` +
             text.substring(ll,rr+1) + 
             '</span>';
     lastTime = rr+1;
