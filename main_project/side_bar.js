@@ -5,10 +5,9 @@ var nav_bar_menu = document.getElementById("nav-bar-menu");
 
 function openNav(sidebar, tab) {
   var style = document.getElementById(sidebar).style;
-  style.width = "275px";
+  style.width = "270px";
   style.shadow = "10px 10px";
-  style.background="black";
-  style.opacity ="0.8";
+  style.background= "hsla(220,50%,30%,0.9)";
   
   back_button_var.style.position = "fixed";
   back_button_var.style.left = "0px";

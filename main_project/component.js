@@ -1,7 +1,13 @@
 var currentTutorialName = "Exploding Kitten Normal Edition";
 var currentSpan = {"section": null, "start": null, "end": null};
+var currentUsername = "user1";
+var currentUserImage = "https://i.stack.imgur.com/ahCDf.png?s=328&g=1";
 
-function createSpan(name){
+chatbox_username = currentUsername;
+chatbox_userImage = currentUserImage;
+
+
+function userDragSpan(name){
   var selectedRange = window.getSelection().getRangeAt(0);
   var startPos = selectedRange.startOffset;
   var endPos = selectedRange.endOffset;
@@ -13,6 +19,7 @@ function createSpan(name){
   currentSpan.start = startPos;
   currentSpan.end = endPos;
   openNav("mySidebar", 'comment_tab');
+  chatbox_clearChat();
   console.log(currentSpan)
 }
 
@@ -122,7 +129,7 @@ function add_to_collapse(name, head, carousel,text){
   card_body.innerHTML = text;
   card_body.setAttribute("section-name",name);
   card_body.addEventListener("mouseup",function(){
-                                      createSpan(this.getAttribute("section-name"))});
+                                      userDragSpan(this.getAttribute("section-name"))});
 
 
   if(name=='Components'){
@@ -198,17 +205,23 @@ exploding = [{card: 'Defuse', img: 'https://pbs.twimg.com/media/Czz0Lj0UcAEzKZu.
 
 function display(){
   for(var i = 0; i < lis.length; i++){
-    add_to_collapse(lis[i],i + 1,carousel,pr_loadEditionSectionText("Exploding Kitten Normal Edition",lis[i]));
+    add_to_collapse(lis[i],i + 1,carousel,pr_loadEditionSectionText(currentTutorialName,lis[i]));
   }
 
   for(i=0;i<exploding.length;i++){
     add_to_carousel(exploding[i]['card'].toUpperCase(), exploding[i]['img'])
   }
+  chatbox_insertChat("user1","right","oh oh lalalal","https://i.stack.imgur.com/ahCDf.png?s=328&g=1")
+  chatbox_insertChat("user1","left","duong cong em do ma\n oh oh la la\n ngap tran sexy lady hey", "https://i.stack.imgur.com/ahCDf.png?s=328&g=1")
 }
+
+
 $("span, .overlay").click(function () {
-        $(".popup_show").fadeOut();
-    });
-setTimeout(display,2000);
+  $(".popup_show").fadeOut();
+});
+
+
+setTimeout(display,5000);
 
 
 
