@@ -1,8 +1,8 @@
-var currentTutorialName = "Exploding Kitten Normal Edition";
+var currentTutorialName = sessionStorage.getItem('edition');
 var currentUsername = "user1";
 var currentUserImage = "https://i.stack.imgur.com/ahCDf.png?s=328&g=1";
 var component_spanListDict = {};
-
+document.getElementById('content').innerHTML = edition;
 chatbox_username = currentUsername;
 chatbox_userImage = currentUserImage;
 
@@ -65,6 +65,8 @@ function create_div_to_carousel(n, name, link){
       $(".popup_show").fadeIn();
       var img_show = document.getElementById("pop_up_img");
       img_show.setAttribute('src',link);
+      var instruction = document.getElementById('pop_up_text');
+      instruction.innerHTML = 'asdadsgasjgfakjldhfslkajdhfaks';
     })
     new_div_2.style.backgroundImage = 'url("' + link + '")';
     var span = document.createElement("span");
@@ -89,6 +91,8 @@ function create_div_to_carousel(n, name, link){
       $(".popup_show").fadeIn();
       var img_show = document.getElementById("pop_up_img");
       img_show.setAttribute('src',link);
+      var instruction = document.getElementById('pop_up_text');
+      instruction.innerHTML = 'asdadsgasjgfakjldhfslkajdhfaks';
     })
     new_div_3.style.backgroundImage = 'url("' + link + '")';
 
@@ -235,7 +239,7 @@ async function add_to_carousel(name, link){
 exploding = [{card: 'Defuse', img: 'https://pbs.twimg.com/media/Czz0Lj0UcAEzKZu.png'},
             {card: 'Explode', img: "https://i.imgur.com/KV40QE4.png"},
             {card: 'Nope', img: "https://pbs.twimg.com/media/CT1SNvIWoAAstvS.jpg"},
-            {card: 'Card', img: "https://techanimate.com/wp-content/uploads/2018/08/attack-card.png"},
+            {card: 'Attack', img: "https://i.imgur.com/wn5hzMH.png"},
             {card: 'Shuffle', img: "https://pbs.twimg.com/media/CbxlnVdUEAERmru.png"},
             {card: 'See The Future', img: "https://pbs.twimg.com/media/B-J0nBACMAAr71J.png"},
             {card: 'Skip', img: "https://pbs.twimg.com/media/C9T-953XUAIa4Eu.jpg"},

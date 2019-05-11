@@ -2,6 +2,7 @@ var menu_button_var = document.getElementById("menu_button");
 var comment_button_var = document.getElementById("comment_button");
 var back_button_var = document.getElementById("back_button");
 var nav_bar_menu = document.getElementById("nav-bar-menu");
+
 function openNav(sidebar, tab) {
   var style = document.getElementById(sidebar).style;
   style.width = "270px";
@@ -43,15 +44,22 @@ function closeNav(sidebar) {
   back_button_var.style.position = "relative";
   back_button_var.style.left = "0px";
   var style = document.getElementById(sidebar).style;
-  style.width = "7%";
-  style.background="transparent";
+  style.width = "5%";
+  style.background="hsla(220,50%,30%,0.1)";
   style.opacity ="";
-  close_tab('myForm');
   close_tab('menu_link');
+  close_tab('myForm');
+  
 }
 function open_tab(tab){
-  document.getElementById(tab).style.display = 'block';
+  var open_tab = document.getElementById(tab);
+  if(open_tab){
+    open_tab.style.display = 'block';
+  }
 }
 function close_tab(tab){
-  document.getElementById(tab).style.display = 'none';
+  var close_tab = document.getElementById(tab);
+  if(close_tab){
+    close_tab.style.display = 'none';
+  }
 }
