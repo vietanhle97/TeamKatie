@@ -1,5 +1,7 @@
 var slideIndex
-var game_name = sessionStorage.getItem("Game");
+
+var game_name = sessionStorage.getItem('game');
+
 document.getElementById("game").innerHTML = game_name.toUpperCase();
 function openNav() {
   document.getElementById("mySidebar").style.width = "300px";
@@ -86,19 +88,30 @@ function load_pic(i,name,len,des){
 function load_button(i,name){
   var col = document.createElement('div');
   col.className="columnT";
+  var connect = document.createElement('a');
+  connect.setAttribute('href', "");
+  connect.id = name;
+
   var btn = document.createElement('button');
   btn.className="button"; 
   btn.style.width="100%";
   btn.addEventListener("mouseover",function(){currentSlide(i+1)});
   btn.innerHTML=name;
-  col.appendChild(btn);
+  var edition = game_name + name;
+  btn.addEventListener('click', function(){
+    sessionStorage.setItem('edition', edition);
+    document.getElementById(name).href = 'component.html';
+
+  })
+  connect.appendChild(btn);
+  col.appendChild(connect);
   document.getElementById("rowT").appendChild(col);
 }
 
 function load_all_pic(name){
   var edition_list = pr_loadGameEditionsList(name);
   var len = edition_list.length
-  for(i=len-1;i>=0;i--){
+  for(i=0;i<len;i++){
     desc = pr_loadEditionSectionText(edition_list[i],'briefing');
     load_pic(i,edition_list[i],len,desc);
     load_button(i,edition_list[i].replace(name,""));
@@ -108,8 +121,8 @@ function load_all_pic(name){
   }
 }
 
-setTimeout(function(){
+test(function(){
   load_all_pic(game_name);
   document.getElementById("left").addEventListener("click",function(){plusSlides(-1)});
   document.getElementById("right").addEventListener("click",function(){plusSlides(1)});
-}, 2000);
+});

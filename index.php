@@ -1,1 +1,1 @@
-<?php include_once("./main_project/main.html")   ?>
+<?php include_once("main.html")   ?>
