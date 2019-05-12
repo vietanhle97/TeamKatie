@@ -75,6 +75,19 @@ function pr_loadEditionSectionText(name,sectionName){
 	sectionName = sectionName.toLowerCase();
 	return pr_editionsDict[name][sectionName]["text"];
 }
+function pr_loadEditionComponentImage(name, sectionName){
+	sectionName = sectionName.toLowerCase();
+	if(pr_editionsDict[name][sectionName]["objects-list"] == null){
+		return [];
+	}
+	var popup_span = pr_editionsDict[name][sectionName]["objects-list"];
+	var returnList =[];
+	var keys = Object.keys(popup_span);
+	for(i = 0; i < keys.length; i++){
+		returnList.push(popup_span[keys[i]]);
+	}
+	return returnList;
+}
 
 function pr_loadEditionSectionCommentSpans(name,sectionName){
 	sectionName = sectionName.toLowerCase();

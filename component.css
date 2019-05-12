@@ -105,9 +105,9 @@ h1{
 }
 
 .popup_span{
-  background-color: yellow;
-
-
+  font-family: "Helvetica Neue";
+  color: blue;
+  text-decoration: underline;
 }
 .popup_span:hover{
   cursor: pointer;

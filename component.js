@@ -4,7 +4,7 @@ var currentUserImage = "https://i.stack.imgur.com/ahCDf.png?s=328&g=1";
 var component_spanListDict = {};
 var component_sectionContent = {};
 var component_sectionBody = {};
-
+var lis = ['Briefing', 'BackGround', 'Objective', 'Components', 'Rules', 'Setup', 'Tips'];
 document.getElementById('content').innerHTML = currentTutorialName;
 chatbox_username = currentUsername;
 chatbox_userImage = currentUserImage;
@@ -88,11 +88,12 @@ function create_div_to_carousel(n, name, link){
     new_div_2.className = "shadow p-2 mb-1 bg-white rounded grid-item";
     new_div_2.id = 'carousel' + name;
     new_div_2.addEventListener("click", function(){
+      var components = pr_loadEditionComponentImage(currentTutorialName, 'Components');
       $(".popup_show").fadeIn();
       var img_show = document.getElementById("popup_img");
       img_show.setAttribute('src',link);
       var instruction = document.getElementById('popup_text');
-      var text = find_text(name);
+      var text = find_text(components, name);
       instruction.innerHTML ='';
       add_to_span('popup_text', text);
       
@@ -117,14 +118,14 @@ function create_div_to_carousel(n, name, link){
     new_div_3.className = "shadow p-2 mb-1 bg-white rounded grid-item";
     new_div_3.id = 'carousel' + name;
     new_div_3.addEventListener("click", function(){
-      // $(".img-show img").attr("src", link);
+      var components = pr_loadEditionComponentImage(currentTutorialName, 'Components');
       $(".popup_show").fadeIn();
       var img_show = document.getElementById("popup_img");
       img_show.setAttribute('src',link);
 
       var instruction = document.getElementById('popup_text');
 
-      var text = find_text(name);
+      var text = find_text(components,name);
       instruction.innerHTML = '';
       add_to_span('popup_text', text);
 
@@ -265,66 +266,27 @@ async function add_to_carousel(name, link){
 
 
 
-var exploding = [{card: 'Defuse', img: 'https://pbs.twimg.com/media/Czz0Lj0UcAEzKZu.png', text: 'Use Defuse to Explode'},
-            {card: 'Explode', img: "https://i.imgur.com/KV40QE4.png", text:'Dead'},
-            {card: 'Nope', img: "https://pbs.twimg.com/media/CT1SNvIWoAAstvS.jpg", text:'Use Nope to stop Attack or Skip and others'},
-            {card: 'Attack', img: "https://i.imgur.com/wn5hzMH.png", text: 'Nothing'},
-            {card: 'Shuffle', img: "https://pbs.twimg.com/media/CbxlnVdUEAERmru.png", text:'Nothing'},
-            {card: 'See The Future', img: "https://pbs.twimg.com/media/B-J0nBACMAAr71J.png", text:'Nothing'},
-            {card: 'Skip', img: "https://pbs.twimg.com/media/C9T-953XUAIa4Eu.jpg", text:'Nothing'},
-            {card: 'Favor', img: "https://pbs.twimg.com/media/C8Qw1tXXsAAh8F-.jpg", text:'Favor'},
-            {card: 'Tacocat', img: "https://i.imgur.com/F376jwB.png", text:'Nothing'},
-            {card: 'Rainbow cat', img: "https://i.imgur.com/z7BG3zq.png", text:'Nothing'},
-            {card: 'Catermelon', img: "https://i.imgur.com/6WCn12H.png", text:'Nothing'}]
-var span_list = [];
-for (i=0;i<exploding.length;i++){
-  span_list.push(exploding[i]['card']);
-}
-function find_img(str){
-  for (i=0;i<exploding.length;i++){
-    if (str.toLowerCase() == exploding[i]['card'].toLowerCase()){
-      return exploding[i]['img'];
+// var exploding = [{card: 'Defuse', img: 'https://pbs.twimg.com/media/Czz0Lj0UcAEzKZu.png', text: 'Use Defuse to Explode'},
+//             {card: 'Explode', img: "https://i.imgur.com/KV40QE4.png", text:'Dead'},
+//             {card: 'Nope', img: "https://pbs.twimg.com/media/CT1SNvIWoAAstvS.jpg", text:'Use Nope to stop Attack or Skip and others'},
+//             {card: 'Attack', img: "https://i.imgur.com/wn5hzMH.png", text: 'Nothing'},
+//             {card: 'Shuffle', img: "https://pbs.twimg.com/media/CbxlnVdUEAERmru.png", text:'Nothing'},
+//             {card: 'See The Future', img: "https://pbs.twimg.com/media/B-J0nBACMAAr71J.png", text:'Nothing'},
+//             {card: 'Skip', img: "https://pbs.twimg.com/media/C9T-953XUAIa4Eu.jpg", text:'Nothing'},
+//             {card: 'Favor', img: "https://pbs.twimg.com/media/C8Qw1tXXsAAh8F-.jpg", text:'Favor'},
+//             {card: 'Tacocat', img: "https://i.imgur.com/F376jwB.png", text:'Nothing'},
+//             {card: 'Rainbow cat', img: "https://i.imgur.com/z7BG3zq.png", text:'Nothing'},
+//             {card: 'Catermelon', img: "https://i.imgur.com/6WCn12H.png", text:'Nothing'}]
+function find_text(components, str){
+  for (i=0;i<components.length;i++){
+    if (str.toLowerCase() == components[i]['card'].toLowerCase()){
+      return components[i]['text'];
     }
   }
 }
-
-function find_text(str){
-  for (i=0;i<exploding.length;i++){
-    if (str.toLowerCase() == exploding[i]['card'].toLowerCase()){
-      return exploding[i]['text'];
-    }
-  }
-}
-
-function add_to_span(instruction, text){
-  var split = text.split(' ');
-
-  var instruct = document.getElementById(instruction); 
-  for(i=0;i<split.length;i++){
-    if(span_list.includes(split[i])){
-
-
-
-      var span = document.createElement('span');
-      span.innerHTML = split[i];
-      span.className = "popup_span";
-      span.addEventListener('click', function(){
-
-        var img = this.innerHTML;
-        var name = '#carousel' + img.toUpperCase();
-        $(name).trigger( "click" );
-      })
-      instruct.appendChild(span);
-      instruct.appendChild(document.createTextNode(' ')) // instruct.innerHTML += ' ';
-    }
-    else{
-      instruct.appendChild(document.createTextNode(split[i]+ ' '));
-    }
-  }
-}
-
 
 function component_display(){
+  var components = pr_loadEditionComponentImage(currentTutorialName, 'Components')
   var currentGame = sessionStorage.getItem('game');
   sideBar_drawTree([["Main"],pr_loadGameCategoriesList(currentGame),[currentGame],[currentTutorialName]]);
 
@@ -336,8 +298,8 @@ function component_display(){
 
   document.getElementsByClassName("btn-link")[0].click();
 
-  for(i=0;i<exploding.length;i++){
-    add_to_carousel(exploding[i]['card'].toUpperCase(), exploding[i]['img'])
+  for(i=0;i<components.length;i++){
+    add_to_carousel(components[i]['card'].toUpperCase(), components[i]['image-url'])
   }
   component_loadEditionComments(currentTutorialName);
 
@@ -359,12 +321,42 @@ function component_display(){
       check++;
     })
 }
-
+function add_to_span(instruction, text){
+  var components = pr_loadEditionComponentImage(currentTutorialName, 'Components');
+  var span_list = [];
+  for (i=0;i<components.length;i++){
+    span_list.push(components[i]['card']);
+  }
+  var instruct = document.getElementById(instruction); 
+  for(var i = 0; i < text.length; i++){
+    var ch = false;
+    for(j = 0; j < span_list.length; j++){
+      for(k = 0; k < span_list[j].length; k++){
+        if(text[i + k] != span_list[j][k]) break;
+        if(k + 1 == span_list[j].length){
+           var span = document.createElement('span');
+           span.innerHTML = span_list[j];
+           span.className = "popup_span"
+           span.addEventListener('click',function(){
+              var img = this.innerHTML;
+              var name = '#carousel' + img.replace(/\s/g,'').toUpperCase();
+              $(name).trigger('click');
+           })
+           instruct.appendChild(span);
+           i += span_list[j].length - 1;
+           j = span_list.length;
+           ch = true;
+           break; 
+        }
+      }
+    }
+    if(!ch) instruct.appendChild(document.createTextNode(text[i]));
+  }
+}
 
 $("span, .overlay").click(function () {
   $(".popup_show").fadeOut();
 });
+test(component_display);
 
-
-test(component_display)
 

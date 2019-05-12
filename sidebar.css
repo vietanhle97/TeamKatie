@@ -137,8 +137,8 @@
   z-index: 9;
   text-align: center;
 }
-.btn-outline-secondary:hover{
-  background-color: #228be6;
+.btn-light:hover{
+  background-color: hsla(60,80%,30%,0.7);
   color: white;
 }
 .comment_title{
