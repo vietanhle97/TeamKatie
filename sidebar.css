@@ -109,8 +109,16 @@
   border-radius: 160px;
   float: left;
 }
+#back_tab_tree a{
+  font-size: 15px;
+}
+#back_tab_tree div:hover{
+  opacity: 0.5;
+}
+
 #back_tab_tree a:hover{
-  cursor: pointer;  
+  cursor: pointer;
+  font-size: 17px;  
 }
 
 .chat-popup {

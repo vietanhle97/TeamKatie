@@ -198,13 +198,15 @@ function add_to_collapse(name, head, carousel,text){
   newText = component_loadSpanHTML(name,text);
   card_body.innerHTML = newText;
   card_body.setAttribute("section-name",name);
-  card_body.addEventListener("mouseup",function(){
-                                      userDragSpan(this.getAttribute("section-name"))
-                                    });
-
 
   if(name=='Components'){
     card_body.innerHTML = carousel;
+  }
+
+  else{
+  	card_body.addEventListener("mouseup",function(){
+                                      userDragSpan(this.getAttribute("section-name"))
+                                    });
   }
 
   data.appendChild(card_body)
