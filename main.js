@@ -20,7 +20,7 @@ function display_category(){
 	var categories = pr_loadAllCategories();
 	for(i=0;i<categories.length;i++){
 		var img = pr_loadCategoryImage(categories[i]);
-		var category = categories[i] + ' Game'
+		var category = categories[i]
 		add_to_banner(category, img);
 		change(category);
 	}

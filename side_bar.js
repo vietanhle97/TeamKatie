@@ -9,18 +9,25 @@ function openNav(sidebar, tab) {
   style.shadow = "10px 10px";
   style.background= "hsla(220,50%,30%,0.9)";
   
+  if(back_button_var){
   back_button_var.style.position = "fixed";
   back_button_var.style.left = "0px";
-  
+  }
+
+  if(menu_button_var){
   menu_button_var.style.position = "fixed";
   menu_button_var.style.left = "70px";
-  
-  comment_button_var.style.position = 'fixed';
-  comment_button_var.style.left = '140px';
+  }
 
+  if(comment_button_var){
+    comment_button_var.style.position = 'fixed';
+    comment_button_var.style.left = '140px';
+  }
+
+  if(nav_bar_menu){
   nav_bar_menu.style.position = "fixed";
   nav_bar_menu.style.top = "170px";
-
+  }
   if (tab == 'menu_tab'){
     open_tab('menu_link');
     close_tab('myForm');
@@ -40,12 +47,18 @@ function openNav(sidebar, tab) {
 }
 
 function closeNav(sidebar) {
+  if(menu_button_var){
   menu_button_var.style.position = 'relative';
   menu_button_var.style.left = '0px';
+  }
+  if(comment_button_var){
   comment_button_var.style.position = 'relative';
   comment_button_var.style.left = '0px';
+  }
+  if(back_button_var){
   back_button_var.style.position = "relative";
   back_button_var.style.left = "0px";
+  }
   var style = document.getElementById(sidebar).style;
   style.width = "5%";
   style.background="hsla(220,50%,30%,0.1)";

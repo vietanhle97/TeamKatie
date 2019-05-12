@@ -69,8 +69,6 @@ h1{
   transform: scale(1.5,1.5);
 }
 .popup_show{
-    width: 410px;
-    height: 570px;
     z-index: 999;
     display: none;
 }
@@ -84,14 +82,14 @@ h1{
 }
 .img-show img{
 
-    width: 410px;
-    height: 570px;
+    width: 28vw;
+    height: 50vh;
     top: 0;
     left: 0;
 }
 .popup_show .img-show{
-    width: 710px;
-    height: 600px;
+    width: 48vw;
+    height: 55vh;
     background: #FFF;
     position: fixed;
     top: 50%;

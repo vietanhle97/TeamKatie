@@ -22,7 +22,7 @@
 
 
  	<body>
-	    <nav class="shadow p-3 mb-4 rounded navbar navbar-expand-sm fixed-top navbar-light" style = "background-color: hsl(220,50%,50%)">
+		<nav class="shadow p-3 mb-4 rounded navbar navbar-expand-sm fixed-top navbar-light" style = "background-color: hsl(220,50%,50%)">
 	    	<a class="navbar-brand" href="main.html">
 	    		<img style="width:60px; height:60px; border-radius: 30px;"src="https://i.imgur.com/XOhlvz6.png?1">
 	      	</a>
@@ -76,13 +76,12 @@
 		      				<i class="fas fa-bars fa-2x"></i>
 		      			</button> 
 		        	</div>
-		        	<div class="comment" id="comment_tab" style="display: none">
-		        		<button type="button" id="comment_button" class="btn btn-circle btn-lg" onmouseenter="openNav('mySidebar', 'comment_tab')">
-		        			<i class="fas fa-comment fa-2x"></i>
-		        		</button>
-		        	</div>
 		        	
 		        	<div class = "menu" id = "nav-bar-menu">
+		        		<div id = "back_tab_tree">
+		        			
+		        		</div>
+
 			        	<div id='menu_link'>
 		      				<a class="sidebar_link" href="#"><i class="fas fa-edit fa-fw" style="font-size: 1em;"></i>Create Tutorial</a>
 		        			<a class="sidebar_link" href="#"><i class="fas fa-book-reader fa-fw" style="font-size: 1em;"></i>Read Tutorial</a>
@@ -90,7 +89,7 @@
 
 		        		<div class="chat-popup" id="myForm">
 							<div class="comment_title">
-						    	<label for="msg"><b>Comment</b></label>
+						    	<label for="msg" ><b id = "comment-title-content">Comment</b></label>
 						    </div>
 						    <div class="input-group">
 				    			<div id = "myForm-chatField">
