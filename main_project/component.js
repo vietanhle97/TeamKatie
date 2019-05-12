@@ -90,14 +90,13 @@ function create_div_to_carousel(n, name, link){
     new_div.className = "game";
     var new_div_2 = document.createElement('div');
     new_div_2.className = "shadow p-2 mb-1 bg-white rounded grid-item";
-    new_div_2.id = 'carousel' + name;
+    new_div_2.id = 'carousel' + name.replace(/\s/g,'');
     new_div_2.addEventListener("click", function(){
       $(".popup_show").fadeIn();
       var img_show = document.getElementById("popup_img");
       img_show.setAttribute('src',link);
       var instruction = document.getElementById('popup_text');
       var text = find_text(name);
-      console.log(text)
       instruction.innerHTML ='';
       add_to_span('popup_text', text);
       
@@ -120,7 +119,7 @@ function create_div_to_carousel(n, name, link){
 
     var new_div_3 = document.createElement('div');
     new_div_3.className = "shadow p-2 mb-1 bg-white rounded grid-item";
-    new_div_3.id = 'carousel' + name;
+    new_div_3.id = 'carousel' + name.replace(/\s/g,'');
     new_div_3.addEventListener("click", function(){
       // $(".img-show img").attr("src", link);
       $(".popup_show").fadeIn();
@@ -130,7 +129,6 @@ function create_div_to_carousel(n, name, link){
       var instruction = document.getElementById('popup_text');
 
       var text = find_text(name);
-      console.log(text);
       instruction.innerHTML = '';
       add_to_span('popup_text', text);
 
@@ -271,7 +269,7 @@ async function add_to_carousel(name, link){
 
 var exploding = [{card: 'Defuse', img: 'https://pbs.twimg.com/media/Czz0Lj0UcAEzKZu.png', text: 'Use Defuse to Explode'},
             {card: 'Explode', img: "https://i.imgur.com/KV40QE4.png", text:'Dead'},
-            {card: 'Nope', img: "https://pbs.twimg.com/media/CT1SNvIWoAAstvS.jpg", text:'Use Nope to stop Attack or Skip and others'},
+            {card: 'Nope', img: "https://pbs.twimg.com/media/CT1SNvIWoAAstvS.jpg", text:'Use Nope to stop Favor, Attack, Shuffle, Skip and See The Future'},
             {card: 'Attack', img: "https://i.imgur.com/wn5hzMH.png", text: 'Nothing'},
             {card: 'Shuffle', img: "https://pbs.twimg.com/media/CbxlnVdUEAERmru.png", text:'Nothing'},
             {card: 'See The Future', img: "https://pbs.twimg.com/media/B-J0nBACMAAr71J.png", text:'Nothing'},
@@ -284,6 +282,22 @@ var span_list = [];
 for (i=0;i<exploding.length;i++){
   span_list.push(exploding[i]['card']);
 }
+
+function find_str(str1,str2){
+  len_1 = str1.length;
+  len_2 = str2.length;
+  console.log(len_1,len_2)
+  for(var i = 0; i + len_1 - 1 < len_2; i++){
+    for(var j = 0; j < len_1; j++){
+        if(str1[j] != str2[i + j]) break;
+        if(j == len_1 - 1)
+          return true;
+    }
+  }
+  return false;
+}
+
+
 function find_img(str){
   for (i=0;i<exploding.length;i++){
     if (str.toLowerCase() == exploding[i]['card'].toLowerCase()){
@@ -301,31 +315,32 @@ function find_text(str){
 }
 
 function add_to_span(instruction, text){
-  var split = text.split(' ');
-
   var instruct = document.getElementById(instruction); 
-  for(i=0;i<split.length;i++){
-    if(span_list.includes(split[i])){
-
-      console.log(split[i]);
-
-
-      var span = document.createElement('span');
-      span.innerHTML = split[i];
-      span.className = "popup_span";
-      span.addEventListener('click', function(){
-
-        var img = this.innerHTML;
-        var name = '#carousel' + img.toUpperCase();
-        console.log($(name));
-        $(name).trigger( "click" );
-      })
-      instruct.appendChild(span);
-      instruct.appendChild(document.createTextNode(' ')) // instruct.innerHTML += ' ';
+  for(var i = 0; i < text.length; i++){
+    var ch = false;
+    for(j = 0; j < span_list.length; j++){
+      console.log(span_list[j])
+      console.log(span_list[j].length)
+      for(k = 0; k < span_list[j].length; k++){
+        if(text[i + k] != span_list[j][k]) break;
+        if(k + 1 == span_list[j].length){
+           var span = document.createElement('span');
+           span.innerHTML = span_list[j];
+           span.className = "popup_span"
+           span.addEventListener('click',function(){
+              var img = this.innerHTML;
+              var name = '#carousel' + img.replace(/\s/g,'').toUpperCase();
+              $(name).trigger('click');
+           })
+           instruct.appendChild(span);
+           i += span_list[j].length - 1;
+           j = span_list.length;
+           ch = true;
+           break; 
+        }
+      }
     }
-    else{
-      instruct.appendChild(document.createTextNode(split[i]+ ' '));
-    }
+    if(!ch) instruct.appendChild(document.createTextNode(text[i]));
   }
 }
 
