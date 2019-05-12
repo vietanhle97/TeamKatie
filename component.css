@@ -123,6 +123,43 @@ h1{
   background-color: hsla(60,90%,70%,100%);
 }
 
+.success {
+  border-color: hsl(220,50%,50%);
+  color: hsl(230,50%,50%);
+  margin-bottom: 10px;
+  float:right;
+}
+
+.success:hover {
+  background-color: hsl(220,50%,50%);
+  color: white;
+}
+.card-header::after {
+  content: '\002B';
+  font-size: 20px;
+  color: currentColor;
+  display: inline-block;
+  vertical-align: middle;
+  float:right;
+  transform: translateY(5%);
+  transition: transform .2s ease-out;
+}
+.btn-link[aria-expanded="true"] > .card-header::after{
+  transform: rotate(180deg);
+  content: '\2212';
+  transform: translateY(5%);
+}
+.btn-link  :hover {
+  color: #007BFF;
+  background: rgba(0,0,0,0.1);
+}
+.card-body{
+  background-color: rgba(50,50,200,5%);
+}
+
+
+
+
 
 
 

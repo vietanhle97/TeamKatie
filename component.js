@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var currentTutorialName = sessionStorage.getItem('edition');
 var currentUsername = "user1";
 var currentUserImage = "https://i.stack.imgur.com/ahCDf.png?s=328&g=1";
@@ -345,6 +346,5 @@ $("span, .overlay").click(function () {
 
 
 test(component_display)
-
 
 
