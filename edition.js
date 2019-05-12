@@ -60,27 +60,36 @@ function load_pic(i,name,len,des){
   var num = document.createElement("div");
   num.className="numbertext";
   num.innerHTML = (i+1)+"/"+len;
+  var picbox= document.createElement("div");
+  picbox.className = "picbox";
   var pic = document.createElement("img");
   pic.src = url_pic;
   pic.style.width="100%";
   pic.className="pic";
+  picbox.appendChild(pic);
   var overlay = document.createElement('div');
   overlay.className="overlay";
   var button = document.createElement("button");
   button.className="button";
   button.id="but"
   button.innerHTML='Read Tutorial';
+  var connect = document.createElement('a');
+  connect.setAttribute('href', "");
+  connect.id = name+"1";
   var box = document.createElement('div');
+  button.addEventListener('click', function(){
+    sessionStorage.setItem('edition', name);
+    document.getElementById(name+"1").href = 'component.html';
+  })
+  connect.appendChild(button);
+
   box.className="caption-container";
-  var text = document.createElement('p');
-  text.id="caption";
-  text.innerHTML=des
-  overlay.appendChild(button);
-  box.appendChild(text);
+  box.innerHTML=des;
+  overlay.appendChild(connect);
   slide.appendChild(num);
-  slide.appendChild(pic);
+  slide.appendChild(picbox);
   slide.appendChild(box);
-  slide.appendChild(overlay);
+  picbox.appendChild(overlay);
   var left=document.getElementById('left');
   document.getElementById("slide-container").insertBefore(slide,left);
 
@@ -112,8 +121,8 @@ function load_all_pic(name){
   var edition_list = pr_loadGameEditionsList(name);
   var len = edition_list.length
   for(i=0;i<len;i++){
-    desc = pr_loadEditionSectionText(edition_list[i],'briefing');
-    load_pic(i,edition_list[i],len,desc);
+    des = pr_loadEditionSectionText(edition_list[i],'briefing');
+    load_pic(i,edition_list[i],len,des);
     load_button(i,edition_list[i].replace(name,""));
   des = pr_loadEditionSectionText(edition_list[0],'briefing');
   slideIndex=1;
