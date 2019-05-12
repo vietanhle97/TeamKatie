@@ -18,7 +18,7 @@ var comment_object = {	"user": string,
 
 function pr_loadGameImage(name);
 
-//string -> string
+//string -> list[string]
 //take a game name, return list of categories of the game
 
 function pr_loadGameCategoriesList(name);

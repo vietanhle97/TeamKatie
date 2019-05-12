@@ -323,6 +323,9 @@ function add_to_span(instruction, text){
 
 
 function component_display(){
+  var currentGame = sessionStorage.getItem('game');
+  sideBar_drawTree([["Main"],pr_loadGameCategoriesList(currentGame),[currentGame],[currentTutorialName]]);
+
   if(currentTutorialName == null)
     currentTutorialName = "Exploding Kitten Normal Edition";
   for(var i = 0; i < lis.length; i++){

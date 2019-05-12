@@ -24,12 +24,15 @@ function openNav(sidebar, tab) {
   if (tab == 'menu_tab'){
     open_tab('menu_link');
     close_tab('myForm');
+    close_tab('back_tab_tree');
   }
   else if(tab == 'comment_tab'){
     close_tab('menu_link');
     open_tab('myForm');
+    close_tab('back_tab_tree');
   }
   else{
+    open_tab('back_tab_tree');
     close_tab('myForm');
     close_tab('menu_link');
   }
@@ -48,6 +51,7 @@ function closeNav(sidebar) {
   style.background="hsla(220,50%,30%,0.1)";
   style.opacity ="";
   close_tab('menu_link');
+  close_tab('back_tab_tree');
   close_tab('myForm');
   
 }
@@ -63,3 +67,57 @@ function close_tab(tab){
     close_tab.style.display = 'none';
   }
 }
+
+function sideBar_drawTree(parentList){
+  var tree = document.getElementById("back_tab_tree");
+  for(var i = 0; i < parentList.length; i++){
+    var parentNode = parentList[i];
+    if(i > 0){
+      var arrow = document.createElement('div');
+      var img = document.createElement('img');
+      img.src = "http://chittagongit.com/images/icon-arrow-down/icon-arrow-down-10.jpg";
+      img.style = "width: 20px; height 40px;object-fit: contain;";
+      arrow.appendChild(img);
+      arrow.style.padding = "auto";
+      tree.appendChild(arrow);
+    }
+    for(var j = 0; j < parentNode.length; j++){
+      var node = document.createElement('div');
+      node.className = "back_tab_tree_nodes";
+      node.style.backgroundColor = "hsla(220," + (70+i*5) + "%,"+  (70+i*5) + "%,1)";
+      node.style.width = (250/parentNode.length) + "px";
+      node.style.height = "40px";
+      var link = document.createElement('a');
+      link.setAttribute('i',i);
+      link.setAttribute('parent',parentNode[j]);
+
+      link.addEventListener('click',function(){
+        var i = this.getAttribute('i');
+        var j = this.getAttribute('parent');
+        console.log("triggered",i,j);
+        if(i == "1")
+          sessionStorage.setItem('category',j);
+        else if (i == "2")
+          sessionStorage.setItem('game', j);
+        else if (i == "3")
+          sessionStorage.setItem('edition', j);
+        if(i == "0")
+          this.href = "main.html";
+        else if(i == "1"){
+          this.href = "category.html";
+        }
+        else if(i == "2"){
+          this.href = "Edition page.html";
+        }
+        else{
+          this.href = "component.html";
+        }
+      });
+
+      node.appendChild(document.createTextNode(parentNode[j]));
+      link.appendChild(node)
+      tree.appendChild(link);
+    }
+  }
+}
+

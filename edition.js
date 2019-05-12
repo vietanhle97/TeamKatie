@@ -122,6 +122,7 @@ function load_all_pic(name){
 }
 
 test(function(){
+  sideBar_drawTree([["Main"],pr_loadGameCategoriesList(game_name),game_name]);
   load_all_pic(game_name);
   document.getElementById("left").addEventListener("click",function(){plusSlides(-1)});
   document.getElementById("right").addEventListener("click",function(){plusSlides(1)});
