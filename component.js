@@ -164,7 +164,7 @@ function add_to_collapse(name, head, carousel,text){
   var card = document.createElement('div');
   //card.className = 'card';
   set_multiple_attribute(card, ['class','data-toggle','data-target','aria-expanded','aria-controls'],
-                        ['card btn-link','collapse', id, 'true', name])
+                        ['card btn-link','collapse', id, 'false', name])
 
   var card_header = document.createElement('div');
   card_header.className = 'card-header';
@@ -176,7 +176,7 @@ function add_to_collapse(name, head, carousel,text){
 
   var button = document.createElement('button');
   set_multiple_attribute(button, ['class','data-toggle','data-target','aria-expanded','aria-controls'],
-                        ['btn btn-link','collapse', id, 'true', name])
+                        ['btn btn-link','collapse', id, 'false', name])
 
 
   button.appendChild(document.createTextNode(name));
@@ -328,11 +328,29 @@ function component_display(){
   for(var i = 0; i < lis.length; i++){
     add_to_collapse(lis[i],i + 1,carousel,pr_loadEditionSectionText(currentTutorialName,lis[i]));
   }
-
+  document.getElementsByClassName("btn-link")[0].click();
   for(i=0;i<exploding.length;i++){
     add_to_carousel(exploding[i]['card'].toUpperCase(), exploding[i]['img'])
   }
   component_loadEditionComments(currentTutorialName);
+  var check=0;
+  document.getElementById('success').addEventListener('click',function(){
+      list=document.getElementsByClassName('btn-link');
+      if(check%2==1){
+        for(i=0;i<list.length;i++)
+          if (list[i].getAttribute('aria-expanded')=='true')
+            list[i].click();
+      document.getElementById('success').innerHTML='Expand All'
+      }
+      else{        
+        for(i=0;i<list.length;i++)
+          if (list[i].getAttribute('aria-expanded')=='false')
+            list[i].click();
+      document.getElementById('success').innerHTML='Collapse All'
+
+      }
+      check++;
+    })
 }
 
 
