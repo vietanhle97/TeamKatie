@@ -31,7 +31,6 @@ var db_database_editions = db_database.ref('/editions');
 /* load categories from database */
 
 function db_loadCategoriesHelper(snapshot,a_dict){
-	console.log(snapshot)
 	snapshot.forEach(function(childSnapshot){
 		var key = childSnapshot.key;
 		var value = childSnapshot.val();
@@ -47,7 +46,6 @@ function db_loadCategories(a_dict){
 /* load game from database */
 
 function db_loadGamesHelper(snapshot,a_dict){
-	console.log(snapshot)
 	snapshot.forEach(function(childSnapshot){
 		var key = childSnapshot.key;
 		var value = childSnapshot.val();
@@ -63,7 +61,6 @@ function db_loadGames(a_dict){
 /* load user from database */
 
 function db_loadUsersHelper(snapshot,a_dict){
-	console.log(snapshot)
 	snapshot.forEach(function(childSnapshot){
 		var key = childSnapshot.key;
 		var value = childSnapshot.val();
@@ -78,7 +75,6 @@ function db_loadUsers(a_dict){
 /* load editions from database */
 
 function db_loadEditionsHelper(snapshot,a_dict){
-	console.log(snapshot)
 	snapshot.forEach(function(childSnapshot){
 		var key = childSnapshot.key;
 		var value = childSnapshot.val();
@@ -90,12 +86,14 @@ function db_loadEditions(a_dict,callback = function(){}){
 		db_loadEditionsHelper(snapshot,a_dict)}).then(function() {callback()});
 }
 
-function db_addEditionComment(name,comment,pos){
-	db_database.ref('/editions/'+ name +'/comments-list/'+pos).set(comment);
+function db_addEditionComment(name,comment,pos,callback){
+	db_database.ref('/editions/'+ name +'/comments-list/'+pos).set(comment).then(function(){
+		callback()});
 }
 
-function db_addEditionSectionComment(name,section,start,end,newSpan){
-	db_database.ref('/editions/'+ name +"/"+section + "/comment-spans-list/"+start+"-"+end).set(newSpan);	
+function db_addEditionSectionComment(name,section,start,end,newSpan,callback){
+	db_database.ref('/editions/'+ name +"/"+section + "/comment-spans-list/"+start+"-"+end).set(newSpan).then(function(){
+		callback()});	
 }
 
 function db_clearEditionComments(name){
@@ -103,6 +101,5 @@ function db_clearEditionComments(name){
 }
 
 function db_clearCommentSpanComments(name,section,start,end){
-	console.log("clearing in ", '/edition/' + name +"/" + section + "/comment-spans-list/" + start + "-" + end)
 	db_database.ref('/editions/' + name +"/" + section + "/comment-spans-list/" + start + "-" + end).set(null);
 }

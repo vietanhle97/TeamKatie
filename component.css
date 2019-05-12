@@ -123,8 +123,10 @@ h1{
 }
 
 .success {
-  border-color: hsl(220,50%,50%);
-  color: hsl(230,50%,50%);
+  background: hsl(220,50%,50%);
+  border-color: hsl(220,0%,0%);
+  width: 10vw;
+  color: hsl(230,0%,0%);
   margin-bottom: 10px;
   float:right;
 }
@@ -153,7 +155,7 @@ h1{
   background: rgba(0,0,0,0.1);
 }
 .card-body{
-  background-color: rgba(50,50,200,5%);
+  background-color: hsla(220,30%,95%,1);
 }
 
 

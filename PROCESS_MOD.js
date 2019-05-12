@@ -62,7 +62,6 @@ function pr_loadUsers(name){
 }
 
 /*editions*/
-
 function pr_loadEditions(name,callback){
 	db_loadEditions(name,callback)
 }
@@ -75,8 +74,8 @@ function pr_loadEditionSectionText(name,sectionName){
 	sectionName = sectionName.toLowerCase();
 	return pr_editionsDict[name][sectionName]["text"];
 }
-
 function pr_loadEditionSectionCommentSpans(name,sectionName){
+	pr_loadEditions(pr_editionsDict);
 	sectionName = sectionName.toLowerCase();
 	if(pr_editionsDict[name][sectionName]["comment-spans-list"] == null){
 		return [];
@@ -92,6 +91,7 @@ function pr_loadEditionSectionCommentSpans(name,sectionName){
 }
 
 function pr_loadComments(commentSpan){
+	pr_loadEditions(pr_editionsDict);
 	var returnList = [];
 	var values = Object.values(commentSpan["comments-list"]);
 	for(i = 0; i < values.length; i++){
@@ -100,8 +100,9 @@ function pr_loadComments(commentSpan){
 	return returnList;
 }
 
-function pr_loadEditionComments(name){
+function pr_loadEditionComments(name,callback){
 	var returnList = [];
+	pr_loadEditions(pr_editionsDict);
 	if(pr_editionsDict[name]["comments-list"] == null){
 		pr_editionsDict[name]["comments-list"] = {};
 	}
@@ -112,9 +113,9 @@ function pr_loadEditionComments(name){
 	return returnList;
 }
 
-function pr_addEditionComment(name,username,text){
+function pr_addEditionComment(name,username,text,callback){
 	var n = pr_loadEditionComments(name).length;
-	db_addEditionComment(name,{"user": username, "text": text},n);
+	db_addEditionComment(name,{"user": username, "text": text},n,callback);
 	pr_editionsDict[name]["comments-list"][n] = {"user": username, "text": text};
 }
 
@@ -136,7 +137,7 @@ function pr_deleteEditionComment(name,username,text,callback){
 	},1000);
 }
 
-function pr_addEditionSectionCommentSpanComment(name,section,start,end,username,text){
+function pr_addEditionSectionCommentSpanComment(name,section,start,end,username,text,callback){
 	section = section.toLowerCase();
 
 	if(pr_editionsDict[name][section]["comment-spans-list"] == null){
@@ -147,17 +148,19 @@ function pr_addEditionSectionCommentSpanComment(name,section,start,end,username,
 	}
 	var commentSpan = pr_editionsDict[name][section]["comment-spans-list"][start+"-"+end];
 	if(commentSpan["comments-list"] == null){
-		commentSpan["comments-list"] = {};
+		commentSpan["comments-list"] = [];
 	}
 	var comments_list = commentSpan["comments-list"];
 	comments_list[Object.keys(comments_list).length] = {"user": username, "text": text}; 
+	
 	var newCommentSpan = {
 		"comments-list": comments_list,
 		"start": start,
 		"end": end
 	};
 	pr_editionsDict[name][section]["comment-spans-list"][start+"-"+end] = newCommentSpan;
-	db_addEditionSectionComment(name,section,start,end,newCommentSpan);
+	console.log(pr_editionsDict[name][section]["comment-spans-list"]);
+	db_addEditionSectionComment(name,section,start,end,newCommentSpan,callback);
 }
 
 function pr_deleteEditionSectionCommentSpanComment(name,section,start,end,username,text,callback){
@@ -189,4 +192,5 @@ async function test(callback){
 	pr_loadGames(pr_gamesDict);
 	pr_loadUsers(pr_usersDict);
 	pr_loadEditions(pr_editionsDict,callback);
+	console.log("finished loading")
 }

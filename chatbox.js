@@ -28,7 +28,7 @@ function chatbox_insertChat(editionName,username,leftOrRight,text,userImage){
                         `<img `+ `onclick = "this.src = 'https://cdn2.iconfinder.com/data/icons/medicine-7/512/sand_glass-2-512.png';` + 
                         `var par = this.parentNode; setTimeout(function(){par.style.display = 'none'},1500);` +` chatbox_deleteComment('`+ editionName + `','`
                          + chatbox_currentSpan["section"] + `','` + chatbox_currentSpan["start"] + `','`+ chatbox_currentSpan["end"] + `','` + username + `','` + text + `',`+  
-                         `function(){component_spanListUpdate('`+ chatbox_currentSpan["section"] + `');}` + `)"` +
+                         `function(){component_spanListUpdate('`+ chatbox_currentSpan["section"] + `'); component_reloadSpan();}` + `)"` +
                         `style="margin-top:10px; height: 15px; width: 15px; object-fit: contain" src = "https://cdn1.iconfinder.com/data/icons/business-office-and-internet-7/50/46-512.png"` +                              
                   '</li>';
     }
@@ -37,19 +37,17 @@ function chatbox_insertChat(editionName,username,leftOrRight,text,userImage){
 
 	var chatBox = document.getElementById("myForm-chatField-chatList");
 
-	console.log(chatBox,innerPlaceHolder);
 
 	chatBox.append(innerPlaceHolder);
 }
-function chatbox_userInsertChat(editionName,username,leftOrRight,text,userImage){
+function chatbox_userInsertChat(editionName,username,leftOrRight,text,userImage, callback){
 	if(chatbox_currentSpan["section"] == "main"){
-		pr_addEditionComment(editionName,username,text);
+		pr_addEditionComment(editionName,username,text,callback);
 	}
 	else {
 		pr_addEditionSectionCommentSpanComment(editionName,chatbox_currentSpan["section"],
-			chatbox_currentSpan["start"],chatbox_currentSpan["end"],username,text);
+			chatbox_currentSpan["start"],chatbox_currentSpan["end"],username,text,callback);
 	}
-
 	chatbox_insertChat(editionName,username,leftOrRight,text,userImage);
 }
 function chatbox_deleteComment(editionName,section,start,end,username,text, callback){
@@ -68,7 +66,9 @@ function chatbox_clearChat(){
 
 document.getElementById("myForm-chatField-submitButton").onclick = function(){
 	if($("#myForm-chatField-submitBox").val() != "")
-	chatbox_userInsertChat(sessionStorage.getItem('edition'),chatbox_username,"right",$("#myForm-chatField-submitBox").val(), chatbox_userImage);
+	chatbox_userInsertChat(sessionStorage.getItem('edition'),chatbox_username,"right",$("#myForm-chatField-submitBox").val(), chatbox_userImage,function(){
+  			component_spanListUpdate(chatbox_currentSpan["section"]);
+    });
 	$("#myForm-chatField-submitBox").val("");
 };
 

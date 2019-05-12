@@ -2,8 +2,10 @@ var menu_button_var = document.getElementById("menu_button");
 var comment_button_var = document.getElementById("comment_button");
 var back_button_var = document.getElementById("back_button");
 var nav_bar_menu = document.getElementById("nav-bar-menu");
+var sidebar_open = false;
 
 function openNav(sidebar, tab) {
+  sidebar_open = true;
   var style = document.getElementById(sidebar).style;
   style.width = "270px";
   style.shadow = "10px 10px";
@@ -47,6 +49,10 @@ function openNav(sidebar, tab) {
 }
 
 function closeNav(sidebar) {
+  if(sidebar_open)
+  component_reloadSpan();
+
+  sidebar_open = false;
   if(menu_button_var){
   menu_button_var.style.position = 'relative';
   menu_button_var.style.left = '0px';
@@ -107,7 +113,6 @@ function sideBar_drawTree(parentList){
       link.addEventListener('click',function(){
         var i = this.getAttribute('i');
         var j = this.getAttribute('parent');
-        console.log("triggered",i,j);
         if(i == "1")
           sessionStorage.setItem('category',j);
         else if (i == "2")
