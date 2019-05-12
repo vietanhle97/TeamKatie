@@ -1,5 +1,7 @@
 var slideIndex
-var game_name = sessionStorage.getItem("Game");
+
+var game_name = sessionStorage.getItem('game');
+
 document.getElementById("game").innerHTML = game_name.toUpperCase();
 function openNav() {
   document.getElementById("mySidebar").style.width = "300px";
@@ -58,27 +60,36 @@ function load_pic(i,name,len,des){
   var num = document.createElement("div");
   num.className="numbertext";
   num.innerHTML = (i+1)+"/"+len;
+  var picbox= document.createElement("div");
+  picbox.className = "picbox";
   var pic = document.createElement("img");
   pic.src = url_pic;
   pic.style.width="100%";
   pic.className="pic";
+  picbox.appendChild(pic);
   var overlay = document.createElement('div');
   overlay.className="overlay";
   var button = document.createElement("button");
   button.className="button";
   button.id="but"
   button.innerHTML='Read Tutorial';
+  var connect = document.createElement('a');
+  connect.setAttribute('href', "");
+  connect.id = name+"1";
   var box = document.createElement('div');
+  button.addEventListener('click', function(){
+    sessionStorage.setItem('edition', name);
+    document.getElementById(name+"1").href = 'component.html';
+  })
+  connect.appendChild(button);
+
   box.className="caption-container";
-  var text = document.createElement('p');
-  text.id="caption";
-  text.innerHTML=des
-  overlay.appendChild(button);
-  box.appendChild(text);
+  box.innerHTML=des;
+  overlay.appendChild(connect);
   slide.appendChild(num);
-  slide.appendChild(pic);
+  slide.appendChild(picbox);
   slide.appendChild(box);
-  slide.appendChild(overlay);
+  picbox.appendChild(overlay);
   var left=document.getElementById('left');
   document.getElementById("slide-container").insertBefore(slide,left);
 
@@ -86,21 +97,32 @@ function load_pic(i,name,len,des){
 function load_button(i,name){
   var col = document.createElement('div');
   col.className="columnT";
+  var connect = document.createElement('a');
+  connect.setAttribute('href', "");
+  connect.id = name;
+
   var btn = document.createElement('button');
   btn.className="button"; 
   btn.style.width="100%";
   btn.addEventListener("mouseover",function(){currentSlide(i+1)});
   btn.innerHTML=name;
-  col.appendChild(btn);
+  var edition = game_name + name;
+  btn.addEventListener('click', function(){
+    sessionStorage.setItem('edition', edition);
+    document.getElementById(name).href = 'component.html';
+
+  })
+  connect.appendChild(btn);
+  col.appendChild(connect);
   document.getElementById("rowT").appendChild(col);
 }
 
 function load_all_pic(name){
   var edition_list = pr_loadGameEditionsList(name);
   var len = edition_list.length
-  for(i=len-1;i>=0;i--){
-    desc = pr_loadEditionSectionText(edition_list[i],'briefing');
-    load_pic(i,edition_list[i],len,desc);
+  for(i=0;i<len;i++){
+    des = pr_loadEditionSectionText(edition_list[i],'briefing');
+    load_pic(i,edition_list[i],len,des);
     load_button(i,edition_list[i].replace(name,""));
   des = pr_loadEditionSectionText(edition_list[0],'briefing');
   slideIndex=1;
@@ -108,8 +130,9 @@ function load_all_pic(name){
   }
 }
 
-setTimeout(function(){
+test(function(){
+  sideBar_drawTree([["Main"],pr_loadGameCategoriesList(game_name),[game_name]]);
   load_all_pic(game_name);
   document.getElementById("left").addEventListener("click",function(){plusSlides(-1)});
   document.getElementById("right").addEventListener("click",function(){plusSlides(1)});
-}, 2000);
+});

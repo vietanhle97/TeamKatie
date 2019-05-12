@@ -128,13 +128,9 @@ function display_game(category){
 
 function check(){
   var x = sessionStorage.getItem("category");
-  $("#category").text(x);
-  if(x == 'Strategy Game'){
-    display_game('Strategy');
-  }
-  else if(x == 'Card Game'){
-    display_game('Card');
-  }
+  sideBar_drawTree([["Main"],[x]]);
+  $("#category").text(x + " Game");
+  display_game(x);
 }
 test(check);
 

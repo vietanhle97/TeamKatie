@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<meta charset="UTF-8">
-	<title>Katie</title>
-	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
-	<link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />  
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<link href="./category.css" rel="stylesheet" />
-	<link href="./sidebar.css" rel="stylesheet" />
-	<link href="https://fonts.googleapis.com/css?family=Laila" rel="stylesheet">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-database.js"></script>
-	<script src="DB_MOD.js"></script>
-	<script src="PROCESS_MOD.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	  <meta charset="UTF-8">
+      <title>Katie</title>
+      <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+      <link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />  
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Laila" rel="stylesheet">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  	
+      <link href="./component.css" rel="stylesheet" />
+      <link href="./sidebar.css" rel="stylesheet" />
+      <link href="./chatbox.css" rel="stylesheet" />
   	</head>
 
 
@@ -76,13 +74,17 @@
 		      				<i class="fas fa-bars fa-2x"></i>
 		      			</button> 
 		        	</div>
-		        	<div class="comment" id="comment_tab" style="display: none">
+		        	<div class="comment" id="comment_tab">
 		        		<button type="button" id="comment_button" class="btn btn-circle btn-lg" onmouseenter="openNav('mySidebar', 'comment_tab')">
 		        			<i class="fas fa-comment fa-2x"></i>
 		        		</button>
 		        	</div>
 		        	
 		        	<div class = "menu" id = "nav-bar-menu">
+		        		<div id = "back_tab_tree">
+		        			
+		        		</div>
+
 			        	<div id='menu_link'>
 		      				<a class="sidebar_link" href="#"><i class="fas fa-edit fa-fw" style="font-size: 1em;"></i>Create Tutorial</a>
 		        			<a class="sidebar_link" href="#"><i class="fas fa-book-reader fa-fw" style="font-size: 1em;"></i>Read Tutorial</a>
@@ -90,7 +92,7 @@
 
 		        		<div class="chat-popup" id="myForm">
 							<div class="comment_title">
-						    	<label for="msg"><b>Comment</b></label>
+						    	<label for="msg" ><b id = "comment-title-content">Comment</b></label>
 						    </div>
 						    <div class="input-group">
 				    			<div id = "myForm-chatField">
@@ -117,25 +119,36 @@
 		  	</div>
 
 		  	<div class="col-11">
-		 		<h1 id="category"></h1>
-		 		<div id="katie_carousel" class="carousel slide" data-ride="carousel" data-interval="false">
-					<!-- Indicators -->
-					<ol class="carousel-indicators"></ol>
-				  <!-- The slideshow -->
-				  	<div class="carousel-inner">
-				  	</div>
-				  <!-- Left and right controls -->
-				  	<a class="carousel-control-prev position-fixed" href="#katie_carousel" data-slide="prev">
-				    	<span class="carousel-control-prev-icon"></span>
-				  	</a>
-				  	<a class="carousel-control-next position-fixed" href="#katie_carousel" data-slide="next">
-				    	<span class="carousel-control-next-icon"></span>
-				  	</a>
-				</div>
+		  		<div class="row">
+			  		<div class="col-2"></div>
+			  		<div class="col-9" id="col-9">
+			 			<h1 id="content"></h1>
+						<button class="btn success" id='success'>Expand All</button>
+			 			<br><br>
+			 			<div id='collapse'></div>
+			 		</div>
+			 		<div class="popup_show">
+	  					<div class="overlay"></div>
+	  					<div class="img-show rounded row">
+	  						<div class="col-7">
+	    						<img id="popup_img">
+	    					</div>
+	    					<div class="col-5">
+	    						<p id="popup_text"></p>
+	    					</div>
+	  					</div>
+					</div>
+			 	</div>
 			</div>
-	</div>
-		<script src="category.js"></script>
-		<script src="side_bar.js"></script>
+		</div>
+
+
+		<script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-database.js"></script>
+		<script src="./DB_MOD.js"></script>
+		<script src="./PROCESS_MOD.js"></script>
+	    <script src="./chatbox.js"></script>
+	    <script src="./side_bar.js"></script>
+		<script src="component.js"></script>
 	</body>
 </html>
-

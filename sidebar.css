@@ -59,7 +59,7 @@
 #menu_link{
   display: none;
 }
-.menu a{
+#menu_link a{
   padding: 8px 8px 8px 32px;
   margin-top: 5px;
   text-decoration: none;
@@ -94,6 +94,25 @@
 #comment_button{
   margin-left: 7px;
 }
+
+#back_tab_tree{
+  max-width: 270px;
+  display: none;
+  text-align: center;
+}
+
+
+#back_tab_tree div{
+  width: 250px;
+  margin-top: 10px;
+  margin-right: 5px;
+  border-radius: 160px;
+  float: left;
+}
+#back_tab_tree a:hover{
+  cursor: pointer;  
+}
+
 .chat-popup {
   border-radius: 5px;
   background-color: white;
