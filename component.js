@@ -321,8 +321,6 @@ function find_text(components, str){
   }
 }
 
-<<<<<<< HEAD
-=======
 function add_to_span(instruction, text){
   var split = text.split(' ');
 
@@ -372,7 +370,7 @@ function component_change_theme(){
   }
   component_in_theme = 1 - component_in_theme;
 }
->>>>>>> af19de0ba8057b9ec3c167cee899ea9a28bdbbc4
+
 function component_display(){
   var components = pr_loadEditionComponentImage(currentTutorialName, 'Components')
   var currentGame = sessionStorage.getItem('game');
