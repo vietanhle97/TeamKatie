@@ -120,7 +120,6 @@ role_play = [{name: 'Internal Affair', img: "https://i.imgur.com/fWxq1Vi.png" },
 function display_game(category){
   var games_in_category = pr_loadCategoryGamesList(category);
   for(i=0;i<games_in_category.length;i++){
-    console.log(games_in_category[i]);
     var game_img = pr_loadGameImage(games_in_category[i]);
     add_to_carousel(games_in_category[i], game_img);
   }

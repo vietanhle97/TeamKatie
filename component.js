@@ -9,11 +9,17 @@ document.getElementById('content').innerHTML = currentTutorialName;
 chatbox_username = currentUsername;
 chatbox_userImage = currentUserImage;
 
-function component_loadSpanHTML(name,text){
+function component_loadSpanHTML(name,text,allowDelete){
+  component_spanListDict[name].sort((a, b) => (parseInt(a.start) > parseInt(b.start)) ? 1 : -1);
   var newText = "", lastTime = 0;
   for(var i = 0; i < component_spanListDict[name].length; i++){
     var ll = component_spanListDict[name][i]["start"];
     var rr = parseInt(component_spanListDict[name][i]["end"]);
+    if(allowDelete && component_spanListDict[name][i]["comments-list"].length == 0){
+    	component_spanListDict[name].splice(i,1);
+    	i--;
+    	continue;
+    }
     newText =  newText + text.substring(lastTime,ll) + `<span class = "commentSpan" onclick = \"`
     + `openNav('mySidebar', 'comment_tab'); ` + `component_loadCommentSpanComments(\'` + name + `\',` + i +`)\">` +
             text.substring(ll,rr+1) + 
@@ -41,7 +47,7 @@ function component_loadCommentSpanComments(section,i){
       var leftOrRight;
       if(username == currentUsername) leftOrRight = "right";
       else leftOrRight = "left";
-      chatbox_insertChat(currentTutorialName,username,leftOrRight,text,currentUserImage);
+      chatbox_insertChat(currentTutorialName,username,leftOrRight,text,currentUserImage,function(){});
   }
 }
 function component_loadEditionComments(name){
@@ -55,10 +61,40 @@ function component_loadEditionComments(name){
       var leftOrRight;
       if(username == currentUsername) leftOrRight = "right";
       else leftOrRight = "left";
-      chatbox_insertChat(currentTutorialName,username,leftOrRight,text,currentUserImage);
+      chatbox_insertChat(currentTutorialName,username,leftOrRight,text,currentUserImage,function(){});
   }
 }
 
+/* HELPER FUNCTION V*/
+function getSelectionCharacterOffsetWithin(element) {
+    var start = 0;
+    var end = 0;
+    var doc = element.ownerDocument || element.document;
+    var win = doc.defaultView || doc.parentWindow;
+    var sel;
+    if (typeof win.getSelection != "undefined") {
+        sel = win.getSelection();
+        if (sel.rangeCount > 0) {
+            var range = win.getSelection().getRangeAt(0);
+            var preCaretRange = range.cloneRange();
+            preCaretRange.selectNodeContents(element);
+            preCaretRange.setEnd(range.startContainer, range.startOffset);
+            start = preCaretRange.toString().length;
+            preCaretRange.setEnd(range.endContainer, range.endOffset);
+            end = preCaretRange.toString().length;
+        }
+    } else if ( (sel = doc.selection) && sel.type != "Control") {
+        var textRange = sel.createRange();
+        var preCaretTextRange = doc.body.createTextRange();
+        preCaretTextRange.moveToElementText(element);
+        preCaretTextRange.setEndPoint("EndToStart", textRange);
+        start = preCaretTextRange.text.length;
+        preCaretTextRange.setEndPoint("EndToEnd", textRange);
+        end = preCaretTextRange.text.length;
+    }
+    return { start: start, end: end };
+}	
+/*HELPER FUNCTION ^*/
 
 function userDragSpan(name){
   var selectedRange = window.getSelection().getRangeAt(0);
@@ -69,12 +105,13 @@ function userDragSpan(name){
     component_loadEditionComments(currentTutorialName);
     return;
   }
+
+  var start_end = getSelectionCharacterOffsetWithin(component_sectionBody[name]);
   chatbox_currentSpan.section = name;
-  chatbox_currentSpan.start = startPos;
-  chatbox_currentSpan.end = endPos;
-  component_spanListDict[name].push({"start":startPos,"end":endPos, "comments-list": []});
-  component_spanListDict[name].sort((a, b) => (a.start > b.start) ? 1 : -1);
-  component_sectionBody[name].innerHTML = component_loadSpanHTML(name,component_sectionContent[name])
+  chatbox_currentSpan.start = start_end["start"];
+  chatbox_currentSpan.end = start_end["end"];
+  component_spanListDict[name].push({"start":start_end["start"],"end":start_end["end"], "comments-list": []});
+  component_sectionBody[name].innerHTML = component_loadSpanHTML(name,component_sectionContent[name],0)
   openNav("mySidebar", 'comment_tab');
   chatbox_clearChat();
 }
@@ -196,10 +233,10 @@ function add_to_collapse(name, head, carousel,text){
   component_sectionContent[name] = text;
   component_sectionBody[name] = card_body;
   component_spanListUpdate(name);
-  newText = component_loadSpanHTML(name,text);
+  newText = component_loadSpanHTML(name,text,1);
   card_body.innerHTML = newText;
   card_body.setAttribute("section-name",name);
-
+  
   if(name=='Components'){
     card_body.innerHTML = carousel;
   }
@@ -217,7 +254,6 @@ function add_to_collapse(name, head, carousel,text){
 
   all_content.appendChild(collapse);
 }
-var a = ['Briefing']
 var lis = ['Briefing', 'BackGround', 'Objective', 'Components', 'Rules', 'Setup', 'Tips'];
 
 var carousel = `<div id="katie_carousel" class="carousel slide" data-ride="carousel" data-interval="false">
@@ -285,6 +321,58 @@ function find_text(components, str){
   }
 }
 
+<<<<<<< HEAD
+=======
+function add_to_span(instruction, text){
+  var split = text.split(' ');
+
+  var instruct = document.getElementById(instruction); 
+  for(i=0;i<split.length;i++){
+    if(span_list.includes(split[i])){
+
+
+
+      var span = document.createElement('span');
+      span.innerHTML = split[i];
+      span.className = "popup_span";
+      span.addEventListener('click', function(){
+
+        var img = this.innerHTML;
+        var name = '#carousel' + img.toUpperCase();
+        $(name).trigger( "click" );
+      })
+      instruct.appendChild(span);
+      instruct.appendChild(document.createTextNode(' ')) // instruct.innerHTML += ' ';
+    }
+    else{
+      instruct.appendChild(document.createTextNode(split[i]+ ' '));
+    }
+  }
+}
+var cnt = 0;
+function component_reloadSpan(){
+	cnt++;
+  	for(var i = 0; i < lis.length; i++){
+  	 if(lis[i].toLowerCase() != "components")
+	 component_sectionBody[lis[i]].innerHTML = component_loadSpanHTML(lis[i],pr_loadEditionSectionText(currentTutorialName ,lis[i]),1);
+  	}
+}
+var component_hsl_var ={"h": 350, "s": 50, "l":30};
+var component_in_theme = 1;
+function component_change_theme(){
+  if(component_in_theme){
+  document.getElementById('fail').innerHTML = "No Theme";
+  document.body.style.background = "hsl("+component_hsl_var.h+","+component_hsl_var.s+"%,"+component_hsl_var.l+"%,1)";
+  document.getElementById("content").style.color = "hsl("+(360-component_hsl_var.h)+","+(100-component_hsl_var.s)+"%,"+(100-component_hsl_var.l)+"%,1)";
+  }
+  else{
+  document.getElementById('fail').innerHTML = "Apply Theme";
+  document.body.style.background = "white";
+  document.getElementById("content").style.color = "black";
+  }
+  component_in_theme = 1 - component_in_theme;
+}
+>>>>>>> af19de0ba8057b9ec3c167cee899ea9a28bdbbc4
 function component_display(){
   var components = pr_loadEditionComponentImage(currentTutorialName, 'Components')
   var currentGame = sessionStorage.getItem('game');
@@ -319,7 +407,10 @@ function component_display(){
       document.getElementById('success').innerHTML='Collapse All'
       }
       check++;
+      console.log(check);
     })
+  document.getElementById('fail').addEventListener('click',component_change_theme);
+  component_reloadSpan();
 }
 function add_to_span(instruction, text){
   var components = pr_loadEditionComponentImage(currentTutorialName, 'Components');

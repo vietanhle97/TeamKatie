@@ -60,6 +60,7 @@ h1{
   padding: 8px 12px;
   position: absolute;
   top: 0;
+  background:hsl(210,50%,50%);
 }
 
 /* The button indicator */
@@ -97,11 +98,11 @@ h1{
   background-color: #33ADFF30;
   padding: 2px 16px;
   color: #052032;
-  height: 50%;
+  max-height: 50px;
+  margin-bottom:30px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-}
 }
 
 .rowT:after {
