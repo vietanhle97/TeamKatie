@@ -373,6 +373,8 @@ function component_change_theme(){
 
 function component_display(){
   var components = pr_loadEditionComponentImage(currentTutorialName, 'Components')
+  if(!components || !components.length) return;
+  console.log(components);
   var currentGame = sessionStorage.getItem('game');
   sideBar_drawTree([["Main"],pr_loadGameCategoriesList(currentGame),[currentGame],[currentTutorialName]]);
 

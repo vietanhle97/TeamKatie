@@ -6,6 +6,11 @@ var sidebar_open = false;
 
 function openNav(sidebar, tab) {
   sidebar_open = true;
+  if(document.getElementById("gap-column")){
+  document.getElementById("gap-column").display="block";
+  document.getElementById("gap-column").className = "col-2";
+  document.getElementById("col-9").className = "col-9";
+  }
   var style = document.getElementById(sidebar).style;
   style.width = "270px";
   style.shadow = "10px 10px";
@@ -49,6 +54,10 @@ function openNav(sidebar, tab) {
 }
 
 function closeNav(sidebar) {
+  if(document.getElementById("gap-column")){
+  document.getElementById("gap-column").display="none";
+  document.getElementById("col-9").className = "col-11";
+  }
   if(sidebar_open)
   component_reloadSpan();
 

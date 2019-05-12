@@ -5,7 +5,8 @@ function add_to_banner(category, img_url){
 	link.className = 'category';
 	link.id = category;
 	var img = document.createElement('img');
-	img.className = "shadow rounded";
+	img.className = "shadow";
+	img.style = "border-radius: 25px; width: 128px; height: 128px; over-fit: contain;"
 	img.style.backgroundColor = 'transparent';
 	img.setAttribute('src', img_url);
 	var span = document.createElement('span');
