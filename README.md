@@ -1,4 +1,4 @@
-Katie: The boardgame tutorial for everyone.
+Katie: The boardgame tutorial for everyone.  
 Contributors: Viet Anh Le, Hieu Dang, Mai Tung Duong (John)  
 Code briefing description:  
 	+ MAIN:  
