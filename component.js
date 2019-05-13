@@ -4,7 +4,7 @@ var currentUserImage = "https://i.stack.imgur.com/ahCDf.png?s=328&g=1";
 var component_spanListDict = {};
 var component_sectionContent = {};
 var component_sectionBody = {};
-var lis = ['Briefing', 'BackGround', 'Objective', 'Components', 'Rules', 'Setup', 'Tips'];
+var lis = ['Briefing', 'Background', 'Objective', 'Components', 'Rules', 'Setup', 'Tips'];
 document.getElementById('content').innerHTML = currentTutorialName;
 chatbox_username = currentUsername;
 chatbox_userImage = currentUserImage;
@@ -128,8 +128,8 @@ function create_div_to_carousel(n, name, link){
   if (n==1){
     new_div.className = "game";
     var new_div_2 = document.createElement('div');
-    new_div_2.className = "shadow p-2 mb-1 bg-white grid-item component_card";
-    new_div_2.id = 'carousel' + onlyLetter(name.toLowerCase());
+    new_div_2.className = "shadow p-2 mb-1 bg-white rounded grid-item";
+    new_div_2.id = 'carousel' + name.replace(/\s/g,'');
     new_div_2.addEventListener("click", function(){
       var components = pr_loadEditionComponentImage(currentTutorialName, 'Components');
       $(".popup_show").fadeIn();
@@ -159,7 +159,7 @@ function create_div_to_carousel(n, name, link){
 
     var new_div_3 = document.createElement('div');
     new_div_3.className = "shadow p-2 mb-1 bg-white rounded grid-item";
-    new_div_3.id = 'carousel' + onlyLetter(name.toLowerCase());
+    new_div_3.id = 'carousel' + name.replace(/\s/g,'');
     new_div_3.addEventListener("click", function(){
       var components = pr_loadEditionComponentImage(currentTutorialName, 'Components');
       $(".popup_show").fadeIn();
@@ -260,7 +260,7 @@ function add_to_collapse(name, head, carousel,text){
 
   all_content.appendChild(collapse);
 }
-var lis = ['Briefing', 'BackGround', 'Objective', 'Components', 'Rules', 'Setup', 'Tips'];
+
 
 var carousel = `<div id="katie_carousel" class="carousel slide" data-ride="carousel" data-interval="false">
               <!-- Indicators -->
@@ -319,6 +319,9 @@ async function add_to_carousel(name, link){
 //             {card: 'Tacocat', img: "https://i.imgur.com/F376jwB.png", text:'Nothing'},
 //             {card: 'Rainbow cat', img: "https://i.imgur.com/z7BG3zq.png", text:'Nothing'},
 //             {card: 'Catermelon', img: "https://i.imgur.com/6WCn12H.png", text:'Nothing'}]
+
+
+
 function find_text(components, str){
   for (i=0;i<components.length;i++){
     if (str.toLowerCase() == components[i]['card'].toLowerCase()){
@@ -363,13 +366,16 @@ function component_reloadSpan(){
 	 component_sectionBody[lis[i]].innerHTML = component_loadSpanHTML(lis[i],pr_loadEditionSectionText(currentTutorialName ,lis[i]),1);
   	}
 }
-var component_hsl_var ={"h": 350, "s": 50, "l":30};
 var component_in_theme = 1;
 function component_change_theme(){
   if(component_in_theme){
   document.getElementById('fail').innerHTML = "No Theme";
+  var component_hsl_var = pr_loadEditionTheme(currentTutorialName);
+  if(component_hsl_var == null){
+  	component_hsl_var = {"h": 200,"s":80,"l":80};
+  }
   document.body.style.background = "hsl("+component_hsl_var.h+","+component_hsl_var.s+"%,"+component_hsl_var.l+"%,1)";
-  document.getElementById("content").style.color = "hsl("+(360-component_hsl_var.h)+","+(100-component_hsl_var.s)+"%,"+(100-component_hsl_var.l)+"%,1)";
+  document.getElementById("content").style.color = "hsl("+(component_hsl_var.h)+","+((50+component_hsl_var.s)%101)+"%,"+((50+component_hsl_var.l)%101)+"%,1)";
   }
   else{
   document.getElementById('fail').innerHTML = "Apply Theme";
@@ -389,6 +395,7 @@ function component_display(){
   if(currentTutorialName == null)
     currentTutorialName = "Exploding Kitten Normal Edition";
   for(var i = 0; i < lis.length; i++){
+    console.log(lis[i]);
     add_to_collapse(lis[i],i + 1,carousel,pr_loadEditionSectionText(currentTutorialName,lis[i]));
   }
 

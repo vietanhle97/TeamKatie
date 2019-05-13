@@ -136,6 +136,9 @@ h1{
   background-color: hsl(220,50%,50%);
   color: white;
 }
+.card-header:hover{
+  cursor: pointer;
+}
 .card-header::after {
   content: '\002B';
   font-size: 20px;
