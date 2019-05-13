@@ -58,8 +58,11 @@ function closeNav(sidebar) {
   document.getElementById("gap-column").display="none";
   document.getElementById("col-9").className = "col-11";
   }
-  if(sidebar_open)
-  component_reloadSpan();
+  if(sidebar_open){
+    if(comment_button_var){
+      component_reloadSpan();
+    }
+  }
 
   sidebar_open = false;
   if(menu_button_var){

@@ -305,7 +305,7 @@ async function add_to_carousel(name, link){
 // var exploding = [{card: 'Defuse', img: 'https://pbs.twimg.com/media/Czz0Lj0UcAEzKZu.png', text: 'Use Defuse to Explode'},
 //             {card: 'Explode', img: "https://i.imgur.com/KV40QE4.png", text:'Dead'},
 //             {card: 'Nope', img: "https://pbs.twimg.com/media/CT1SNvIWoAAstvS.jpg", text:'Use Nope to stop Attack or Skip and others'},
-//             {card: 'Attack', img: "https://i.imgur.com/wn5hzMH.png", text: 'Nothing'},
+//             {card: 'Attack', img: "S", text: 'Nothing'},
 //             {card: 'Shuffle', img: "https://pbs.twimg.com/media/CbxlnVdUEAERmru.png", text:'Nothing'},
 //             {card: 'See The Future', img: "https://pbs.twimg.com/media/B-J0nBACMAAr71J.png", text:'Nothing'},
 //             {card: 'Skip', img: "https://pbs.twimg.com/media/C9T-953XUAIa4Eu.jpg", text:'Nothing'},
@@ -354,8 +354,9 @@ var cnt = 0;
 function component_reloadSpan(){
 	cnt++;
   	for(var i = 0; i < lis.length; i++){
-  	 if(lis[i].toLowerCase() != "components")
-	 component_sectionBody[lis[i]].innerHTML = component_loadSpanHTML(lis[i],pr_loadEditionSectionText(currentTutorialName ,lis[i]),1);
+  	 if(lis[i].toLowerCase() != "components"){
+	     component_sectionBody[lis[i]].innerHTML = component_loadSpanHTML(lis[i],pr_loadEditionSectionText(currentTutorialName ,lis[i]),1);
+     }
   	}
 }
 var component_hsl_var ={"h": 350, "s": 50, "l":30};
