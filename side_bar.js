@@ -58,7 +58,7 @@ function closeNav(sidebar) {
   document.getElementById("gap-column").display="none";
   document.getElementById("col-9").className = "col-11";
   }
-  if(sidebar_open)
+  if(sidebar_open && window.location.href.includes('component'))
   component_reloadSpan();
 
   sidebar_open = false;

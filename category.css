@@ -35,15 +35,17 @@ h1{
   width: 150px;
 }
 .carousel-control-next{
-  top: 50%;
+  position: absolute;
+  top: 40%;
   right: 5%;
   width: 50px;
   height: 100px;
 }
 
 .carousel-control-prev{
-  top: 50%;
-  left: 16.5%;
+  position: absolute;
+  top: 40%;
+  left: 10%;
   width: 50px;
   height: 100px;
 }

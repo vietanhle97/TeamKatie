@@ -15,7 +15,7 @@ function component_loadSpanHTML(name,text,allowDelete){
   for(var i = 0; i < component_spanListDict[name].length; i++){
     var ll = component_spanListDict[name][i]["start"];
     var rr = parseInt(component_spanListDict[name][i]["end"]);
-    if(allowDelete && component_spanListDict[name][i]["comments-list"].length == 0){
+    if(allowDelete && (component_spanListDict[name][i]["comments-list"] == null || component_spanListDict[name][i]["comments-list"].length == 0)){
     	component_spanListDict[name].splice(i,1);
     	i--;
     	continue;
@@ -116,14 +116,20 @@ function userDragSpan(name){
   chatbox_clearChat();
 }
 
-
+function onlyLetter(str){
+	var tmp = "";
+	for(var i = 0; i < str.length; i++)
+		if(str[i] >= 'a' && str[i] <='z')
+		tmp += str[i];
+	return tmp;
+}
 function create_div_to_carousel(n, name, link){
   var new_div = document.createElement('div');
   if (n==1){
     new_div.className = "game";
     var new_div_2 = document.createElement('div');
-    new_div_2.className = "shadow p-2 mb-1 bg-white rounded grid-item";
-    new_div_2.id = 'carousel' + name;
+    new_div_2.className = "shadow p-2 mb-1 bg-white grid-item component_card";
+    new_div_2.id = 'carousel' + onlyLetter(name.toLowerCase());
     new_div_2.addEventListener("click", function(){
       var components = pr_loadEditionComponentImage(currentTutorialName, 'Components');
       $(".popup_show").fadeIn();
@@ -153,7 +159,7 @@ function create_div_to_carousel(n, name, link){
 
     var new_div_3 = document.createElement('div');
     new_div_3.className = "shadow p-2 mb-1 bg-white rounded grid-item";
-    new_div_3.id = 'carousel' + name;
+    new_div_3.id = 'carousel' + onlyLetter(name.toLowerCase());
     new_div_3.addEventListener("click", function(){
       var components = pr_loadEditionComponentImage(currentTutorialName, 'Components');
       $(".popup_show").fadeIn();
@@ -328,15 +334,17 @@ function add_to_span(instruction, text){
   for(i=0;i<split.length;i++){
     if(span_list.includes(split[i])){
 
-
-
       var span = document.createElement('span');
       span.innerHTML = split[i];
       span.className = "popup_span";
+      console.log(split[i],"in",text);
       span.addEventListener('click', function(){
+        console.log("aaaa");
 
         var img = this.innerHTML;
-        var name = '#carousel' + img.toUpperCase();
+        console.log(img);
+        var name = '#carousel' + onlyLetter(img.toLowerCase());
+        console.log(name);
         $(name).trigger( "click" );
       })
       instruct.appendChild(span);

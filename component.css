@@ -100,6 +100,7 @@ h1{
     word-wrap: break-word
 }
 #popup_text{
+  overflow-y: scroll;
   padding-left: 20px;
   color: black;
 }
