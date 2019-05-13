@@ -84,7 +84,7 @@ function load_pic(i,name,len,des){
   connect.appendChild(button);
 
   box.className="caption-container";
-  box.innerHTML= name +': ' + des;
+  box.innerHTML= name.replace(game_name, '') +': ' + des;
   overlay.appendChild(connect);
   slide.appendChild(num);
   slide.appendChild(picbox);
