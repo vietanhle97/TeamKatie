@@ -58,12 +58,10 @@ function closeNav(sidebar) {
   document.getElementById("gap-column").display="none";
   document.getElementById("col-9").className = "col-11";
   }
-  if(sidebar_open){
-    if(comment_button_var){
-      component_reloadSpan();
-    }
-  }
 
+  if(sidebar_open && comment_button_var){
+      component_reloadSpan();
+  }
   sidebar_open = false;
   if(menu_button_var){
   menu_button_var.style.position = 'relative';
@@ -115,7 +113,10 @@ function sideBar_drawTree(parentList){
     for(var j = 0; j < parentNode.length; j++){
       var node = document.createElement('div');
       node.className = "back_tab_tree_nodes";
-      node.style.backgroundColor = "hsla(220," + (70+i*5) + "%,"+  (70+i*5) + "%,1)";
+      if(i == parentList.length - 1){
+        node.style = "border: 2px dashed hsl(350,50%,30%);"
+      }
+      node.style.backgroundColor = "hsla(220," + (50+i*10) + "%,"+  (50+i*10) + "%,1)";
       node.style.width = (250/parentNode.length) + "px";
       node.style.height = "40px";
       var link = document.createElement('a');

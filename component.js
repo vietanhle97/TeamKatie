@@ -15,7 +15,7 @@ function component_loadSpanHTML(name,text,allowDelete){
   for(var i = 0; i < component_spanListDict[name].length; i++){
     var ll = component_spanListDict[name][i]["start"];
     var rr = parseInt(component_spanListDict[name][i]["end"]);
-    if(allowDelete && component_spanListDict[name][i]["comments-list"].length == 0){
+    if(allowDelete && (component_spanListDict[name][i]["comments-list"] == null || component_spanListDict[name][i]["comments-list"].length == 0)){
     	component_spanListDict[name].splice(i,1);
     	i--;
     	continue;
@@ -116,7 +116,13 @@ function userDragSpan(name){
   chatbox_clearChat();
 }
 
-
+function onlyLetter(str){
+	var tmp = "";
+	for(var i = 0; i < str.length; i++)
+		if(str[i] >= 'a' && str[i] <='z')
+		tmp += str[i];
+	return tmp;
+}
 function create_div_to_carousel(n, name, link){
   var new_div = document.createElement('div');
   if (n==1){
@@ -331,15 +337,17 @@ function add_to_span(instruction, text){
   for(i=0;i<split.length;i++){
     if(span_list.includes(split[i])){
 
-
-
       var span = document.createElement('span');
       span.innerHTML = split[i];
       span.className = "popup_span";
+      console.log(split[i],"in",text);
       span.addEventListener('click', function(){
+        console.log("aaaa");
 
         var img = this.innerHTML;
-        var name = '#carousel' + img.toUpperCase();
+        console.log(img);
+        var name = '#carousel' + onlyLetter(img.toLowerCase());
+        console.log(name);
         $(name).trigger( "click" );
       })
       instruct.appendChild(span);
@@ -359,13 +367,16 @@ function component_reloadSpan(){
      }
   	}
 }
-var component_hsl_var ={"h": 350, "s": 50, "l":30};
 var component_in_theme = 1;
 function component_change_theme(){
   if(component_in_theme){
   document.getElementById('fail').innerHTML = "No Theme";
+  var component_hsl_var = pr_loadEditionTheme(currentTutorialName);
+  if(component_hsl_var == null){
+  	component_hsl_var = {"h": 200,"s":80,"l":80};
+  }
   document.body.style.background = "hsl("+component_hsl_var.h+","+component_hsl_var.s+"%,"+component_hsl_var.l+"%,1)";
-  document.getElementById("content").style.color = "hsl("+(360-component_hsl_var.h)+","+(100-component_hsl_var.s)+"%,"+(100-component_hsl_var.l)+"%,1)";
+  document.getElementById("content").style.color = "hsl("+(component_hsl_var.h)+","+((50+component_hsl_var.s)%101)+"%,"+((50+component_hsl_var.l)%101)+"%,1)";
   }
   else{
   document.getElementById('fail').innerHTML = "Apply Theme";

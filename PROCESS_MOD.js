@@ -70,6 +70,11 @@ function pr_loadEditions(name,callback){
 function pr_loadEditionImage(name){
 	return pr_editionsDict[name]['image-url'];
 }
+
+function pr_loadEditionTheme(name){
+	return pr_editionsDict[name]["theme"];
+}
+
 function pr_loadEditionSectionText(name,sectionName){
 	sectionName = sectionName.toLowerCase();
 	return pr_editionsDict[name][sectionName]["text"];
