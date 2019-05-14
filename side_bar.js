@@ -103,10 +103,13 @@ function sideBar_drawTree(parentList){
     var parentNode = parentList[i];
     if(i > 0){
       var arrow = document.createElement('div');
-      var img = document.createElement('img');
-      img.src = "http://chittagongit.com/images/icon-arrow-down/icon-arrow-down-10.jpg";
-      img.style = "width: 20px; height 40px;object-fit: contain;";
-      arrow.appendChild(img);
+      var icon = document.createElement('i');
+      icon.className = "fas fa-angle-double-down";
+      icon.style.color = "white";
+      icon.style.transform = 'scale(2,2)';
+      icon.style.marginTop = '2vh';
+      icon.style.marginBottom = '2vh';
+      arrow.appendChild(icon);
       arrow.style.padding = "auto";
       tree.appendChild(arrow);
     }
@@ -114,7 +117,7 @@ function sideBar_drawTree(parentList){
       var node = document.createElement('div');
       node.className = "back_tab_tree_nodes";
       if(i == parentList.length - 1){
-        node.style = "border: 2px dashed hsl(350,50%,30%);"
+        node.style = "border: 2px solid white"
       }
       node.style.backgroundColor = "hsla(220," + (50+i*10) + "%,"+  (50+i*10) + "%,1)";
       node.style.width = (250/parentNode.length) + "px";
@@ -144,8 +147,11 @@ function sideBar_drawTree(parentList){
           this.href = "component.html";
         }
       });
-
       node.appendChild(document.createTextNode(parentNode[j]));
+      node.style.paddingTop ='1vh';
+      node.style.paddingBottom = '1vh';
+      node.style.color = 'white';
+      node.style.fontWeight = 'bold';
       link.appendChild(node)
       tree.appendChild(link);
     }
