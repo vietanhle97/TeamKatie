@@ -120,6 +120,7 @@ function add_to_carousel(name, link){
 //             {name: 'Coming Soon!', img: "https://cdn3.iconfinder.com/data/icons/under-construction-3/500/42-512.png"}]
 
 function display_game(category){
+  console.log(category);
   var games_in_category = pr_loadCategoryGamesList(category);
   for(i=0;i<games_in_category.length;i++){
     var game_img = pr_loadGameImage(games_in_category[i]);
@@ -132,6 +133,7 @@ function display_game(category){
 
 function check(){
   var x = sessionStorage.getItem("category");
+  console.log(x)
   sideBar_drawTree([["Main"],[x]]);
   $("#category").text(x + " Game");
   display_game(x);

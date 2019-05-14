@@ -1,12 +1,11 @@
-Katie: The boardgame tutorial for everyone
-Contributors: Mai Tung Duong (John)
-Contribution:  
-1/ Edition page (no back-end involved yet)
-+ Button for editions
-+ Slideshow shows the glance at each edition
-+ Navigation: Hover mouse on button to change the slide, click the button to read the tutorial, hover and click the button on the slide to read the tutorial
-2/ Information page (no back-end involved yet)
-+ Left side scroll-spy
-+ Main page collapsing panel
-+ Bottom: Edition thumbnail navigation
-3/ Add Tooltip to symbols
+Katie: The boardgame tutorial for everyone.  
+Contributors: Viet Anh Le, Hieu Dang, Mai Tung Duong (John)  
+Code briefing description:  
+	+ MAIN:  
+		4 main pages: home, category, edition, tutorial  
+		Main HTML corresponding with 4 main pages: main.html, category.html, Edition page.html, component.html  
+		Main CSS corresponding with 4 main pages: main.css, category.css, edition.css, component.css  
+		Main JS corresponding with 4 main pages: main.js, category.js, edition.js, component.js  
+	+ HELPER UI-COMPONENT: scroll bar (scrollbar.css), side bar (sidebar.css,side_bar.js), chatbox (chatbox,html, chatbox.css, chatbox,js)  
+	+ HELPER DATABASE ACCESS: DB_MOD.js, PROCESS_MOD.js  
+	+ API FOR DATABASE ACCESS HELPER: DB_MOD_DOC.js, PROCESS_MOD_DOC.js
