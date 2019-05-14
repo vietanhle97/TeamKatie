@@ -25,7 +25,7 @@ function chatbox_insertChat(editionName,username,leftOrRight,text,userImage){
                             '</div>' +
                         '<div class="avatar" style="padding:0px 0px 0px 10px !important"> <img style="height: 100%; width: 100%; object-fit: contain" src = "'+ userImage+ '"> </div>' +  
                         '</div>' +
-                        `<img `+ `onclick = "this.src = 'https://cdn2.iconfinder.com/data/icons/medicine-7/512/sand_glass-2-512.png';` + 
+                        `<img `+ `class = "btn-light" onclick = "this.src = 'https://cdn2.iconfinder.com/data/icons/medicine-7/512/sand_glass-2-512.png';` + 
                         `var par = this.parentNode; setTimeout(function(){par.style.display = 'none'},1500);` +` chatbox_deleteComment('`+ editionName + `','`
                          + chatbox_currentSpan["section"] + `','` + chatbox_currentSpan["start"] + `','`+ chatbox_currentSpan["end"] + `','` + username + `','` + text + `',`+  
                          `function(){component_spanListUpdate('`+ chatbox_currentSpan["section"] + `'); component_reloadSpan();}` + `)"` +
