@@ -127,7 +127,7 @@ h1{
   background: hsl(220,50%,50%);
   border-color: hsl(220,0%,0%);
   width: 10vw;
-  color: hsl(230,0%,0%);
+  color: hsl(230,100%,100%);
   margin-bottom: 10px;
   float:right;
 }

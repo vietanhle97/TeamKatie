@@ -116,6 +116,7 @@ function sideBar_drawTree(parentList){
         node.style = "border: 2px dashed hsl(350,50%,30%);"
       }
       node.style.backgroundColor = "hsla(220," + (50+i*10) + "%,"+  (50+i*10) + "%,1)";
+      node.style.color = "hsla(220,100%,100%,1)";
       node.style.width = (250/parentNode.length) + "px";
       node.style.height = "40px";
       var link = document.createElement('a');
