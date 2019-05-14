@@ -10,7 +10,9 @@ chatbox_username = currentUsername;
 chatbox_userImage = currentUserImage;
 
 function component_loadSpanHTML(name,text,allowDelete){
-  component_spanListDict[name].sort((a, b) => (parseInt(a.start) > parseInt(b.start)) ? 1 : -1);
+  if(component_spanListDict[name]){
+    component_spanListDict[name].sort((a, b) => (parseInt(a.start) > parseInt(b.start)) ? 1 : -1);
+  }
   var newText = "", lastTime = 0;
   for(var i = 0; i < component_spanListDict[name].length; i++){
     var ll = component_spanListDict[name][i]["start"];
@@ -398,9 +400,8 @@ function component_change_theme(){
 function component_display(){
   var components = pr_loadEditionComponentImage(currentTutorialName, 'Components')
   if(!components || !components.length) return;
-  console.log(components);
-  var currentGame = sessionStorage.getItem('game');
-  sideBar_drawTree([["Main"],pr_loadGameCategoriesList(currentGame),[currentGame],[currentTutorialName]]);
+    var currentGame = sessionStorage.getItem('game');
+    sideBar_drawTree([["Main"],pr_loadGameCategoriesList(currentGame),[currentGame],[currentTutorialName]]);
 
   if(currentTutorialName == null)
     currentTutorialName = "Exploding Kitten Normal Edition";

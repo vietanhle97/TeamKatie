@@ -42,14 +42,16 @@ body {
   color: white;
 }
 #banner{
-	background-color: #F5F5F5;
+	background-color: #F5F5F5;*/
+	background-color: transparent;
 	padding: 4vh 5vw 2vh 5vw;
 	width: 100%;
 	margin: auto;
 	display: flex; 
 }
 .category{
-	padding-right: 22px;
+	width: 128px;
+	margin-right: 4vw;
 }
 .full{
 	padding-top: 15px;
@@ -81,18 +83,18 @@ body {
 }
 
 #slogan{
+	width: 100%;
 	font-family: "Lora", serif;
 	color:#F2BEA0;
 	font-size: 35px;
 	text-align: center;
 	padding: 20px;
-	font-style: normal; 
-	font-variant: normal; 
 	font-weight: 700; 
 	line-height: 26.4px;
 }
 
 .caption {
+	width: 128px;
 	font-family: "Helvetica Neue";
     display: block;
     text-align: center;
@@ -108,7 +110,7 @@ body {
 }
 #katie_slogan{
 	height: 100%;
-	width:60%;
+	width:100%;
 	margin: auto;
 	flex-grow : 1;
 	/*background-color: white;*/
