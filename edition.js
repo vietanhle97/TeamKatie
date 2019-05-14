@@ -65,8 +65,10 @@ function load_pic(i,name,len,des){
   var pic = document.createElement("img");
   pic.src = url_pic;
   pic.style.width="100%";
+  pic.style.height = "45vh";
   pic.className="pic";
   picbox.appendChild(pic);
+  picbox.style.marginTop = '3vh';
   var overlay = document.createElement('div');
   overlay.className="overlay";
   var button = document.createElement("button");

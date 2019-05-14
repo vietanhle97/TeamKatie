@@ -82,7 +82,7 @@ function pr_loadEditionSectionText(name,sectionName){
 
 function pr_loadEditionComponentImage(name, sectionName){
 	sectionName = sectionName.toLowerCase();
-	if(pr_editionsDict[name][sectionName]["objects-list"] == null){
+	if(pr_editionsDict[name][sectionName] == null || pr_editionsDict[name][sectionName]["objects-list"] == null){
 		return [];
 	}
 	var popup_span = pr_editionsDict[name][sectionName]["objects-list"];

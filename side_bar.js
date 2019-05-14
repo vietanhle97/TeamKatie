@@ -60,7 +60,9 @@ function closeNav(sidebar) {
   }
 
   if(sidebar_open && comment_button_var){
+    if(component_reloadSpan()){
       component_reloadSpan();
+    }
   }
   sidebar_open = false;
   if(menu_button_var){
