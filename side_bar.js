@@ -106,7 +106,7 @@ function sideBar_drawTree(parentList){
       var icon = document.createElement('i');
       icon.className = "fas fa-angle-double-down";
       icon.style.color = "white";
-      icon.style.transform = 'scale(2,2)';
+      icon.style.transform = 'scale(1.5,1.5)';
       icon.style.marginTop = '2vh';
       icon.style.marginBottom = '2vh';
       arrow.appendChild(icon);
@@ -117,10 +117,10 @@ function sideBar_drawTree(parentList){
       var node = document.createElement('div');
       node.className = "back_tab_tree_nodes";
       if(i == parentList.length - 1){
-        node.style = "border: 2px solid white"
+        node.style = "border: 1px solid red"
       }
-      node.style.backgroundColor = "hsla(220," + (50+i*10) + "%,"+  (50+i*10) + "%,1)";
-      node.style.color = "hsla(220,100%,100%,1)";
+      node.style.backgroundColor = "hsla(220," + (50+i*10) + "%,"+  (60+i*10) + "%,1)";
+      node.style.color = "hsla(220,0%,0%,1)";
       node.style.width = (250/parentNode.length) + "px";
       node.style.height = "40px";
       var link = document.createElement('a');
@@ -151,7 +151,6 @@ function sideBar_drawTree(parentList){
       node.appendChild(document.createTextNode(parentNode[j]));
       node.style.paddingTop ='1vh';
       node.style.paddingBottom = '1vh';
-      node.style.color = 'white';
       node.style.fontWeight = 'bold';
       link.appendChild(node)
       tree.appendChild(link);

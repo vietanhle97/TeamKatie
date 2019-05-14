@@ -214,6 +214,7 @@ function add_to_collapse(name, head, carousel,text){
   card_header.className = 'card-header';
   card_header.id = header;
 
+
   var h5 = document.createElement('h5');
   h5.className = 'mb-0';
 
@@ -240,6 +241,8 @@ function add_to_collapse(name, head, carousel,text){
   component_sectionBody[name] = card_body;
   component_spanListUpdate(name);
   newText = component_loadSpanHTML(name,text,1);
+
+
   card_body.innerHTML = newText;
   card_body.setAttribute("section-name",name);
   
@@ -251,6 +254,12 @@ function add_to_collapse(name, head, carousel,text){
   	card_body.addEventListener("mouseup",function(){
                                       userDragSpan(this.getAttribute("section-name"))
                                     });
+
+	  var note = document.createElement("div");
+	  note.innerHTML = "*Drag a text segment to ask question about it!*";
+	  note.className = "card-body";
+	  note.style = "text-align: center; padding-bottom: 1vh; color: red; height: 2vh;";
+	  data.appendChild(note);
   }
 
   data.appendChild(card_body)
