@@ -128,7 +128,7 @@ function create_div_to_carousel(n, name, link){
   if (n==1){
     new_div.className = "game";
     var new_div_2 = document.createElement('div');
-    new_div_2.className = "shadow p-2 mb-1 bg-white rounded grid-item";
+    new_div_2.className = "shadow p-2 mb-1 bg-white grid-item components_item";
     new_div_2.id = 'carousel' + name.replace(/\s/g,'');
     new_div_2.addEventListener("click", function(){
       var components = pr_loadEditionComponentImage(currentTutorialName, 'Components');
@@ -158,7 +158,7 @@ function create_div_to_carousel(n, name, link){
     new_div_2.className = "game";
 
     var new_div_3 = document.createElement('div');
-    new_div_3.className = "shadow p-2 mb-1 bg-white rounded grid-item";
+    new_div_3.className = "shadow p-2 mb-1 bg-white components_item grid-item";
     new_div_3.id = 'carousel' + name.replace(/\s/g,'');
     new_div_3.addEventListener("click", function(){
       var components = pr_loadEditionComponentImage(currentTutorialName, 'Components');

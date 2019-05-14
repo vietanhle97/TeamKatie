@@ -36,7 +36,7 @@ h1{
   width: auto;
   margin-top: -22px;
   padding: 16px;
-  background-color: rgba(50,120,200,0.5);
+  background-color: rgba(50,120,200,0.6);
   font-weight: bold;
   font-size: 30px;
   transition: 0.6s ease;
@@ -71,7 +71,7 @@ h1{
   top: 40%;
   margin-top: -22px;
   position: relative;
-  background-color: #5CBBEE;
+  background-color: hsl(220,80%,70%);
   font-size: 110%;
   color: #05386B;
   padding: 20px;
@@ -87,7 +87,7 @@ h1{
   border-radius: 10px;
 }
 .active, .button:hover {
-  background-color: #80FFFF;
+  background-color: hsl(220,90%,80%);
 }
 
 

@@ -5,6 +5,7 @@ h1{
   font-size: 50px;
   margin-bottom: 50px;
 }
+
 .grid-container {
   margin-left: 5%; 
   display: grid;
@@ -127,7 +128,7 @@ h1{
   background: hsl(220,50%,50%);
   border-color: hsl(220,0%,0%);
   width: 10vw;
-  color: hsl(230,0%,0%);
+  color: hsl(230,100%,100%);
   margin-bottom: 10px;
   float:right;
 }
@@ -162,7 +163,13 @@ h1{
   background-color: hsla(220,30%,95%,1);
 }
 
+.components_item{
+  border-radius: 20px;
+}
 
+.components_item:hover{
+  cursor: pointer;
+}
 
 
 
