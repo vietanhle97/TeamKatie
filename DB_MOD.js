@@ -3,9 +3,16 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 /*helper function*/
-
-
-
+var firebaseConfig = {	
+     apiKey: "AIzaSyBcvCd-WRd3Rg_qvTOemaLcqv7ybNjjRzI",	
+    authDomain: "teamkatie-3d32d.firebaseapp.com",	
+    databaseURL: "https://teamkatie-3d32d.firebaseio.com",	
+    projectId: "teamkatie-3d32d",	
+    storageBucket: "teamkatie-3d32d.appspot.com",	
+    messagingSenderId: "378994974940",	
+    appId: "1:378994974940:web:6034581b53ec1046"	
+  };	
+firebase.initializeApp(firebaseConfig);	
 
 
 var db_database = firebase.database();
