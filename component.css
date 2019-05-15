@@ -22,7 +22,7 @@ h1{
   margin: : auto;
   padding: auto;
   background-repeat: no-repeat;
-  background-size: contain; 
+  background-size: cover; 
 }
 .caption {
   text-align: center;
