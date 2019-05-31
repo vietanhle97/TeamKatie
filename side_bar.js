@@ -3,19 +3,28 @@ var comment_button_var = document.getElementById("comment_button");
 var back_button_var = document.getElementById("back_button");
 var nav_bar_menu = document.getElementById("nav-bar-menu");
 var sidebar_open = false;
-
+var sidebar_lock = false;
 function openNav(sidebar, tab) {
-  sidebar_open = true;
-  if(document.getElementById("gap-column")){
-  document.getElementById("gap-column").display="block";
-  document.getElementById("gap-column").className = "col-2";
-  document.getElementById("col-9").className = "col-9";
-  }
-  var style = document.getElementById(sidebar).style;
-  style.width = "270px";
-  style.shadow = "10px 10px";
-  style.background= "hsla(220,50%,30%,0.9)";
   
+  console.log('try to open'); 
+  
+  if(sidebar_lock == false){
+	  console.log('opened'); 
+
+	  sidebar_open = true;
+	  if(document.getElementById("gap-column")){
+	  document.getElementById("gap-column").display="block";
+	  document.getElementById("gap-column").className = "col-2";
+	  document.getElementById("col-9").className = "col-9";
+	  }
+	  var style = document.getElementById(sidebar).style;
+	  style.width = "270px";
+	  style.shadow = "10px 10px";
+	  style.background= "hsla(220,50%,30%,0.9)";
+  }
+
+  __lock_button.style.display = "block";
+
   if(back_button_var){
   back_button_var.style.position = "fixed";
   back_button_var.style.left = "0px";
@@ -35,6 +44,7 @@ function openNav(sidebar, tab) {
   nav_bar_menu.style.position = "fixed";
   nav_bar_menu.style.top = "170px";
   }
+
   if (tab == 'menu_tab'){
     open_tab('menu_link');
     close_tab('myForm');
@@ -54,17 +64,27 @@ function openNav(sidebar, tab) {
 }
 
 function closeNav(sidebar) {
+
+  if(sidebar_lock == true) {
+  	__lock_button.style = "border: hsl(350,40%,50%) solid 2px;color: hsl(350,40%,50%);"
+  	setTimeout(function(){
+  		__lock_button.style = "border: hsl(350,40%,50%) solid 0px; color: black;"
+  	},500);
+  	return;
+  }
+
   if(document.getElementById("gap-column")){
   document.getElementById("gap-column").display="none";
   document.getElementById("col-9").className = "col-11";
   }
 
   if(sidebar_open && comment_button_var){
-    if(component_reloadSpan()){
       component_reloadSpan();
-    }
   }
   sidebar_open = false;
+
+  __lock_button.style.display = "none";
+
   if(menu_button_var){
   menu_button_var.style.position = 'relative';
   menu_button_var.style.left = '0px';
@@ -77,16 +97,41 @@ function closeNav(sidebar) {
   back_button_var.style.position = "relative";
   back_button_var.style.left = "0px";
   }
+
   var style = document.getElementById(sidebar).style;
   style.width = "5%";
   style.background="hsla(220,50%,30%,0.1)";
   style.opacity ="";
+
   close_tab('menu_link');
   close_tab('back_tab_tree');
   close_tab('myForm');
   
 }
 function open_tab(tab){
+  console.log(tab);
+  if(tab == 'myForm'){
+	  	if(document.getElementById("gap-column")){
+		  document.getElementById("gap-column").display= "block";
+		  document.getElementById("gap-column").className = "col-3";
+		  document.getElementById("col-9").className = "col-8";
+		}
+		console.log('style width 28');
+	  	var style = document.getElementById('mySidebar').style;
+		style.width = "28%";
+
+	  	var style = document.getElementById('nav-bar-menu').style;
+		style.width = "27%";
+  }
+  else{
+		if(document.getElementById("gap-column")){
+		  document.getElementById("gap-column").display= "block";
+		  document.getElementById("gap-column").className = "col-2";
+		  document.getElementById("col-9").className = "col-9";
+		}
+	  	var style = document.getElementById('mySidebar').style;
+		style.width = "270px";
+  }
   var open_tab = document.getElementById(tab);
   if(open_tab){
     open_tab.style.display = 'block';
@@ -160,3 +205,33 @@ function sideBar_drawTree(parentList){
   }
 }
 
+var __lock_button = document.createElement('button');
+__lock_button.onclick = function(){
+	if(sidebar_lock == true){
+		this.innerHTML = '<i class="fas fa-unlock fa-1x"></i>';
+	}
+	else{
+		this.innerHTML = '<i class="fas fa-lock fa-1x"></i>';
+	}
+	sidebar_lock = sidebar_lock ^ 1;
+}
+
+console.log(document.getElementById('mySidebar'));
+__lock_button.setAttribute('id','__lock_button');
+__lock_button.innerHTML = '<i class="fas fa-lock fa-1x"></i>';
+__lock_button.setAttribute('class',"btn btn-circle btn-sm hieu_lockbtn");
+document.getElementById('mySidebar').appendChild(__lock_button);
+
+function init(){
+	var path = window.location.pathname;
+	var page = path.split("/").pop();
+	console.log(page);
+	if(page == 'component.html')
+		openNav('mySidebar','comment_tab');
+	else
+		openNav('mySidebar','back_tab_tree');
+}
+
+init();
+
+sidebar_lock = true;
