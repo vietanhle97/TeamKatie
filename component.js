@@ -403,6 +403,7 @@ function component_display(){
   var components = pr_loadEditionComponentImage(currentTutorialName, 'Components')
   if(!components || !components.length) return;
     var currentGame = sessionStorage.getItem('game');
+    console.log(currentGame);
     sideBar_drawTree([["Main"],pr_loadGameCategoriesList(currentGame),[currentGame],[currentTutorialName]]);
 
   if(currentTutorialName == null)

@@ -2,7 +2,6 @@
 
 function display(){
   	var sitesList = JSON.parse(sessionStorage.getItem("sitesList"));
-  	console.log(sitesList);
   	var container = document.getElementById("search_result_container");
   	for(var i = 0; i < sitesList.length; i++){
   		var cur = document.createElement('DIV');
@@ -25,7 +24,6 @@ function display(){
   		header3.style = "height: 5vh;\
   						 width: 50%; text-align: right;";
 
-  		console.log(sitesList[i],header.style);
   		cur.appendChild(header);
   		cur.appendChild(header2);
   		var pageLink =  document.createElement('p');
@@ -36,8 +34,15 @@ function display(){
   				sessionStorage.setItem('category',this.getAttribute("link_name"));
 	  		else if(this.href == "Edition page.html")
 	  				sessionStorage.setItem('game',this.getAttribute("link_name"));
-	  		else if(this.href == "component.html")
+	  		else if(this.href == "component.html"){
+	  				for(var i = 0; i < Object.keys(pr_gamesDict).length; i++){
+	  					if(pr_loadGameEditionsList(Object.keys(pr_gamesDict)[i]).includes(this.getAttribute("link_name"))){
+			  				sessionStorage.setItem('game',Object.keys(pr_gamesDict)[i]);
+			  				break;
+	  					}
+	  				}
 	  				sessionStorage.setItem('edition',this.getAttribute("link_name"));
+	  		}
 	  		window.location = this.href;
   			console.log(this.href, this.getAttribute("link_name"));
   		}
