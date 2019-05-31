@@ -146,6 +146,10 @@ function close_tab(tab){
 
 function sideBar_drawTree(parentList){
   var tree = document.getElementById("back_tab_tree");
+  
+  var page = window.location.pathname.split("/").pop();
+  console.log(page);
+
   for(var i = 0; i < parentList.length; i++){
     var parentNode = parentList[i];
     if(i > 0){
@@ -177,8 +181,10 @@ function sideBar_drawTree(parentList){
       link.addEventListener('click',function(){
         var i = this.getAttribute('i');
         var j = this.getAttribute('parent');
-        if(i == "1")
-          sessionStorage.setItem('category',j);
+        if(i == "1"){
+          if(page != 'searchPage.html')
+            sessionStorage.setItem('category',j);
+        }
         else if (i == "2")
           sessionStorage.setItem('game', j);
         else if (i == "3")
@@ -186,7 +192,9 @@ function sideBar_drawTree(parentList){
         if(i == "0")
           this.href = "main.html";
         else if(i == "1"){
-          this.href = "category.html";
+          if(page != 'searchPage.html')
+            this.href = "category.html";
+          else this.href = 'searchPage.html';
         }
         else if(i == "2"){
           this.href = "Edition page.html";
