@@ -21,10 +21,10 @@ function se_lcs(s1,s2){
 		if(ok[pos1][pos2] == true) return save[pos1][pos2];
 		ok[pos1][pos2] = true;
 		if(s1[pos1] == s2[pos2]){
-			ans = max(lcs(pos1 + 1, pos2 + 1) + 1, ans);
+			ans = max(lcs(pos1 + 1, pos2 + 1) + 5, ans);
 		}
-		ans = max(lcs(pos1, pos2 + 1), ans);
-		ans = max(lcs(pos1 + 1, pos2), ans);
+		ans = max(lcs(pos1, pos2 + 1) - 1, ans);
+		ans = max(lcs(pos1 + 1, pos2) - 1, ans);
 		return save[pos1][pos2] = ans;
 	}
 	function max(v1, v2){
@@ -53,6 +53,9 @@ function se_autocomplete(inp, arr) {
       a.setAttribute("class", "autocomplete-items");
       this.parentNode.appendChild(a);
       var last = a;
+      arr.sort(function(s1,s2){
+		return se_lcs(val,s2) - se_lcs(val,s1);
+	  })
       for (i = 0; i < arr.length && suggestionCnt < 5; i++) {
         if(se_isMatch(val,arr[i])) {
 	      suggestionCnt++;
