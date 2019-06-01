@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="UTF-8">
+    <title>Katie</title>
+    <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-database.js"></script>
+    <script src="DB_MOD.js"></script>
+    <script src="PROCESS_MOD.js"></script>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" /> 
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+ 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="./register.css" rel="stylesheet" />
+    <link href="./searchEngine.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Laila" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  	</head>
+
+
+ 	<body>
+    <nav class="shadow p-3 mb-4 rounded navbar navbar-expand-sm fixed-top navbar-light" style = "background-color: hsl(220,50%,50%)">
+        <a class="navbar-brand" href="main.html">
+          <img style="width:60px; height:60px; border-radius: 30px;"src="https://i.imgur.com/XOhlvz6.png?1">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="input-group full mb-3">
+                <div style = "width: 90%;">
+                <input id = "search_box" type="text" class="form-control" placeholder="Search for board games..." aria-label="" aria-describedby="basic-addon1" >
+                </div>
+                <button id = "search_submit_button"class="btn btn-light border-right" type="button">
+                    <i class="fas fa-search" id="icon_search" style="font-size: 1.25em;"></i>
+                </button>
+            </div>
+
+
+          <div>
+          <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><i class="fas fa-edit link_icon" style="font-size: 1.75em;"></i></a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.boardgameprices.com/" target='_blank'><i class="fas fa-shopping-cart link_icon" style="font-size: 1.75em;"></i>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><i class="fas fa-user link_icon" style="font-size: 1.75em;"></i>
+                  </a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#"></a></li>
+            </ul>
+        </div>
+    </nav>
+
+      <!-- Lead -->
+      <section class="row-alt">
+        <div class="lead container" id="reg">
+
+          <h1>Register</h1>
+          <p>With KATIE, learning board game is easy!!!</p>
+
+        </div>
+      </section>
+
+      <!-- Main content -->
+
+      <section class="row">
+        <div class="grid">
+
+          <!-- Details -->
+
+          <section class="col-2-3">
+
+            <h2>KATIE</h2>
+            <h5>KATIE is a website for boardgame players. You can search for game, read tutorial and interact with other users</h5>
+
+            <p>Register your KATIE Membership using the form to the right. Membership will give you a pass to many exclusive content and functions.</p>
+
+            <h4>Why Membership?</h4>
+
+            <ul class="why-attend">
+              <li>Interact with other users</li>
+              <li>Give comments and recommendations</li>
+              <li>Access to exclusive content </li>
+              <li>Notification about new game</li>
+            </ul>
+
+          </section><!--
+
+          Registration form
+
+          --><form class="col-1-3" action="#" method="post">
+
+            <fieldset class="register-group">
+
+              <label>
+                ID
+                <input type="text" name="name" placeholder="Full name" required>
+              </label>
+
+              <label>
+                Password
+                <input type="password" name="password" placeholder="Password" required>
+              </label>
+
+              <label>
+                Confirm Password
+                <input type="password" name="password_con" placeholder="Confirm Password" required>
+              </label>
+              <label>
+                Year of Playing
+                <select name="quantity" required>
+                  <option value="1" selected>1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5+</option>
+                </select>
+              </label>
+
+   
+
+            </fieldset>
+
+            <input class="btn btn-default" type="submit" name="submit" value="Register">
+
+          </form>
+
+        </div>
+      </section>
+
+
+		<script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-database.js"></script>
+		<script src="./DB_MOD.js"></script>
+		<script src="./PROCESS_MOD.js"></script>
+	</body>
+</html>
