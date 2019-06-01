@@ -84,12 +84,46 @@ body {
   background: #cbe2c1;
   background: -webkit-linear-gradient(to right, #a1d3b0, #f6f1d3);
   background:    -moz-linear-gradient(to right, #a1d3b0, #f6f1d3);
-  background:         linear-gradient(to right, #a1d3b0, #f6f1d3);
-  padding: 44px 0 22px 0;
+  background:         linear-gradient(to right, #CAE4DB, #f9f8fd);
+  padding: 40px 0 10px 0;
 
 }
 #reg{
-  margin-top: 100px;
+  margin-top: 80px;
+}
+
+/*
+  ========================================
+  Buttons
+  ========================================
+*/
+
+.btn {
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  letter-spacing: .5px;
+  margin: 0;
+  text-transform: uppercase;
+}
+.btn-default {
+  border: 0;
+  background: #648880;
+  padding: 11px 30px;
+  font-size: 14px;
+}
+.btn-default:hover {
+  background: #77a198;
+}
+.btn-alt {
+  border: 1px solid #fff;
+  padding: 10px 30px;
+}
+.btn-alt:hover {
+  background: #fff;
+  color: #648880;
 }
 
 /*
@@ -99,10 +133,10 @@ body {
 */
 
 h1, h2, h3, h4 {
-  color: #648880;
+  color: #1dbab4;
 }
 h1, h3, h4, h5, p {
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 h1 {
   font-size: 36px;
@@ -118,11 +152,10 @@ h3 {
 h4 {
   font-size: 18px;
 }
-h5 {
-  color: #a9b2b9;
+p {
+  color: #595259;
   font-size: 14px;
   font-weight: 400;
-  text-transform: uppercase;
 }
 strong {
   font-weight: 400;
@@ -141,10 +174,7 @@ em {
 .lead {
   text-align: center;
 }
-.lead p {
-  font-size: 21px;
-  line-height: 33px;
-}
+
 
 
 /*
@@ -166,19 +196,22 @@ textarea {
   font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .register-group label {
-  color: #648880;
+  color: #1dbab4;
   cursor: pointer;
   font-weight: 400;
+  font-size: 110%;
 }
 .register-group input,
 .register-group select,
 .register-group textarea {
-  border: 1px solid #c6c9cc;
+  border: 1px solid #a9b2b9;
   border-radius: 5px;
   color: #888;
   display: block;
   margin: 5px 0 10px 0;
   padding: 5px 8px;
+  font-size:80%;
+  font-color:#c9d2d9;
 }
 .register-group input,
 .register-group textarea {
