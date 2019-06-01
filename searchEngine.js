@@ -5,27 +5,33 @@ var se_searchSubmitButton = document.getElementById("search_submit_button");
 function se_lcs(s1,s2){
 	s1 = s1.toLowerCase().replace( /\s/g, '');
 	s2 = s2.toLowerCase().replace( /\s/g, '');
+	s1 = s1 + s1;
+	s2 = s2;
 	var ok = new Array(s1.length);
 	for (var i = 0; i < ok.length; i++) {
 	  ok[i] = new Array(s2.length);
+	  for(var j = 0; j < s2.length; j++)
+	  	ok[i][j] = new Array(max(s1.length, s2.length));
 	}
 	var save = new Array(s1.length);
 	for (var i = 0; i < save.length; i++) {
 	  save[i] = new Array(s2.length);
+	  for(var j = 0; j < s2.length; j++)
+	  	save[i][j] = new Array(max(s1.length, s2.length));
 	}
 
-	function lcs(pos1,pos2){
+	function lcs(pos1,pos2,linearIncreasing){
 		if(pos1 >= s1.length) return 0;
 		if(pos2 >= s2.length) return 0;
 		var ans = 0;
-		if(ok[pos1][pos2] == true) return save[pos1][pos2];
-		ok[pos1][pos2] = true;
+		if(ok[pos1][pos2][linearIncreasing] == true) return save[pos1][pos2][linearIncreasing];
+		ok[pos1][pos2][linearIncreasing] = true;
 		if(s1[pos1] == s2[pos2]){
-			ans = max(lcs(pos1 + 1, pos2 + 1) + 5, ans);
+			ans = max(lcs(pos1 + 1, pos2 + 1,linearIncreasing + 1) + 5 + 2*linearIncreasing, ans);
 		}
-		ans = max(lcs(pos1, pos2 + 1) - 1, ans);
-		ans = max(lcs(pos1 + 1, pos2) - 1, ans);
-		return save[pos1][pos2] = ans;
+		ans = max(lcs(pos1, pos2 + 1,0) + 1, ans);
+		ans = max(lcs(pos1 + 1, pos2,0) + 1, ans);
+		return save[pos1][pos2][linearIncreasing] = ans;
 	}
 	function max(v1, v2){
 		return v1 > v2 ? v1: v2;
@@ -34,47 +40,54 @@ function se_lcs(s1,s2){
 }
 
 function se_isMatch(s1, s2){
-		function min(v1, v2){
+	function min(v1, v2){
 		return v1 < v2 ? v1: v2;
 	}
-	return se_lcs(s1,s2) >= min(s1.length*3/4, s2.length/2);
+	return se_lcs(s1,s2) >= min(s1.length,s2.length) * 5 + s2.length;
 }
 
 
 function se_autocomplete(inp, arr) {
   var currentFocus;
-  inp.addEventListener("input", function(e) {
-      var a, b, i, val = this.value, suggestionCnt = 0;
-      closeAllLists();
-      if (!val) { return false;}
-      currentFocus = -1;
-      a = document.createElement("DIV");
-      a.setAttribute("id", this.id + "autocomplete-list");
-      a.setAttribute("class", "autocomplete-items");
-      this.parentNode.appendChild(a);
-      var last = a;
-      arr.sort(function(s1,s2){
-		return se_lcs(val,s2) - se_lcs(val,s1);
-	  })
-      for (i = 0; i < arr.length && suggestionCnt < 5; i++) {
-        if(se_isMatch(val,arr[i])) {
-	      suggestionCnt++;
-          b = document.createElement("DIV");
-          b.style = "width: 100%;"
-          b.innerHTML += arr[i];
-          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-          b.addEventListener("click", function(e) {
-          	  e.stopPropagation();
-              console.log(this.getElementsByTagName("input")[0].value);
-              inp.value = this.getElementsByTagName("input")[0].value;
-              closeAllLists();
-          });
+  var searchTimer;
+  inp.addEventListener("input", function(e){
 
-          a.appendChild(b);
-          last = b;
-        }
-      }
-  });
+  	  clearTimeout(searchTimer);
+  	  var THIS = this;
+  	  console.log(searchTimer);
+  	  searchTimer = setTimeout(
+  	  	function() {
+	      var a, b, i, val = THIS.value, suggestionCnt = 0;
+	      closeAllLists();
+	      if (!val) { return false;}
+	      currentFocus = -1;
+	      a = document.createElement("DIV");
+	      a.setAttribute("id", THIS.id + "autocomplete-list");
+	      a.setAttribute("class", "autocomplete-items");
+	      THIS.parentNode.appendChild(a);
+	      var last = a;
+	      arr.sort(function(s1,s2){
+			return se_lcs(val,s2) - se_lcs(val,s1);
+		  })
+	      for (i = 0; i < arr.length && suggestionCnt < 5; i++) {
+	        if(se_isMatch(val,arr[i])) {
+		      suggestionCnt++;
+	          b = document.createElement("DIV");
+	          b.style = "width: 100%;"
+	          b.innerHTML += arr[i];
+	          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+	          b.addEventListener("click", function(e) {
+	          	  e.stopPropagation();
+	              console.log(THIS.getElementsByTagName("input")[0].value);
+	              inp.value = THIS.getElementsByTagName("input")[0].value;
+	              closeAllLists();
+	          });
+
+	          a.appendChild(b);
+	          last = b;
+	        }
+	      }}, 200);
+  	});
 
   inp.addEventListener("keydown", function(e) {
       var x = document.getElementById(this.id + "autocomplete-list");

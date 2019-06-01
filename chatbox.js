@@ -6,7 +6,8 @@ function chatbox_insertChat(editionName,username,leftOrRight,text,userImage){
 
 	var innerPlaceHolder = document.createElement('div')
 	 if (leftOrRight.toLowerCase() == "left"){
-        
+    	var confirmText = "You are trying to report this content. Make sure the comment is violating our policy because: \\n"+ 
+    						" - It is a spam\\n - It is a personal attack\\n - It contains illegal content\\n";        
         control = '<li style="width:100%">' +
                         '<div class="msj macro">' +
         				'<div class="avatar" style="padding:0px 10px 0px 0px !important"> <img style="height: 100%; width: 100%; object-fit: contain" src = "'+ userImage+ '"> </div>' +
@@ -15,6 +16,9 @@ function chatbox_insertChat(editionName,username,leftOrRight,text,userImage){
                                 '<p><small>'+username+'</small></p>' +
                             '</div>' +
                         '</div>' +
+                        `<img `+ `class = "btn-light" onclick = "confirm('`+ confirmText +`');"`+
+                  		`style="margin-top:10px; height: 15px; width: 15px; object-fit: contain"` + 
+                  		`src = "https://static.thenounproject.com/png/12093-200.png">` +
                     '</li>';                    
     }else{
         control = '<li style="width:100%;">' +
@@ -29,7 +33,7 @@ function chatbox_insertChat(editionName,username,leftOrRight,text,userImage){
                         `var par = this.parentNode; setTimeout(function(){par.style.display = 'none'},1500);` +` chatbox_deleteComment('`+ editionName + `','`
                          + chatbox_currentSpan["section"] + `','` + chatbox_currentSpan["start"] + `','`+ chatbox_currentSpan["end"] + `','` + username + `','` + text + `',`+  
                          `function(){component_spanListUpdate('`+ chatbox_currentSpan["section"] + `'); component_reloadSpan();}` + `)"` +
-                        `style="margin-top:10px; height: 15px; width: 15px; object-fit: contain" src = "https://cdn1.iconfinder.com/data/icons/business-office-and-internet-7/50/46-512.png"` +                              
+                        `style="margin-top:10px; height: 15px; width: 15px; object-fit: contain" src = "https://cdn1.iconfinder.com/data/icons/business-office-and-internet-7/50/46-512.png">` +                                                          
                   '</li>';
     }
 
