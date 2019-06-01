@@ -78,8 +78,8 @@ function se_autocomplete(inp, arr) {
 	          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
 	          b.addEventListener("click", function(e) {
 	          	  e.stopPropagation();
-	              console.log(THIS.getElementsByTagName("input")[0].value);
-	              inp.value = THIS.getElementsByTagName("input")[0].value;
+	              console.log(this.getElementsByTagName("input")[0].value);
+	              inp.value = this.getElementsByTagName("input")[0].value;
 	              closeAllLists();
 	          });
 
