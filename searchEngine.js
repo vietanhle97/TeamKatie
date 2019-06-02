@@ -64,6 +64,7 @@ function se_autocomplete(inp, arr) {
 	      a = document.createElement("DIV");
 	      a.setAttribute("id", THIS.id + "autocomplete-list");
 	      a.setAttribute("class", "autocomplete-items");
+	      a.style = "width: 90%;"
 	      THIS.parentNode.appendChild(a);
 	      var last = a;
 	      arr.sort(function(s1,s2){
