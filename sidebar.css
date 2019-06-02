@@ -12,7 +12,7 @@
 .navbar-brand{
   padding-top: 5px;
   padding-right: 20px;
-  font-family: "Helvetica Neue"
+  font-family: "Raleway"
   font-weight: bold;
   font-size: 24px;
 }
@@ -67,7 +67,7 @@
   display: block;
   transition: 0.0s;
   margin-left: 5%; 
-  font-family: "Helvetica Neue";
+  font-family: "Raleway";
 }
 .menu a:hover {
   background-color: grey;

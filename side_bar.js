@@ -173,7 +173,9 @@ function sideBar_drawTree(parentList){
       node.style.backgroundColor = "hsla(220," + (50+i*10) + "%,"+  (60+i*10) + "%,1)";
       node.style.color = "hsla(220,0%,0%,1)";
       node.style.width = (250/parentNode.length) + "px";
-      node.style.height = "40px";
+      node.style.height = "35px";
+      node.style.fontFamily = "Raleway";
+      node.style.color = "#1d1145"
       var link = document.createElement('a');
       link.setAttribute('i',i);
       link.setAttribute('parent',parentNode[j]);
