@@ -42,7 +42,7 @@ body {
   color: white;
 }
 #banner{
-	background-color: #F5F5F5;*/
+	background-color: #CAE4DB ;*/
 	background-color: transparent;
 	padding: 4vh 5vw 2vh 5vw;
 	width: 100%;
@@ -70,9 +70,9 @@ body {
 }
 
 #webname{
-	font-family: "Lora", serif;
+	font-family: "Bad Script", serif;
 	color:#F2BEA0;
-	font-size: 80px;
+	font-size: 70px;
 	text-align: center;
 	padding-bottom: 35px;
 	font-style: normal; 
@@ -84,18 +84,18 @@ body {
 
 #slogan{
 	width: 100%;
-	font-family: "Lora", serif;
+	font-family: "Raleway", serif;
 	color:#F2BEA0;
 	font-size: 35px;
 	text-align: center;
 	padding: 20px;
-	font-weight: 700; 
+	font-weight: 500; 
 	line-height: 26.4px;
 }
 
 .caption {
 	width: 128px;
-	font-family: "Helvetica Neue";
+	font-family: "Raleway", serif;
     display: block;
     text-align: center;
     padding: 3px;

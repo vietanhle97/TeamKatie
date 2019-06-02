@@ -13,6 +13,7 @@
  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="./main.css" rel="stylesheet" />
+    <link href="./searchEngine.css" rel="stylesheet" />
     <link href="./scrollbar.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Laila" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -34,16 +35,14 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="input-group full mb-3">
-                <div class="input-group-prepend">
-                  <button class='btn btn-light border-right' type="button">
-                      <i class="fas fa-search" id="icon_search" style="font-size: 1.25em;"></i>
-                  </button>
+                <div style = "width: 90%;">
+                <input id = "search_box" type="text" class="form-control" placeholder="Search for board games..." aria-label="" aria-describedby="basic-addon1" >
                 </div>
-                <input type="text" class="form-control border-left" placeholder="Search for board games..." aria-label="" aria-describedby="basic-addon1">
+                <button id = "search_submit_button"class="btn btn-light border-right" type="button">
+                    <i class="fas fa-search" id="icon_search" style="font-size: 1.25em;"></i>
+                </button>
             </div>
-          </div>
 
         <div>
           <ul class="navbar-nav mr-auto">
@@ -105,5 +104,6 @@
     </div>
   </div>
   <script src="./main.js"></script>
+  <script src="./searchEngine.js"></script>
   </body>
 </html>

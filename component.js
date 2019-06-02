@@ -23,7 +23,7 @@ function component_loadSpanHTML(name,text,allowDelete){
     	continue;
     }
     newText =  newText + text.substring(lastTime,ll) + `<span class = "commentSpan" onclick = \"`
-    + `openNav('mySidebar', 'comment_tab'); ` + `component_loadCommentSpanComments(\'` + name + `\',` + i +`)\">` +
+    + `openNav('mySidebar', 'comment_tab'); if(sidebar_lock == false) __lock_button.click(); ` + `component_loadCommentSpanComments(\'` + name + `\',` + i +`)\">` +
             text.substring(ll,rr+1) + 
             '</span>';
     lastTime = rr+1;
@@ -105,10 +105,14 @@ function userDragSpan(name){
   if(startPos >= endPos) {
     closeNav("mySidebar");
     component_loadEditionComments(currentTutorialName);
+    setTimeout(component_reloadSpan,50);
     return;
   }
 
   var start_end = getSelectionCharacterOffsetWithin(component_sectionBody[name]);
+  if(parseInt(start_end["end"]) - parseInt(start_end["start"]) != endPos - startPos){
+    return;
+  }
   chatbox_currentSpan.section = name;
   chatbox_currentSpan.start = start_end["start"];
   chatbox_currentSpan.end = start_end["end"];
@@ -258,7 +262,7 @@ function add_to_collapse(name, head, carousel,text){
                                     });
 
 	  var note = document.createElement("div");
-	  note.innerHTML = "*Drag a text segment to ask question about it!*";
+	  note.innerHTML = "*Hightlight a text segment to ask question about it!*";
 	  note.className = "card-body";
 	  note.style = "text-align: center; padding-bottom: 1vh; color: red; height: 2vh;";
 	  data.appendChild(note);
@@ -342,8 +346,35 @@ function find_text(components, str){
 }
 
 var cnt = 0;
+function add_to_span(instruction, text){
+  var split = text.split(' ');
+
+  var instruct = document.getElementById(instruction); 
+  for(i=0;i<split.length;i++){
+    if(span_list.includes(split[i])){
+
+      var span = document.createElement('span');
+      span.innerHTML = split[i];
+      span.className = "popup_span";
+      console.log(split[i],"in",text);
+      span.addEventListener('click', function(){
+        console.log("aaaa");
+
+        var img = this.innerHTML;
+        console.log(img);
+        var name = '#carousel' + onlyLetter(img.toLowerCase());
+        console.log(name);
+        $(name).trigger( "click" );
+      })
+      instruct.appendChild(span);
+      instruct.appendChild(document.createTextNode(' ')) // instruct.innerHTML += ' ';
+    }
+    else{
+      instruct.appendChild(document.createTextNode(split[i]+ ' '));
+    }
+  }
+}
 function component_reloadSpan(){
-	cnt++;
   	for(var i = 0; i < lis.length; i++){
   	 if(lis[i].toLowerCase() != "components"){
 	     component_sectionBody[lis[i]].innerHTML = component_loadSpanHTML(lis[i],pr_loadEditionSectionText(currentTutorialName ,lis[i]),1);
@@ -373,6 +404,7 @@ function component_display(){
   var components = pr_loadEditionComponentImage(currentTutorialName, 'Components')
   if(!components || !components.length) return;
     var currentGame = sessionStorage.getItem('game');
+    console.log(currentGame);
     sideBar_drawTree([["Main"],pr_loadGameCategoriesList(currentGame),[currentGame],[currentTutorialName]]);
 
   if(currentTutorialName == null)

@@ -1,0 +1,7 @@
+.result_element:hover{
+	cursor: pointer;
+}
+.result_element:hover .result_header{
+	color: hsl(210,100%,60%) !important;
+}
+
