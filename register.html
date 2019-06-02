@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="./register.css" rel="stylesheet" />
+    <link href="./sidebar.css" rel="stylesheet" />
     <link href="./searchEngine.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Laila" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -23,111 +24,138 @@
 
 
  	<body>
-    <nav class="shadow p-3 mb-4 rounded navbar navbar-expand-sm fixed-top navbar-light" style = "background-color: hsl(220,50%,50%)">
-        <a class="navbar-brand" href="main.html">
-          <img style="width:60px; height:60px; border-radius: 30px;"src="https://i.imgur.com/XOhlvz6.png?1">
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+    <div id='screen'>
+      <nav class="shadow p-3 mb-1 rounded navbar navbar-expand-sm fixed-top navbar-light" style = "background-color: hsl(220,50%,50%)">
+          <a class="navbar-brand" href="main.html">
+            <img style="width:60px; height:60px; border-radius: 30px;"src="https://i.imgur.com/XOhlvz6.png?1">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
 
-          <div class="input-group full mb-3">
-                <div style = "width: 90%;">
-                <input id = "search_box" type="text" class="form-control" placeholder="Search for board games..." aria-label="" aria-describedby="basic-addon1" >
-                </div>
-                <button id = "search_submit_button"class="btn btn-light border-right" type="button">
-                    <i class="fas fa-search" id="icon_search" style="font-size: 1.25em;"></i>
-                </button>
-            </div>
+            <div class="input-group full mb-3">
+                  <div style = "width: 90%;">
+                  <input id = "search_box" type="text" class="form-control" placeholder="Search for board games..." aria-label="" aria-describedby="basic-addon1" >
+                  </div>
+                  <button id = "search_submit_button"class="btn btn-light border-right" type="button">
+                      <i class="fas fa-search" id="icon_search" style="font-size: 1.25em;"></i>
+                  </button>
+              </div>
 
 
-          <div>
-          <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="fas fa-edit link_icon" style="font-size: 1.75em;"></i></a>
-                </li>
+            <div>
+            <ul class="navbar-nav mr-auto" id="nav_item">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-edit link_icon" style="font-size: 1.75em;"></i></a>
+                  </li>
 
-                <li class="nav-item">
-                  <a class="nav-link" href="https://www.boardgameprices.com/" target='_blank'><i class="fas fa-shopping-cart link_icon" style="font-size: 1.75em;"></i>
-                  </a>
-                </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="https://www.boardgameprices.com/" target='_blank'><i class="fas fa-shopping-cart link_icon" style="font-size: 1.75em;"></i>
+                    </a>
+                  </li>
 
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="fas fa-user link_icon" style="font-size: 1.75em;"></i>
-                  </a>
-                </li>
-            </ul>
+                  <li class="nav-item" id = 'login_icon'>
+                    <a class="nav-link" href="#">
+                      <i id = 'check_login' class="fas fa-user link_icon" style="font-size: 1.75em;" onclick="document.getElementById('id01').style.display='block'" style="width:auto;" click = 'false'></i>
+                    </a>
+                  </li>
+              </ul>
+          </div>
+      </nav>
+
+        <!-- Lead -->
+        <section class="row-alt">
+          <div class="lead container" id="reg">
+
+            <h1>Register</h1>
+
+          </div>
+        </section>
+
+        <!-- Main content -->
+
+        <section class="row">
+          <div class="grid">
+
+            <!-- Details -->
+
+            <section class="col-2-3">
+
+              <h2>Who are we?</h2>
+              <p>KATIE is a website for boardgame players. You can search for game, read tutorial and interact with other users</p>
+
+              <h3>Why Membership?</h3>
+              <p>Register your KATIE Membership using the form to the right. Membership will give you a pass to many exclusive content and functions.</p>
+              <ul class="why-attend">
+                <li><p>Interact with other users</p></li>
+                <li><p>Give comments and recommendations</p></li>
+                <li><p>Access to exclusive content </p></li>
+                <li><p>Notification about new game</p></li>
+              </ul>
+
+            </section><!--
+
+            Registration form
+
+            --><form class="col-1-3" action="#" method="post">
+
+              <fieldset class="register-group">
+                <label>
+                  * ID
+                  <input id="username" type="text" name="uname" placeholder="ID" required autofocus>
+                </label>
+                <label>
+                  * Year of Playing
+                  <select id='year_playing' name="quantity" required>
+                    <option value= 'none'></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5+</option>
+                  </select>
+                </label>
+                <label>
+                  * Password
+                  <input id="password" type="password" name="psw" placeholder="Password" required>
+                </label>
+
+                <label>
+                  * Confirm Password
+                  <input id="confirm_password" type="password" name="password_con" placeholder="Confirm Password" required>
+                </label>
+              </fieldset>
+              <input id = 'register_button' class="btn btn-default" type="button" onclick = 'register()' name="submit" value="Register">
+
+            </form>
+
+          </div>
+        </section>
+    </div>
+    <div id="id01" class="modal"> 
+      <form class="modal-content animate">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <img id = 'avatar' src="https://66.media.tumblr.com/7344adf8e9f50da39749ee5a276036a3/tumblr_plhy9hyJKE1wzh093o1_1280.jpg" alt="Avatar" class="avatar">
         </div>
-    </nav>
 
-      <!-- Lead -->
-      <section class="row-alt">
-        <div class="lead container" id="reg">
+        <div id="field_container">
+          <label for="uname"><b>Username</b></label>
+          <input id = 'username' type="text" placeholder="Enter Username" name="uname" required autofocus>
 
-          <h1>Register</h1>
-
+          <label for="psw"><b>Password</b></label>
+          <input id = 'password' type="password" placeholder="Enter Password" name="psw" required>
+            
+          <button id = 'loginbutton' type="button" onclick = 'login()'>Login</button>
         </div>
-      </section>
 
-      <!-- Main content -->
-
-      <section class="row">
-        <div class="grid">
-
-          <!-- Details -->
-
-          <section class="col-2-3">
-
-            <h2>Who are we?</h2>
-            <p>KATIE is a website for boardgame players. You can search for game, read tutorial and interact with other users</p>
-
-            <h3>Why Membership?</h3>
-            <p>Register your KATIE Membership using the form to the right. Membership will give you a pass to many exclusive content and functions.</p>
-            <ul class="why-attend">
-              <li><p>Interact with other users</p></li>
-              <li><p>Give comments and recommendations</p></li>
-              <li><p>Access to exclusive content </p></li>
-              <li><p>Notification about new game</p></li>
-            </ul>
-
-          </section><!--
-
-          Registration form
-
-          --><form class="col-1-3" action="#" method="post">
-
-            <fieldset class="register-group">
-              <label>
-                * ID
-                <input id="username" type="text" name="uname" placeholder="ID" required autofocus>
-              </label>
-              <label>
-                * Year of Playing
-                <select id='year_playing' name="quantity" required>
-                  <option value= 'none'></option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5+</option>
-                </select>
-              </label>
-              <label>
-                * Password
-                <input id="password" type="password" name="psw" placeholder="Password" required>
-              </label>
-
-              <label>
-                * Confirm Password
-                <input id="confirm_password" type="password" name="password_con" placeholder="Confirm Password" required>
-              </label>
-            </fieldset>
-            <input id = 'register_button' class="btn btn-default" type="button" onclick = 'register()' name="submit" value="Register">
-
-          </form>
-
+        <div id ="button_container" style="background-color:#f1f1f1">
+          <button id = 'cancelbutton' type="button" onclick='cancel_login()' class="cancelbtn">Cancel</button>
+          <span id="register"><a href="register.html">Sign Up</a></span>
         </div>
-      </section>
+      </form>
+    </div>
+  <script src='./login.js'></script>
   <script src="./register.js"></script>
   <script src="./searchEngine.js"></script>
 	</body>

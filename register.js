@@ -1,3 +1,4 @@
+var login_check = false;
 function register(){
 	var all_users = pr_loadUsersList();
 	console.log(all_users);
