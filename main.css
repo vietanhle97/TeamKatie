@@ -4,7 +4,7 @@
     background-repeat: no-repeat;
 }*/
 body { 
-	background-image: url("https://images.pexels.com/photos/875858/pexels-photo-875858.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+	background-image: url("https://png.pngtree.com/thumb_back/fw800/back_pic/03/79/52/6457c2b288a9f53.jpg");
 	object-fit: contain;
 	position:absolute; 
 	top:0; 
@@ -12,7 +12,6 @@ body {
 	right:0; 
 	left:0; 
 }
-
 .fa-search{
   -moz-transform: scaleX(-1);
   -o-transform: scaleX(-1);
@@ -41,7 +40,7 @@ body {
   color: white;
 }
 #banner{
-	background-color: #CAE4DB ;*/
+	background-image: url("http://www.photos-public-domain.com/wp-content/uploads/2012/08/baby-blue-micro-fiber-cloth-fabric-texture.jpg");*/
 	background-color: transparent;
 	padding: 4vh 5vw 2vh 5vw;
 	width: 100%;
@@ -99,6 +98,7 @@ body {
     text-align: center;
     padding: 3px;
     font-weight: bold;
+    color:hsl(230,50%,50%);
 }
 .btn-light{
 	background-color: #C4C4C4;
