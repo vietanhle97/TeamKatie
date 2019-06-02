@@ -65,11 +65,14 @@ function db_loadUsersHelper(snapshot,a_dict){
 		a_dict[key] = value;
 	})
 }
-function db_loadUsers(a_dict){
+function db_loadUsers(a_dict, callback = function(){}){
 	db_database_users.once('value').then(function(snapshot){
-		db_loadUsersHelper(snapshot,a_dict)});
+		db_loadUsersHelper(snapshot,a_dict)}).then(function() {callback()});
 }
-
+function db_addNewUser(username, password, callback){
+	db_database.ref('/users/' + username + "/").set(password).then(function() 
+		{callback()});
+}
 /* load editions from database */
 
 function db_loadEditionsHelper(snapshot,a_dict){
@@ -85,7 +88,7 @@ function db_loadEditions(a_dict,callback = function(){}){
 }
 
 function db_addEditionComment(name,comment,pos,callback){
-	db_database.ref('/editions/'+ name +'/comments-list/'+pos).set(comment).then(function(){
+	db_database.ref('/editions/'+ name +'/comments-list/'+ pos).set(comment).then(function(){
 		callback()});
 }
 
@@ -101,3 +104,6 @@ function db_clearEditionComments(name){
 function db_clearCommentSpanComments(name,section,start,end){
 	db_database.ref('/editions/' + name +"/" + section + "/comment-spans-list/" + start + "-" + end).set(null);
 }
+
+
+

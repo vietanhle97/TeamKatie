@@ -60,7 +60,22 @@ function pr_loadGameEditionsList(name){
 function pr_loadUsers(name){
 	db_loadUsers(name)
 }
-
+function pr_loadUsersList(){
+	return Object.keys(pr_usersDict)
+}
+function pr_loadUserInfo(name){
+	return pr_usersDict[name]
+}
+function pr_addNewUser(username, password, year_playing, callback){
+	if (year_playing != '1'){
+		var experience = year_playing + ' Years';
+	}
+	else{
+		var experience = year_playing + ' Year';
+	}
+	db_addNewUser(username, {"password": password, 'Experience': experience}, callback);
+	pr_usersDict[username] = { "password": password};
+}
 /*editions*/
 function pr_loadEditions(name,callback){
 	db_loadEditions(name,callback)

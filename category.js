@@ -1,3 +1,4 @@
+var login_check = true;
 function create_div_to_carousel(n, name, link){
   var new_div = document.createElement('div');
   if (n==1){

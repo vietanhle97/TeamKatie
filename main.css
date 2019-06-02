@@ -24,16 +24,15 @@ body {
 .navbar{
   height: 70px;
 }
+#navbar_item{
+	width: 20vw;
+}
 .navbar-brand{
   padding-top: 5px;
   padding-right: 20px;
   font-family: "Helvetica Neue"
   font-weight: bold;
   font-size: 24px;
-}
-.nav-item{
-  padding-right: 15px;
-  padding-left: 15px;
 }
 .full{
   padding-top: 15px;
@@ -65,8 +64,8 @@ body {
 	margin-left: 32%;
 }
 .nav-item{
-	padding-right: 15px;
-	padding-left: 15px;
+	padding-right: 1vw;
+	padding-left: 1vw;
 }
 
 #webname{
@@ -95,7 +94,7 @@ body {
 
 .caption {
 	width: 128px;
-	font-family: "Raleway", serif;
+	font-family: "Helvetica";
     display: block;
     text-align: center;
     padding: 3px;
@@ -118,11 +117,166 @@ body {
 
 
 
+/* Extra styles for the cancel button */
+.cancelbtn {
+	border-radius: 5px;
+  	width: auto;
+ 	padding: 10px 18px;
+  	background-color: #f44336;
+}
 
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
 
+.container {
+  padding: 16px;
+}
 
+span.register {
+  float: right;
+  padding-top: 16px;
+}
 
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
 
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
 
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
 
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.register {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+#username[type=text], #password[type=password] {
+	border-radius: 5px;
+  	width: 100%;
+  	padding: 12px 20px;
+  	margin: 8px 0;
+  	display: inline-block;
+  	border: 1px solid #ccc;
+  	box-sizing: border-box;
+}
+
+#loginbutton {
+  	background-color: #4CAF50;
+  	color: white;
+  	padding: 14px 20px;
+  	margin: 8px 0;
+  	border: none;
+  	border-radius: 5px;
+  	cursor: pointer;
+  	width: 100%;
+}
+
+#loginbutton:hover {
+  opacity: 0.8;
+}
+
+#avatar {
+  width: 40%;
+  border-radius: 50%;
+  margin-left: 2vw;
+}
+#avatar:hover {
+	cursor: pointer;
+}
+#card_avatar {
+	padding-top: 1vh;
+	width: 100%; 
+	border-radius: 50%;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+#profile_card {
+	display: none;
+	position: absolute;
+	top: 8vh;
+	right: 8vw;
+	background-color: #f5f5f5;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+h5{	
+	text-align: left;
+	margin: 2vh 2vw 2vh 2vw;
+	font-family: "Helvetica Neue";
+}
+#logout_button{
+	margin-left: 1vw;
+	margin-bottom: 2vh;
+}
+#switch_button{
+	margin-right:0vw;
+	margin-bottom: 2vh;
+}
 

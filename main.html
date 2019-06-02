@@ -26,9 +26,9 @@
   <body>
     <div id="screen">
       <nav class="shadow p-3 mb-1 rounded navbar navbar-expand-sm navbar-light" style="background-color: hsl(220,50%,50%)">
-        <a class="navbar-brand" href="main.html">
+        <a id = 'logo' class="navbar-brand">
             <div>
-              <img style="width:60px; height:60px; border-radius: 30px;"src="https://i.imgur.com/XOhlvz6.png?1">
+              <img id ='katie_logo' style="width:60px; height:60px; border-radius: 30px;"src="https://i.imgur.com/XOhlvz6.png?1" onclick='main_page()'>
             </div>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,7 +45,7 @@
             </div>
 
         <div>
-          <ul class="navbar-nav mr-auto">
+          <ul id='navbar_item' class="navbar-nav mr-auto">
             <li class="nav-item">
               <a class="nav-link" href="#"><i class="fas fa-edit link_icon" style="font-size: 1.75em;"></i>
               </a>
@@ -56,12 +56,11 @@
               </a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fas fa-user link_icon" style="font-size: 1.75em;"></i>
+            <li class="nav-item" id = 'login_icon'>
+              <a class="nav-link" href="#">
+                <i id = 'check_login' class="fas fa-user link_icon" style="font-size: 1.75em;" onclick="document.getElementById('id01').style.display='block'" style="width:auto;" click = 'false'></i>
               </a>
             </li>
-
-            <li class="nav-item"><a class="nav-link" href="#"></a></li>
           </ul>
         </div>
       </nav>
@@ -74,36 +73,39 @@
 
       <h1 id="webname"><span id="welcome">KATIE</span></h1>
       <h2 id="slogan"><span id="slogan">Please find your games by selecting category icons</span></h2>
-
-      <!-- <form>
-        <div class="input-group half mb-3">
-          <div class="input-group-prepend">
-            <button class="btn btn-light border-right" type="button">
-              <i class="fas fa-search" id="icon_search" style="font-size: 1.25em;"></i>
-            </button>
-          </div>
-          <input type="text" class="form-control" placeholder="Search for board games..." aria-label="" aria-describedby="basic-addon1">
-        </div>
-      </form>
-
-      <h3 id="slogan">or</h3>
-
-      <form>
-        <div class="input-group quarter mb-3">
-          <div class="input-group-prepend">
-            <button class="btn btn-light border-right" type="button">
-              <i class="fas fa-edit" style="font-size: 1.25em;"></i>
-            </button>
-          </div>
-          <input type="text" class="form-control" placeholder="Create a new tutorial" aria-label="" aria-describedby="basic-addon1">
-        </div>
-      </form> -->
-
     </div>
     <div id="banner" class="bg-grey" style="overflow-x: scroll;">
     </div>
   </div>
+  <div id="id01" class="modal"> 
+    <form class="modal-content animate">
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <img id = 'avatar' src="https://66.media.tumblr.com/7344adf8e9f50da39749ee5a276036a3/tumblr_plhy9hyJKE1wzh093o1_1280.jpg" alt="Avatar" class="avatar">
+      </div>
+
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input id = 'username' type="text" placeholder="Enter Username" name="uname" required autofocus>
+
+        <label for="psw"><b>Password</b></label>
+        <input id = 'password' type="password" placeholder="Enter Password" name="psw" required>
+          
+        <button id = 'loginbutton' type="button" onclick = 'login()'>Login</button>
+      </div>
+
+      <div class="container" style="background-color:#f1f1f1">
+        <button id = 'cancelbutton' type="button" onclick='cancel_login()' class="cancelbtn">Cancel</button>
+        <span class="register"><a href="register.html">Sign Up</a></span>
+      </div>
+    </form>
+  </div>
+  <div class="dropdown-content">
+    <div id='profile_card' class="card">
+    </div>
+  </div>
   <script src="./main.js"></script>
+  <script src="./login.js"></script>
   <script src="./searchEngine.js"></script>
   </body>
 </html>

@@ -1,9 +1,10 @@
 var currentTutorialName = sessionStorage.getItem('edition');
-var currentUsername = "user1";
+var currentUsername = sessionStorage.getItem('username');
 var currentUserImage = "https://i.stack.imgur.com/ahCDf.png?s=328&g=1";
 var component_spanListDict = {};
 var component_sectionContent = {};
 var component_sectionBody = {};
+var login_check = true;
 var lis = ['Briefing', 'Background', 'Objective', 'Components', 'Rules', 'Setup', 'Tips'];
 document.getElementById('content').innerHTML = currentTutorialName;
 chatbox_username = currentUsername;

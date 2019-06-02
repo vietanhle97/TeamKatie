@@ -1,7 +1,7 @@
-var slideIndex
+var slideIndex;
 
 var game_name = sessionStorage.getItem('game');
-
+var login_check = true;
 document.getElementById("game").innerHTML = game_name.toUpperCase();
 function openNav() {
   document.getElementById("mySidebar").style.width = "300px";

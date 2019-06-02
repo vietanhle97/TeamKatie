@@ -10,7 +10,6 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" /> 
     <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
- 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="./register.css" rel="stylesheet" />
     <link href="./searchEngine.css" rel="stylesheet" />
@@ -57,7 +56,6 @@
                   <a class="nav-link" href="#"><i class="fas fa-user link_icon" style="font-size: 1.75em;"></i>
                   </a>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#"></a></li>
             </ul>
         </div>
     </nav>
@@ -99,47 +97,38 @@
           --><form class="col-1-3" action="#" method="post">
 
             <fieldset class="register-group">
-
               <label>
-                ID
-                <input type="text" name="name" placeholder="ID" required>
-              </label>
-
-              <label>
-                Password
-                <input type="password" name="password" placeholder="Password" required>
-              </label>
-
-              <label>
-                Confirm Password
-                <input type="password" name="password_con" placeholder="Confirm Password" required>
+                * ID
+                <input id="username" type="text" name="uname" placeholder="ID" required autofocus>
               </label>
               <label>
-                Year of Playing
-                <select name="quantity" required>
-                  <option value="1" selected>1</option>
+                * Year of Playing
+                <select id='year_playing' name="quantity" required>
+                  <option value= 'none'></option>
+                  <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
                   <option value="4">4</option>
                   <option value="5">5+</option>
                 </select>
               </label>
+              <label>
+                * Password
+                <input id="password" type="password" name="psw" placeholder="Password" required>
+              </label>
 
-   
-
+              <label>
+                * Confirm Password
+                <input id="confirm_password" type="password" name="password_con" placeholder="Confirm Password" required>
+              </label>
             </fieldset>
-
-            <input class="btn btn-default" type="submit" name="submit" value="Register">
+            <input id = 'register_button' class="btn btn-default" type="button" onclick = 'register()' name="submit" value="Register">
 
           </form>
 
         </div>
       </section>
-
-
-		<script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-database.js"></script>
-		<script src="./DB_MOD.js"></script>
-		<script src="./PROCESS_MOD.js"></script>
+  <script src="./register.js"></script>
+  <script src="./searchEngine.js"></script>
 	</body>
 </html>

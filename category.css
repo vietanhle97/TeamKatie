@@ -5,6 +5,13 @@ h1{
   font-size: 50px;
   margin-bottom: 50px;
 }
+.btn-light{
+  background-color: #C4C4C4;
+}
+.btn-light:hover{
+  background-color: hsla(60,80%,30%,0.7);
+    color: white;
+}
 .grid-container {
   margin-left: 13%; 
   display: grid;
