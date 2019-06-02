@@ -21,7 +21,6 @@
 
 
  	<body>
-<<<<<<< HEAD
  		<div id='screen'>
 		    <nav class="shadow p-3 mb-4 rounded navbar navbar-expand-sm fixed-top navbar-light" style = "background-color: hsl(220,50%,50%)">
 		    	<a class="navbar-brand" href="main.html">
@@ -113,132 +112,10 @@
 								        </div>    
 					    			</div>
 								</div>
-=======
-	    <nav class="shadow p-3 mb-4 rounded navbar navbar-expand-sm fixed-top navbar-light" style = "background-color: hsl(220,50%,50%)">
-	    	<a class="navbar-brand" href="main.html">
-	    		<img style="width:60px; height:60px; border-radius: 30px;"src="https://i.imgur.com/XOhlvz6.png?1">
-	      	</a>
-	      	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	        	<span class="navbar-toggler-icon"></span>
-	      	</button>
-
-        	 <div class="input-group full mb-3">
-                <div style = "width: 90%;">
-                <input id = "search_box" type="text" class="form-control" placeholder="Search for board games..." aria-label="" aria-describedby="basic-addon1" >
-                </div>
-                <button id = "search_submit_button"class="btn btn-light border-right" type="button">
-                    <i class="fas fa-search" id="icon_search" style="font-size: 1.25em;"></i>
-                </button>
-            </div>
-
-
-	      	<div>
-	     		<ul class="navbar-nav mr-auto">
-	          		<li class="nav-item">
-	            		<a class="nav-link" href="#"><i class="fas fa-edit link_icon" style="font-size: 1.75em;"></i></a>
-	          		</li>
-
-	          		<li class="nav-item">
-	            		<a class="nav-link" href="https://www.boardgameprices.com/" target='_blank'><i class="fas fa-shopping-cart link_icon" style="font-size: 1.75em;"></i>
-	            		</a>
-	          		</li>
-
-	          		<li class="nav-item">
-	            		<a class="nav-link" href="#"><i class="fas fa-user link_icon" style="font-size: 1.75em;"></i>
-	            		</a>
-	          		</li>
-	          		<li class="nav-item"><a class="nav-link" href="#"></a></li>
-	        	</ul>
-	    	</div>
-		</nav>
-
-
-	  	<div class="row">
-			<div class="col">
-		    	<div id="mySidebar" class="sidebar" onmouseleave="closeNav('mySidebar')" >
-		    		<div class="back" id="back_tab">
-		    			<button type="button" onmouseenter="openNav('mySidebar','back_tab')" id="back_button" class="btn btn-circle btn-lg">
-		        			<i class="fas fa-arrow-left fa-2x"></i>
-		        		</button>
-		    		</div>
-		    		<div id="menu_tab">
-		      			<button id="menu_button" onmouseenter="openNav('mySidebar','menu_tab')" type="button" class="btn btn-circle btn-lg" >
-		      				<i class="fas fa-bars fa-2x"></i>
-		      			</button> 
-		        	</div>
-		        	<div class="comment" id="comment_tab">
-		        		<button type="button" id="comment_button" class="btn btn-circle btn-lg" onmouseenter="openNav('mySidebar', 'comment_tab')">
-		        			<i class="fas fa-comment fa-2x"></i>
-		        		</button>
-		        	</div>
-		        	
-		        	<div class = "menu" id = "nav-bar-menu" >
-		        		<div id = "back_tab_tree">
-		        			
-		        		</div>
-
-			        	<div id='menu_link'>
-		      				<a class="sidebar_link" href="#"><i class="fas fa-edit fa-fw" style="font-size: 1em;"></i> Create Tutorial</a>
-		        			<a class="sidebar_link" href="#"><i class="fas fa-book-reader fa-fw" style="font-size: 1em;"></i> Read Tutorial</a>
-		        		</div>
-
-		        		<div class="chat-popup" id="myForm" >
-							<div class="comment_title">
-						    	<label for="msg" ><b id = "comment-title-content">Comment</b></label>
-						    </div>
-						    <div class="input-group">
-				    			<div id = "myForm-chatField">
-					    			<div class="frame">
-							            <ul id = "myForm-chatField-chatList"></ul>
-							            <div >
-							                <div class="msj-rta macro" style="margin:auto">                        
-							                    <div class="text text-r" style="width:100%; background:whitesmoke !important">
-							                    	<div>
-							                        <input id = "myForm-chatField-submitBox" class="mytext" style="width: 80%;" placeholder="I think ..." />
-							                    	<button class="btn btn-outline-secondary" type="button" id = "myForm-chatField-submitButton">
-					              						<i class="fas fa-paper-plane"style="font-size: 1.25em;"></i>
-					            					</button>
-							                    	</div>
-							                    </div> 
-							                </div>
-							            </div>
-							        </div>    
-				    			</div>
->>>>>>> c783eeb3e099fec7acbe0ebb4b8c5b2bd0f7e6f9
 							</div>
 			        	</div>
 			    	</div>
 			  	</div>
-
-			  	<div class="col-11">
-			  		<div class="row">
-				  		<div class="col-2" id = "gap-column"></div>
-				  		<div class="col-11" id= "col-9">
-				 			<h1 id="content"></h1>
-							<button class="btn success" id='fail'>Apply Theme</button>
-							<button class="btn success" id='success'>Expand All</button>
-				 			<br><br>
-				 			<div id='collapse'></div>
-				 		</div>
-				 		<div class="popup_show">
-		  					<div class="overlay"></div>
-		  					<div class="img-show row">
-		  						<div class="col-7">
-		    						<img id="popup_img">
-		    					</div>
-		    					<div class="col-5">
-		    						<p id="popup_text"></p>
-		    					</div>
-		  					</div>
-						</div>
-<<<<<<< HEAD
-				 	</div>
-				</div>
-=======
-		        	</div>
-		    	</div>
-		  	</div>
-
 		  	<div class="col-11">
 		  		<div class="row">
 			  		<div class="col-2" id = "gap-column"></div>
@@ -261,7 +138,6 @@
 	  					</div>
 					</div>
 			 	</div>
->>>>>>> c783eeb3e099fec7acbe0ebb4b8c5b2bd0f7e6f9
 			</div>
 		</div>
 		<div id="id01" class="modal"> 
