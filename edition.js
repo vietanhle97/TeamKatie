@@ -2,7 +2,7 @@ var slideIndex;
 
 var game_name = sessionStorage.getItem('game');
 var login_check = true;
-document.getElementById("game").innerHTML = game_name.toUpperCase();
+document.getElementById("game").innerHTML = game_name;
 function openNav() {
   document.getElementById("mySidebar").style.width = "300px";
   document.getElementById("mySidebar").style.shadow = "10px 10px";
@@ -72,7 +72,7 @@ function load_pic(i,name,len,des){
   var overlay = document.createElement('div');
   overlay.className="overlay";
   var button = document.createElement("button");
-  button.className="button";
+  button.className="but";
   button.id="but"
   button.innerHTML='Read Tutorial';
   var connect = document.createElement('a');
