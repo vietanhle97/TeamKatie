@@ -1,9 +1,10 @@
 h1{
   margin-top: 100px;
   text-align: center;
-  font-family: "Helvetica Neue";
+  font-family: "Raleway";
   font-size: 50px;
   margin-bottom: 50px;
+  color:hsl(230,50%,50%);
 }
 .btn-light{
   background-color: #C4C4C4;

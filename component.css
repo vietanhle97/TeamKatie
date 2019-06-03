@@ -3,6 +3,9 @@ h1{
   text-align: center;
   font-size: 50px;
   margin-bottom: 50px;
+  color: hsl(230,50%,50%);
+  font-family: Raleway;
+
 }
 .btn-light{
   background-color: #C4C4C4;
@@ -30,7 +33,7 @@ h1{
   background-size: cover; 
 }
 .caption {
-  text-align: center;
+  text-align: center;     
   font-family: "Raleway";
   display: block;
   padding: 3px;
@@ -138,10 +141,11 @@ h1{
   color: hsl(230,100%,100%);
   margin-bottom: 10px;
   float:right;
+  font-family: Raleway;
 }
 
 .success:hover {
-  background-color: hsl(220,50%,50%);
+  background-color: hsl(220,50%,60%);
   color: white;
 }
 .card-header:hover{
@@ -168,8 +172,12 @@ h1{
 }
 .card-body{
   background-color: hsla(220,30%,95%,1);
+  font-family: Raleway; 
 }
-
+.btn-link{
+  font-family: Raleway;
+  font-weight:bold;
+}
 .components_item{
   border-radius: 10px;
 }
