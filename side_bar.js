@@ -21,8 +21,8 @@ function display_avatar(){
   var profile_card = document.getElementById('profile_card');
   drop_down.className = 'drop_down';
   var ava_img = document.createElement('img');
-  ava_img.id = 'avatar';
   ava_img.src = "https://66.media.tumblr.com/7344adf8e9f50da39749ee5a276036a3/tumblr_plhy9hyJKE1wzh093o1_1280.jpg";
+  ava_img.id = 'avatar';
   ava_img.style.width = '3em';
   ava_img.style.height = '3em';
 
@@ -74,17 +74,24 @@ function display_avatar(){
       row.appendChild(col_2);
 
       profile_card.appendChild(row);
-    }
-    count += 1
-    if (count%2 == 1){
       document.getElementById('profile_card').style.display = 'block';
+      count = 1;
+    }
+    else if(count == 2){
+      document.getElementById('profile_card').style.display = 'block';
+      count = 1;
     }
     else{
       document.getElementById('profile_card').style.display = 'none';
+      count = 2;
     }
+    $('body').click(function(event){
+      if(!$(event.target).is('#avatar')){
+        document.getElementById('profile_card').style.display = 'none';
+        count = 2
+      }
+    })
   })
-
-
   var align = document.createElement('li');
   align.className = 'nav_item';
   var link = document.createElement('a')
@@ -103,9 +110,10 @@ function logout(){
 }
 
 function openNav(sidebar, tab) {
-  
-  console.log('try to open'); 
-  
+  var category_carousel =  document.getElementById('category_carousel');
+  if(category_carousel){
+    category_carousel.className = 'col-10'
+  }
   if(sidebar_lock == false){
 	  console.log('opened'); 
 
@@ -175,7 +183,10 @@ function closeNav(sidebar) {
   document.getElementById("gap-column").display="none";
   document.getElementById("col-9").className = "col-11";
   }
-
+  var category_carousel =  document.getElementById('category_carousel');
+  if(category_carousel){
+    category_carousel.className = 'col-11';
+  }
   if(sidebar_open && comment_button_var){
       component_reloadSpan();
   }

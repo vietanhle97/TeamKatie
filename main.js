@@ -11,10 +11,6 @@ if (currentUsername){
 }
 else{
 	$('#screen').click(function(event) {
-		var icon = $(event.target).is('#check_login');
-		var logo = $(event.target).is('#katie_logo');
-		console.log(icon);
-		console.log(logo);
 		if(!$(event.target).is('#check_login') & !$(event.target).is('#katie_logo')){
 			alert('Please Login First')
 		}
@@ -85,17 +81,24 @@ function display_avatar(){
 			row.appendChild(col_2);
 
 			profile_card.appendChild(row);
-		}
-		count += 1
-		if (count%2 == 1){
 			document.getElementById('profile_card').style.display = 'block';
+			count = 1;
+		}
+		else if(count == 2){
+			document.getElementById('profile_card').style.display = 'block';
+			count = 1;
 		}
 		else{
 			document.getElementById('profile_card').style.display = 'none';
+			count = 2;
 		}
+		$('body').click(function(event){
+			if(!$(event.target).is('#avatar')){
+				document.getElementById('profile_card').style.display = 'none';
+				count = 2
+			}
+		})
 	})
-
-
 	var align = document.createElement('li');
 	align.className = 'nav_item';
 	var link = document.createElement('a')
@@ -106,7 +109,6 @@ function display_avatar(){
 	avatar.appendChild(drop_down);
 	navbar_item.appendChild(avatar);
 	navbar_item.appendChild(align);
-	
 }
 function logout(){
 	window.location.replace("main.html");
