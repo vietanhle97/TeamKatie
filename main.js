@@ -32,8 +32,8 @@ function display_avatar(){
 	var profile_card = document.getElementById('profile_card');
 	drop_down.className = 'drop_down';
 	var ava_img = document.createElement('img');
-	ava_img.id = 'avatar';
 	ava_img.src = "https://66.media.tumblr.com/7344adf8e9f50da39749ee5a276036a3/tumblr_plhy9hyJKE1wzh093o1_1280.jpg";
+	ava_img.id = 'avatar';
 	ava_img.style.width = '3em';
 	ava_img.style.height = '3em';
 
