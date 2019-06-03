@@ -16,6 +16,9 @@
   font-weight: bold;
   font-size: 24px;
 }
+.navbar-brand:hover {
+  cursor: pointer;
+}
 .nav-item{
   padding-right: 1vw;
   padding-left: 1vw;

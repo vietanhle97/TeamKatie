@@ -162,17 +162,18 @@ function change(i){
 }
 test(display_category)
 
-// setTimeout(function() {
-//     $progressBar.css('width', '25%');
-//     setTimeout(function() {
-//         $progressBar.css('width', '50%');
-//         setTimeout(function() {
-//             $progressBar.css('width', '75%');
-//             setTimeout(function(){
-//             	$progressBar.css('width', '100%');
-//             	display_category();
-//             	$progress.css('display', 'none');
-//             }, 500)
-//         }, 500); 
-//     }, 500); 
-// }, 500);
+setTimeout(function() {
+    $('#progressBar').css('width', '25%');
+    setTimeout(function() {
+        $('#progressBar').css('width', '50%');
+        setTimeout(function() {
+            $('#progressBar').css('width', '75%');
+            setTimeout(function(){
+            	$('#progressBar').css('width', '100%');
+            	setTimeout(function(){
+            		$('.progress').css('display', 'none');
+            	}, 300)	
+            }, 200)
+        }, 200); 
+    }, 200); 
+}, 200);

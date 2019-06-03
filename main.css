@@ -33,6 +33,9 @@ body {
   font-weight: bold;
   font-size: 24px;
 }
+.navbar-brand:hover {
+  cursor: pointer;
+}
 .full{
   padding-top: 15px;
 }
