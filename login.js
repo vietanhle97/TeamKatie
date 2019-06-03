@@ -40,3 +40,7 @@ function login(){
 		
 	}
 }
+function register(){
+	var register = document.getElementById('signup_button');
+	window.location = 'register.html'
+}

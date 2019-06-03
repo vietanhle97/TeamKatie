@@ -195,11 +195,6 @@ body {
   padding: 16px;
 }
 
-span.register {
-  float: right;
-  padding-top: 16px;
-}
-
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -275,7 +270,7 @@ span.register {
     box-sizing: border-box;
 }
 
-#loginbutton {
+#loginbutton, #signupbutton {
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -286,6 +281,12 @@ span.register {
     width: 100%;
 }
 
+#loginbutton:hover {
+  opacity: 0.8;
+}
+#signupbutton:hover{
+  opacity: 0.8;
+}
 #loginbutton:hover {
   opacity: 0.8;
 }
@@ -303,19 +304,16 @@ span.register {
   width: 100%; 
   border-radius: 50%;
 }
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 #profile_card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
   margin: auto;
   text-align: center;
   font-family: arial;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-#profile_card {
   display: none;
   position: absolute;
   top: 8vh;

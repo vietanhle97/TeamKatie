@@ -6,7 +6,7 @@ function register(){
 	var password = document.getElementById("input_password").value;
 	var confirm_password = document.getElementById('input_confirm_password').value;
 	var year_playing = document.getElementById('year_playing').value;
-	if(!username || !password || !confirm_password || !year_playing == 'none'){
+	if(!username || !password || !confirm_password || year_playing == 'none'){
 		alert("Please fill in all required fields")
 	}
 	else if (password != confirm_password){

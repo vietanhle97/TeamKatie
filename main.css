@@ -219,7 +219,8 @@ span.register {
   	box-sizing: border-box;
 }
 
-#loginbutton {
+#loginbutton, #signupbutton {
+    color: #fff;
   	background-color: #4CAF50;
   	color: white;
   	padding: 14px 20px;
@@ -233,7 +234,9 @@ span.register {
 #loginbutton:hover {
   opacity: 0.8;
 }
-
+#signupbutton:hover {
+  opacity: 0.8;
+}
 #avatar {
   width: 40%;
   border-radius: 50%;
