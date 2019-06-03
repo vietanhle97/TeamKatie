@@ -1,6 +1,6 @@
 var currentTutorialName = sessionStorage.getItem('edition');
 var currentUsername = sessionStorage.getItem('username');
-var currentUserImage = "https://i.stack.imgur.com/ahCDf.png?s=328&g=1";
+var currentUserImage = sessionStorage.getItem('avatar');
 var component_spanListDict = {};
 var component_sectionContent = {};
 var component_sectionBody = {};
@@ -47,10 +47,11 @@ function component_loadCommentSpanComments(section,i){
   for (var j = 0;j<component_spanListDict[section][i]["comments-list"].length;j++){
       var text = component_spanListDict[section][i]["comments-list"][j]["text"];
       var username = component_spanListDict[section][i]["comments-list"][j]["user"];
+      var userImage = pr_loadUserInfo(username)['img-url'];
       var leftOrRight;
       if(username == currentUsername) leftOrRight = "right";
       else leftOrRight = "left";
-      chatbox_insertChat(currentTutorialName,username,leftOrRight,text,currentUserImage,function(){});
+      chatbox_insertChat(currentTutorialName,username,leftOrRight,text,userImage,function(){});
   }
 }
 function component_loadEditionComments(name){
@@ -61,10 +62,11 @@ function component_loadEditionComments(name){
   for (var j = 0;j<commentList.length;j++){
       var text = commentList[j]["text"];
       var username = commentList[j]["user"];
+      var userImage = pr_loadUserInfo(username)['img-url'];
       var leftOrRight;
       if(username == currentUsername) leftOrRight = "right";
       else leftOrRight = "left";
-      chatbox_insertChat(currentTutorialName,username,leftOrRight,text,currentUserImage,function(){});
+      chatbox_insertChat(currentTutorialName,username,leftOrRight,text,userImage,function(){});
   }
 }
 
@@ -479,6 +481,10 @@ function add_to_span(instruction, text){
 $("span, .overlay").click(function () {
   $(".popup_show").fadeOut();
 });
+function load_page(){
+  component_display();
+}
+
 test(component_display);
 
 

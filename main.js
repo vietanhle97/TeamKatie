@@ -1,24 +1,27 @@
 var currentUsername = sessionStorage.getItem('username');
 var login_check = false;
-if (currentUsername){
-	var login_check = true;
-	console.log(currentUsername)
-	var login_icon = document.getElementById('login_icon');
-	if (login_icon){
-		login_icon.style.display = 'none';
-	}
-	display_avatar();
-}
-else{
-	$('#screen').click(function(event) {
-		if(!$(event.target).is('#check_login') & !$(event.target).is('#katie_logo')){
-			alert('Please Login First')
+function load_ava(){
+	if (currentUsername){
+		login_check = true;
+		console.log(currentUsername)
+		var login_icon = document.getElementById('login_icon');
+		if (login_icon){
+			login_icon.style.display = 'none';
 		}
-	})
-}
-function main_page(){
-	var logo = document.getElementById('logo');
-	logo.href = 'main.html';
+		display_avatar();
+	}
+	else{
+		$('#screen').click(function(event) {
+			if(!$(event.target).is('#check_login') & !$(event.target).is('#katie_logo')){
+				window.location = 'main.html#'
+				alert('Please Login First')
+			}
+		})
+	}
+	function main_page(){
+		var logo = document.getElementById('logo');
+		logo.href = 'main.html';
+	}
 }
 
 function display_avatar(){
@@ -27,8 +30,10 @@ function display_avatar(){
 	var drop_down = document.createElement('div')
 	var profile_card = document.getElementById('profile_card');
 	drop_down.className = 'drop_down';
+	var user = pr_loadUserInfo(currentUsername)
 	var ava_img = document.createElement('img');
-	ava_img.src = "https://66.media.tumblr.com/7344adf8e9f50da39749ee5a276036a3/tumblr_plhy9hyJKE1wzh093o1_1280.jpg";
+	ava_img.src = user['img-url'];
+	sessionStorage.setItem('avatar', user['img-url'])
 	ava_img.id = 'avatar';
 	ava_img.style.width = '3em';
 	ava_img.style.height = '3em';
@@ -40,7 +45,7 @@ function display_avatar(){
 			var profile_card = document.getElementById('profile_card');
 			var card_img = document.createElement('img');
 			card_img.id = 'card_avatar';
-			card_img.src =  "https://66.media.tumblr.com/7344adf8e9f50da39749ee5a276036a3/tumblr_plhy9hyJKE1wzh093o1_1280.jpg";
+			card_img.src =  ava_img.src;
 			var card_name = document.createElement('h5');
 			var experience = pr_loadUserInfo(currentUsername)['Experience'];
 			var year = document.createElement('h5');
@@ -154,7 +159,7 @@ function change(i){
 		if (login_check == true){
 			category.addEventListener("mousedown", function(){
 				category.href = 'category.html'
-				sessionStorage.setItem("category",category.id)
+				sessionStorage.setItem("category",category.id);
 				return (category.id);
 			})
 		}
@@ -162,7 +167,11 @@ function change(i){
 			category.href = '#';
 		}
 }
-test(display_category)
+function load_page(){
+	load_ava();
+	display_category();
+}
+test(load_page)
 
 setTimeout(function() {
     $('#progressBar').css('width', '25%');

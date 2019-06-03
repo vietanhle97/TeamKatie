@@ -5,8 +5,8 @@ var nav_bar_menu = document.getElementById("nav-bar-menu");
 var sidebar_open = false;
 var sidebar_lock = false;
 var currentUsername = sessionStorage.getItem('username');
+var currentUserImage = sessionStorage.getItem('avatar')
 if (currentUsername){
-  console.log(currentUsername)
   var login_icon = document.getElementById('login_icon');
   if (login_icon){
     login_icon.style.display = 'none';
@@ -21,7 +21,7 @@ function display_avatar(){
   var profile_card = document.getElementById('profile_card');
   drop_down.className = 'drop_down';
   var ava_img = document.createElement('img');
-  ava_img.src = "https://66.media.tumblr.com/7344adf8e9f50da39749ee5a276036a3/tumblr_plhy9hyJKE1wzh093o1_1280.jpg";
+  ava_img.src = currentUserImage;
   ava_img.id = 'avatar';
   ava_img.style.width = '3em';
   ava_img.style.height = '3em';
@@ -33,7 +33,7 @@ function display_avatar(){
       var profile_card = document.getElementById('profile_card');
       var card_img = document.createElement('img');
       card_img.id = 'card_avatar';
-      card_img.src =  "https://66.media.tumblr.com/7344adf8e9f50da39749ee5a276036a3/tumblr_plhy9hyJKE1wzh093o1_1280.jpg";
+      card_img.src =  ava_img.src;
       var card_name = document.createElement('h5');
       var experience = pr_loadUserInfo(currentUsername)['Experience'];
       var year = document.createElement('h5');

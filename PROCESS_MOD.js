@@ -66,15 +66,15 @@ function pr_loadUsersList(){
 function pr_loadUserInfo(name){
 	return pr_usersDict[name]
 }
-function pr_addNewUser(username, password, year_playing, callback){
+function pr_addNewUser(username, password, year_playing, img_url, callback){
 	if (year_playing != '1'){
 		var experience = year_playing + ' Years';
 	}
 	else{
 		var experience = year_playing + ' Year';
 	}
-	db_addNewUser(username, {"password": password, 'Experience': experience}, callback);
-	pr_usersDict[username] = { "password": password};
+	db_addNewUser(username, {"password": password, 'Experience': experience, 'img-url': img_url}, callback);
+	pr_usersDict[username] = {"password": password, 'Experience': experience, 'img-url': img_url};
 }
 /*editions*/
 function pr_loadEditions(name,callback){
