@@ -26,7 +26,9 @@ function login(){
 	else if (all_users.includes(username)){
 		var user_info = pr_loadUserInfo(username);
 		if (password == user_info['password']){
-			sessionStorage.setItem('username', username);
+			sessionStorage.setItem('username', username)
+			sessionStorage.setItem('experience', user_info['Experience']);
+			sessionStorage.setItem('img-url', user_info['img-url']);
 			document.getElementById('id01').style.display = 'none';
 			window.location = 'main.html';
 		}
