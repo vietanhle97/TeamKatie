@@ -54,7 +54,7 @@ function se_autocomplete(inp, arr) {
 
   	  clearTimeout(searchTimer);
   	  var THIS = this;
-  	  console.log(searchTimer);
+  	  // console.log(searchTimer);
   	  searchTimer = setTimeout(
   	  	function() {
 	      var a, b, i, val = THIS.value, suggestionCnt = 0;
@@ -79,7 +79,7 @@ function se_autocomplete(inp, arr) {
 	          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
 	          b.addEventListener("click", function(e) {
 	          	  e.stopPropagation();
-	              console.log(this.getElementsByTagName("input")[0].value);
+	              // console.log(this.getElementsByTagName("input")[0].value);
 	              inp.value = this.getElementsByTagName("input")[0].value;
 	              closeAllLists();
 	          });
@@ -142,19 +142,19 @@ test(function(){
 	for(var i = 0; i < Object.keys(pr_editionsDict).length; i++)
 		checkList.push(Object.keys(pr_editionsDict)[i]);
 
-	console.log(checkList)
+	// console.log(checkList)
 	se_autocomplete(se_searchBox, checkList);
 })
 
 var se_sitesList
 se_searchBox.onkeypress = function(e){
-	console.log(e, e == 13);
+	// console.log(e, e == 13);
 	if(e.keyCode == 13)
 		se_searchSubmitButton.click();
 }
 se_searchSubmitButton.onclick = function(){
 	var text = se_searchBox.value;
-	console.log(se_searchBox);
+	// console.log(se_searchBox);
 	se_sitesList = [];
 	se_searchBox.value = "";
 
@@ -183,11 +183,16 @@ se_searchSubmitButton.onclick = function(){
 		}
 	}
 	se_sitesList.sort(function(s1,s2){
-		console.log("compare",s1.name,s2.name,se_lcs(text,s1.name),se_lcs(text,s2.name));
+		// console.log("compare",s1.name,s2.name,se_lcs(text,s1.name),se_lcs(text,s2.name));
 		return se_lcs(text,s2.name) - se_lcs(text,s1.name);
 	})
-	console.log(se_sitesList);
-	sessionStorage.setItem("sitesList", null);
-	sessionStorage.setItem("sitesList", JSON.stringify(se_sitesList));
-	window.location = "searchPage.html";
+	if (login_check == true){
+		// console.log(se_sitesList);
+		sessionStorage.setItem("sitesList", null);
+		sessionStorage.setItem("sitesList", JSON.stringify(se_sitesList));
+		window.location = "searchPage.html";
+	}
+	else{
+		window.location = 'main.html#'
+	}
 }

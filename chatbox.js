@@ -10,7 +10,7 @@ function chatbox_insertChat(editionName,username,leftOrRight,text,userImage){
     						" - It is a spam\\n - It is a personal attack\\n - It contains illegal content\\n";        
         control = '<li style="width:100%">' +
                         '<div class="msj macro">' +
-        				'<div class="avatar" style="padding:0px 10px 0px 0px !important"> <img style="height: 100%; width: 100%; object-fit: contain" src = "'+ userImage+ '"> </div>' +
+        				'<div class="avatar" alt="Avatar" style="padding:0px 10px 0px 0px !important"> <img style="height: 5vh; width: 5vh; border-radius: 50%; object-fit: contain" src = "'+ userImage+ '"> </div>' +
                             '<div class="text text-l">' +
                                 '<p>'+ text +'</p>' +
                                 '<p><small>'+username+'</small></p>' +
@@ -28,7 +28,7 @@ function chatbox_insertChat(editionName,username,leftOrRight,text,userImage){
                                 '<p>'+text+'</p>' +
                                 '<p><small>'+username+'</small></p>' +
                             '</div>' +
-                        '<div class="avatar" style="padding:0px 0px 0px 10px !important"> <img style="height: 100%; width: 100%; object-fit: contain" src = "'+ userImage+ '"> </div>' +  
+                        '<div class="avatar" alt="Avatar" style="padding:0px 0px 0px 10px !important"> <img style="height: 5vh; width: 5vh; border-radius: 50%; object-fit: contain" src = "'+ userImage+ '"> </div>' +  
                         '</div>' +
                         `<img `+ `class = "btn-light" onclick = "this.src = 'https://cdn2.iconfinder.com/data/icons/medicine-7/512/sand_glass-2-512.png';` + 
                         `var par = this.parentNode; setTimeout(function(){par.style.display = 'none'},1500);` +` chatbox_deleteComment('`+ editionName + `','`

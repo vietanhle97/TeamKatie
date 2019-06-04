@@ -60,7 +60,22 @@ function pr_loadGameEditionsList(name){
 function pr_loadUsers(name){
 	db_loadUsers(name)
 }
-
+function pr_loadUsersList(){
+	return Object.keys(pr_usersDict)
+}
+function pr_loadUserInfo(name){
+	return pr_usersDict[name]
+}
+function pr_addNewUser(username, password, year_playing, img_url, callback){
+	if (year_playing != '1'){
+		var experience = year_playing + ' Years';
+	}
+	else{
+		var experience = year_playing + ' Year';
+	}
+	db_addNewUser(username, {"password": password, 'Experience': experience, 'img-url': img_url}, callback);
+	pr_usersDict[username] = {"password": password, 'Experience': experience, 'img-url': img_url};
+}
 /*editions*/
 function pr_loadEditions(name,callback){
 	db_loadEditions(name,callback)
@@ -212,5 +227,5 @@ async function test(callback){
 	pr_loadGames(pr_gamesDict);
 	pr_loadUsers(pr_usersDict);
 	pr_loadEditions(pr_editionsDict,callback);
-	console.log("finished loading")
+	// console.log("finished loading")
 }

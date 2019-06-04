@@ -1,5 +1,4 @@
 
-
 function display(){
   	var sitesList = JSON.parse(sessionStorage.getItem("sitesList"));
   	var container = document.getElementById("search_result_container");
