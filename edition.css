@@ -39,10 +39,10 @@ h1{
   top: 45%;
   width: auto;
   margin-top: -22px;
-  padding: 16px;
+  padding: 6px;
   background-color: rgba(50,120,200,0.6);
   font-weight: bold;
-  font-size: 30px;
+  font-size: 25px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
@@ -60,8 +60,8 @@ h1{
 /* Number text*/
 .numbertext {
   color: #f2f2f2;
-  font-size: 18px;
-  padding: 8px 12px;
+  font-size: 15px;
+  padding: 5px 10px;
   position: absolute;
   top: 0;
   background:hsl(210,50%,50%);
@@ -75,7 +75,7 @@ h1{
   top: 40%;
   margin-top: -22px;
   position: relative;
-  background-color: hsl(220,80%,70%);
+  background-color: hsl(220,85%,85%);
   font-size: 110%;
   color: #05386B;
   padding: 20px;
