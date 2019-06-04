@@ -58,7 +58,13 @@ function register(){
 		sessionStorage.setItem('UserInfo', user_info);
 		sessionStorage.setItem('username', username);
 		sessionStorage.setItem('img-url', img_url);
-		sessionStorage.setItem('experience', year_playing);
+		if (year_playing == '1'){
+			var experience = year_playing + ' Year';
+		}
+		else{
+			var experience = year_playing + ' Years'
+		}
+		sessionStorage.setItem('experience', experience);
 		alert("Thank you for signing up")
 		window.location = "main.html";
 	}
