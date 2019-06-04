@@ -101,6 +101,7 @@ h1{
 */
 
 .btn {
+  background-color: hsl(220,50%,50%);
   border-radius: 5px;
   cursor: pointer;
   display: inline-block;
@@ -127,7 +128,7 @@ h1{
   font-size: 14px;
 }
 .btn-default:hover {
-  background: hsl(220,50%,60%);
+  background: hsl(180,40%,50%);
 }
 .btn-alt {
   border: 1px solid #fff;
