@@ -7,6 +7,12 @@ var sidebar_lock = false;
 var currentUsername = sessionStorage.getItem('username');
 var currentUserImage = sessionStorage.getItem('img-url')
 var currentUserExperience = sessionStorage.getItem('experience')
+$("#password").keydown(function(e){
+  console.log("aa",e.keycode,);
+  if(e.keyCode == 13){
+    $("#loginbutton").click();
+  }
+})
 if (currentUsername){
   var login_icon = document.getElementById('login_icon');
   if (login_icon){
