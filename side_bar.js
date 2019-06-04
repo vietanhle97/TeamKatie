@@ -118,7 +118,7 @@ function openNav(sidebar, tab) {
 	  // console.log('opened'); 
 
 	  sidebar_open = true;
-	  if(document.getElementById("gap-column")){
+	if(document.getElementById("gap-column")){
 	  document.getElementById("gap-column").display="block";
 	  document.getElementById("gap-column").className = "col-2";
 	  document.getElementById("col-9").className = "col-9";
@@ -127,6 +127,32 @@ function openNav(sidebar, tab) {
 	  style.width = "270px";
 	  style.shadow = "10px 10px";
 	  style.background= "hsla(220,50%,30%,0.9)";
+
+    if(document.getElementById('closeButtonForSideBar') == null){
+      var closeButton = document.createElement('DIV');
+
+      console.log(closeButton);
+      mySidebar.style.overflow = "visible";
+      var innerValue = document.createElement('i');
+      innerValue.classList.add("fas");
+      innerValue.classList.add("fa-arrow-left");
+      innerValue.classList.add("fa-xs");
+      innerValue.style = "position: absolute; top: 12px; padding: 1px;"
+
+      closeButton.appendChild(innerValue);
+      closeButton.id = "closeButtonForSideBar";
+      document.getElementById('mySidebar').appendChild(closeButton);
+      closeButton.onclick = function(){
+        console.log(this);
+        this.style.display = "none";
+        if(sidebar_lock == true){
+          __lock_button.click();
+        }
+      }
+    }  
+    else{
+      document.getElementById('closeButtonForSideBar').style.display = "block";
+    }    
   }
 
   __lock_button.style.display = "block";
@@ -193,6 +219,7 @@ function closeNav(sidebar) {
   sidebar_open = false;
 
   __lock_button.style.display = "none";
+  document.getElementById('closeButtonForSideBar').style.display = "none";
 
   if(menu_button_var){
   menu_button_var.style.position = 'relative';

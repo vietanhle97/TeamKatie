@@ -336,3 +336,12 @@ h5{
   margin-right:0vw;
   margin-bottom: 2vh;
 }
+
+#closeButtonForSideBar{
+  display: block; background-color: hsl(200,50%,90%);
+  height: 36px; width: 18px; position: absolute; top: 55%; right: -18px;
+  border-radius: 0 18px 18px 0;
+}
+#closeButtonForSideBar:hover{
+  cursor: pointer;
+}
