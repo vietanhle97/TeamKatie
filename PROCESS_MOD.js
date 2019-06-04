@@ -227,5 +227,5 @@ async function test(callback){
 	pr_loadGames(pr_gamesDict);
 	pr_loadUsers(pr_usersDict);
 	pr_loadEditions(pr_editionsDict,callback);
-	console.log("finished loading")
+	// console.log("finished loading")
 }

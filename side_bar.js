@@ -115,7 +115,7 @@ function openNav(sidebar, tab) {
     category_carousel.className = 'col-10'
   }
   if(sidebar_lock == false){
-	  console.log('opened'); 
+	  // console.log('opened'); 
 
 	  sidebar_open = true;
 	  if(document.getElementById("gap-column")){
@@ -218,7 +218,7 @@ function closeNav(sidebar) {
   
 }
 function open_tab(tab){
-  console.log(tab);
+  // console.log(tab);
   if(tab == 'myForm'){
 	  	if(document.getElementById("gap-column")){
 		  document.getElementById("gap-column").display= "block";
@@ -335,7 +335,7 @@ __lock_button.onclick = function(){
 	sidebar_lock = sidebar_lock ^ 1;
 }
 
-console.log(document.getElementById('mySidebar'));
+// console.log(document.getElementById('mySidebar'));
 __lock_button.setAttribute('id','__lock_button');
 __lock_button.innerHTML = '<i class="fas fa-lock fa-1x"></i>';
 __lock_button.setAttribute('class',"btn btn-circle btn-sm hieu_lockbtn");
@@ -344,7 +344,7 @@ document.getElementById('mySidebar').appendChild(__lock_button);
 function init(){
 	var path = window.location.pathname;
 	var page = path.split("/").pop();
-	console.log(page);
+	// console.log(page);
 	if(page == 'component.html')
 		openNav('mySidebar','comment_tab');
 	else

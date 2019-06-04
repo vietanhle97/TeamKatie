@@ -3,7 +3,7 @@ var login_check = false;
 function load_ava(){
 	if (currentUsername){
 		login_check = true;
-		console.log(currentUsername)
+		// console.log(currentUsername)
 		var login_icon = document.getElementById('login_icon');
 		if (login_icon){
 			login_icon.style.display = 'none';
