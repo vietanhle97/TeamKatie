@@ -55,9 +55,10 @@ function register(){
 		document.getElementById('input_password').value = '';
 		document.getElementById('input_confirm_password').value = '';
 		var user_info = {'username': username, 'experience': year_playing, 'img-url':img_url}
-		sessionStorage.setItem('UserInfo', user_info)
+		sessionStorage.setItem('UserInfo', user_info);
 		sessionStorage.setItem('username', username);
-		sessionStorage.setItem('img-url', img_url)
+		sessionStorage.setItem('img-url', img_url);
+		sessionStorage.setItem('experience', year_playing);
 		alert("Thank you for signing up")
 		window.location = "main.html";
 	}
