@@ -18,13 +18,11 @@ if (currentUsername){
 	display_avatar();
 }
 else{
-	$('#screen').click(function(event) {
+	$('#screen').click(function(event){
 		if(!$(event.target).is('#check_login') & !$(event.target).is('#katie_logo')){
 			window.location = 'main.html#'
-			var loginClick = confirm('Please Login First');
-			if(loginClick == 1)
-				$('#check_login').click();
-
+			alert('Please Login First');
+			$('#check_login').click();
 		}
 	})
 }

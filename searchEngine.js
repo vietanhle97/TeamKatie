@@ -186,13 +186,9 @@ se_searchSubmitButton.onclick = function(){
 		// console.log("compare",s1.name,s2.name,se_lcs(text,s1.name),se_lcs(text,s2.name));
 		return se_lcs(text,s2.name) - se_lcs(text,s1.name);
 	})
-	if (login_check == true){
-		// console.log(se_sitesList);
+	if(sessionStorage.getItem('username') != null){
 		sessionStorage.setItem("sitesList", null);
 		sessionStorage.setItem("sitesList", JSON.stringify(se_sitesList));
 		window.location = "searchPage.html";
-	}
-	else{
-		window.location = 'main.html#'
 	}
 }
