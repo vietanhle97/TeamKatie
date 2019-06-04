@@ -57,6 +57,7 @@ function register(){
 		var user_info = {'username': username, 'experience': year_playing, 'img-url':img_url}
 		sessionStorage.setItem('UserInfo', user_info)
 		sessionStorage.setItem('username', username);
+		sessionStorage.setItem('img-url', img_url)
 		alert("Thank you for signing up")
 		window.location = "main.html";
 	}
