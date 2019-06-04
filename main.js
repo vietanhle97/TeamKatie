@@ -1,4 +1,6 @@
 var currentUsername = sessionStorage.getItem('username');
+var currentUserImage = sessionStorage.getItem('avatar');
+var currentUserExperience = sessionStorage.getItem('experience')
 var login_check = false;
 function load_ava(){
 	if (currentUsername){
@@ -30,77 +32,69 @@ function display_avatar(){
 	var drop_down = document.createElement('div')
 	var profile_card = document.getElementById('profile_card');
 	drop_down.className = 'drop_down';
-	var user = pr_loadUserInfo(currentUsername)
 	var ava_img = document.createElement('img');
-	ava_img.src = user['img-url'];
-	sessionStorage.setItem('avatar', user['img-url'])
+	ava_img.src = currentUserImage;
 	ava_img.id = 'avatar';
 	ava_img.style.width = '3em';
 	ava_img.style.height = '3em';
+	var profile_card = document.getElementById('profile_card');
+	var card_img = document.createElement('img');
+	card_img.id = 'card_avatar';
+	card_img.src =  ava_img.src;
+	var card_name = document.createElement('h5');
+	var experience = currentUserExperience;
+	var year = document.createElement('h5');
+	profile_card.appendChild(card_img);
+	card_name.appendChild(document.createTextNode('Player: '+ currentUsername));
+	profile_card.appendChild(card_name);
+	year.appendChild(document.createTextNode('Experience: ' + experience));
+	profile_card.appendChild(year);
+	var row = document.createElement('div');
+	row.className = 'row';
+	var col_1 = document.createElement('div');
+	col_1.className = 'col-5';
 
-	var count = 0;
+	var col_2 = document.createElement('div');
+	col_2.className = 'col-7'
+
+	var logout_button = document.createElement('button');
+	logout_button.className = 'btn btn-light';
+	logout_button.id = 'logout_button';
+	logout_button.appendChild(document.createTextNode('Logout'));
+	logout_button.addEventListener('click', function(){
+		logout();
+	})
+	col_1.appendChild(logout_button)
+
+	var switch_button = document.createElement('button');
+	switch_button.className = 'btn btn-light';
+	switch_button.id = 'switch_button';
+	switch_button.appendChild(document.createTextNode('Switch Account'));
+	switch_button.addEventListener('click', function(){
+		document.getElementById('id01').style.display = 'block';
+		document.getElementById('profile_card').style.display = 'none'
+	})
+	col_2.appendChild(switch_button)
+
+	row.appendChild(col_1);
+	row.appendChild(col_2);
+
+	profile_card.appendChild(row);
+	var count = 1;
 	ava_img.addEventListener('click', function(){
 		document.getElementById('id01').style.display = 'none';
-		if (count == 0){
-			var profile_card = document.getElementById('profile_card');
-			var card_img = document.createElement('img');
-			card_img.id = 'card_avatar';
-			card_img.src =  ava_img.src;
-			var card_name = document.createElement('h5');
-			var experience = pr_loadUserInfo(currentUsername)['Experience'];
-			var year = document.createElement('h5');
-			profile_card.appendChild(card_img);
-			card_name.appendChild(document.createTextNode('Player: '+ currentUsername));
-			profile_card.appendChild(card_name);
-			year.appendChild(document.createTextNode('Experience: ' + experience));
-			profile_card.appendChild(year);
-			var row = document.createElement('div');
-			row.className = 'row';
-			var col_1 = document.createElement('div');
-			col_1.className = 'col-5';
-
-			var col_2 = document.createElement('div');
-			col_2.className = 'col-7'
-
-			var logout_button = document.createElement('button');
-			logout_button.className = 'btn btn-light';
-			logout_button.id = 'logout_button';
-			logout_button.appendChild(document.createTextNode('Logout'));
-			logout_button.addEventListener('click', function(){
-				logout();
-			})
-			col_1.appendChild(logout_button)
-
-			var switch_button = document.createElement('button');
-			switch_button.className = 'btn btn-light';
-			switch_button.id = 'switch_button';
-			switch_button.appendChild(document.createTextNode('Switch Account'));
-			switch_button.addEventListener('click', function(){
-				document.getElementById('id01').style.display = 'block';
-				document.getElementById('profile_card').style.display = 'none'
-				count += 1
-			})
-			col_2.appendChild(switch_button)
-
-			row.appendChild(col_1);
-			row.appendChild(col_2);
-
-			profile_card.appendChild(row);
+		if(count == 1){
 			document.getElementById('profile_card').style.display = 'block';
-			count = 1;
-		}
-		else if(count == 2){
-			document.getElementById('profile_card').style.display = 'block';
-			count = 1;
+			count = 2;
 		}
 		else{
 			document.getElementById('profile_card').style.display = 'none';
-			count = 2;
+			count = 1;
 		}
 		$('body').click(function(event){
 			if(!$(event.target).is('#avatar')){
 				document.getElementById('profile_card').style.display = 'none';
-				count = 2
+				count = 1;
 			}
 		})
 	})
