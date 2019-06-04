@@ -155,7 +155,7 @@ body {
   cursor: pointer;
 }
 .comment_title{
-  background-color: #228be6;
+  background-color: hsl(210,90%,80%);
   padding-top: 5px;
   margin-top: 2px;
   margin-bottom: 30px;
