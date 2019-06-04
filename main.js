@@ -1,38 +1,36 @@
 var currentUsername = sessionStorage.getItem('username');
-var currentUserImage = sessionStorage.getItem('avatar');
+var currentUserImage = sessionStorage.getItem('img-url');
 var currentUserExperience = sessionStorage.getItem('experience')
 var login_check = false;
-function load_ava(){
-	$("#password").keydown(function(e){
-		console.log("aa",e.keycode,);
-		if(e.keyCode == 13){
-			$("#loginbutton").click();
+$("#password").keydown(function(e){
+	console.log("aa",e.keycode,);
+	if(e.keyCode == 13){
+		$("#loginbutton").click();
+	}
+})
+if (currentUsername){
+	login_check = true;
+	// console.log(currentUsername)
+	var login_icon = document.getElementById('login_icon');
+	if (login_icon){
+		login_icon.style.display = 'none';
+	}
+	display_avatar();
+}
+else{
+	$('#screen').click(function(event) {
+		if(!$(event.target).is('#check_login') & !$(event.target).is('#katie_logo')){
+			window.location = 'main.html#'
+			var loginClick = confirm('Please Login First');
+			if(loginClick == 1)
+				$('#check_login').click();
+
 		}
 	})
-	if (currentUsername){
-		login_check = true;
-		// console.log(currentUsername)
-		var login_icon = document.getElementById('login_icon');
-		if (login_icon){
-			login_icon.style.display = 'none';
-		}
-		display_avatar();
-	}
-	else{
-		$('#screen').click(function(event) {
-			if(!$(event.target).is('#check_login') & !$(event.target).is('#katie_logo')){
-				window.location = 'main.html#'
-				var loginClick = confirm('Please Login First');
-				if(loginClick == 1)
-					$('#check_login').click();
-
-			}
-		})
-	}
-	function main_page(){
-		var logo = document.getElementById('logo');
-		logo.href = 'main.html';
-	}
+}
+function main_page(){
+	var logo = document.getElementById('logo');
+	logo.href = 'main.html';
 }
 
 function display_avatar(){
@@ -170,11 +168,7 @@ function change(i){
 			category.href = '#';
 		}
 }
-function load_page(){
-	load_ava();
-	display_category();
-}
-test(load_page)
+test(display_category)
 
 setTimeout(function() {
     $('#progressBar').css('width', '25%');

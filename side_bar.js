@@ -5,7 +5,7 @@ var nav_bar_menu = document.getElementById("nav-bar-menu");
 var sidebar_open = false;
 var sidebar_lock = false;
 var currentUsername = sessionStorage.getItem('username');
-var currentUserImage = sessionStorage.getItem('avatar')
+var currentUserImage = sessionStorage.getItem('img-url')
 var currentUserExperience = sessionStorage.getItem('experience')
 if (currentUsername){
   var login_icon = document.getElementById('login_icon');
