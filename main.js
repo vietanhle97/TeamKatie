@@ -3,6 +3,12 @@ var currentUserImage = sessionStorage.getItem('avatar');
 var currentUserExperience = sessionStorage.getItem('experience')
 var login_check = false;
 function load_ava(){
+	$("#password").keydown(function(e){
+		console.log("aa",e.keycode,);
+		if(e.keyCode == 13){
+			$("#loginbutton").click();
+		}
+	})
 	if (currentUsername){
 		login_check = true;
 		// console.log(currentUsername)
@@ -16,7 +22,10 @@ function load_ava(){
 		$('#screen').click(function(event) {
 			if(!$(event.target).is('#check_login') & !$(event.target).is('#katie_logo')){
 				window.location = 'main.html#'
-				alert('Please Login First')
+				var loginClick = confirm('Please Login First');
+				if(loginClick == 1)
+					$('#check_login').click();
+
 			}
 		})
 	}

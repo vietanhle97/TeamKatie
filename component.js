@@ -1,3 +1,4 @@
+var fakeText = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. "
 var currentTutorialName = sessionStorage.getItem('edition');
 var currentUsername = sessionStorage.getItem('username');
 var currentUserImage = sessionStorage.getItem('avatar');
@@ -55,7 +56,7 @@ function component_loadCommentSpanComments(section,i){
   }
 }
 function component_loadEditionComments(name){
-  document.getElementById("comment-title-content").innerHTML = name + " (Discusion)";
+  document.getElementById("comment-title-content").innerHTML = name + " (Discussion)";
   chatbox_currentSpan["section"] = "main";
   chatbox_clearChat();
   var commentList = pr_loadEditionComments(name);
@@ -206,6 +207,7 @@ function set_multiple_attribute(element, name, value){
 
 
 function add_to_collapse(name, head, carousel,text){
+
   var header = "'" + head + "'"
   var id = '#' + name;
 
@@ -222,7 +224,6 @@ function add_to_collapse(name, head, carousel,text){
   var card_header = document.createElement('div');
   card_header.className = 'card-header';
   card_header.id = header;
-
 
   var h5 = document.createElement('h5');
   h5.className = 'mb-0';
@@ -248,17 +249,21 @@ function add_to_collapse(name, head, carousel,text){
   card_body.className = 'card-body';
   component_sectionContent[name] = text;
   component_sectionBody[name] = card_body;
-  component_spanListUpdate(name);
-  newText = component_loadSpanHTML(name,text,1);
+  if(text != null){
+    component_spanListUpdate(name);
+    newText = component_loadSpanHTML(name,text,1);
 
-
-  card_body.innerHTML = newText;
+    card_body.innerHTML = newText;
+  }
+  else{
+    card_body.innerHTML = fakeText;
+  }
   card_body.setAttribute("section-name",name);
   
   if(name=='Components'){
+    if(carousel != null)
     card_body.innerHTML = carousel;
   }
-
   else{
   	card_body.addEventListener("mouseup",function(){
                                       userDragSpan(this.getAttribute("section-name"))
@@ -377,8 +382,9 @@ function add_to_span(instruction, text){
     }
   }
 }
-function component_reloadSpan(){
+function component_reloadSpan(){ 
   	for(var i = 0; i < lis.length; i++){
+     if(component_sectionBody[lis[i]].innerHTML == fakeText) continue;
   	 if(lis[i].toLowerCase() != "components"){
 	     component_sectionBody[lis[i]].innerHTML = component_loadSpanHTML(lis[i],pr_loadEditionSectionText(currentTutorialName ,lis[i]),1);
      }
@@ -405,10 +411,10 @@ function component_change_theme(){
 
 function component_display(){
   var components = pr_loadEditionComponentImage(currentTutorialName, 'Components')
-  if(!components || !components.length) return;
-    var currentGame = sessionStorage.getItem('game');
-    console.log(currentGame);
-    sideBar_drawTree([["Main"],pr_loadGameCategoriesList(currentGame),[currentGame],[currentTutorialName]]);
+  
+  var currentGame = sessionStorage.getItem('game');
+  console.log(currentGame);
+  sideBar_drawTree([["Main"],pr_loadGameCategoriesList(currentGame),[currentGame],[currentTutorialName]]);
 
   if(currentTutorialName == null)
     currentTutorialName = "Exploding Kitten Normal Edition";

@@ -16,7 +16,8 @@ function chatbox_insertChat(editionName,username,leftOrRight,text,userImage){
                                 '<p><small>'+username+'</small></p>' +
                             '</div>' +
                         '</div>' +
-                        `<img `+ `class = "btn-light" onclick = "confirm('`+ confirmText +`');"`+
+                        `<img `+ `class = "btn-light" onclick = "var r = confirm('`+ confirmText +`');` 
+                        + `if(r == 1) setTimeout(function(){alert('I have received your report.\\nThank you for helping our community!');},700);` + `"`+
                   		`style="margin-top:10px; height: 15px; width: 15px; object-fit: contain"` + 
                   		`src = "https://static.thenounproject.com/png/12093-200.png">` +
                     '</li>';                    

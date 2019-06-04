@@ -38,8 +38,7 @@ function login(){
 		}
 	}
 	else{
-		alert("Your Username did not exist. Please click Sign Up to register");
-		
+		alert("Your Username did not exist. Please click Sign Up to register");		
 	}
 }
 function register(){
