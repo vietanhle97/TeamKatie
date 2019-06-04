@@ -92,7 +92,9 @@ function pr_loadEditionTheme(name){
 
 function pr_loadEditionSectionText(name,sectionName){
 	sectionName = sectionName.toLowerCase();
+	if(pr_editionsDict[name][sectionName])
 	return pr_editionsDict[name][sectionName]["text"];
+	return null;
 }
 
 function pr_loadEditionComponentImage(name, sectionName){
