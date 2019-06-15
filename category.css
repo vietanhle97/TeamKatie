@@ -6,15 +6,9 @@ h1{
   margin-bottom: 50px;
   color:hsl(230,50%,50%);
 }
-.btn-light{
-  background-color: #C4C4C4;
-}
+
 #katie_carousel{
   margin-left: 3%;
-}
-.btn-light:hover{
-  background-color: hsla(60,80%,30%,0.7);
-    color: white;
 }
 .grid-container {
   margin-left: 5%; 

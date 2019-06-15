@@ -149,8 +149,11 @@ body {
   z-index: 9;
   text-align: center;
 }
+.btn-light{
+  background-color: #C4C4C4;
+}
 .btn-light:hover{
-  background-color: hsla(60,80%,30%,0.7);
+  background-color: hsla(220,60%,100%,0.3);
   color: white;
   cursor: pointer;
 }
@@ -177,12 +180,6 @@ body {
   color: black;
 }
 
-.cancelbtn {
-  border-radius: 5px;
-    width: auto;
-  padding: 10px 18px;
-    background-color: #f44336;
-}
 
 /* Center the image and position the close button */
 #login_form {
@@ -271,7 +268,7 @@ body {
 }
 
 #loginbutton, #signupbutton {
-    background-color: #4CAF50;
+    background-color: hsl(220,50%,50%);
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -280,17 +277,24 @@ body {
     cursor: pointer;
     width: 100%;
 }
-
+#cancelbutton{
+  color:white;
+}
 #loginbutton:hover {
-  opacity: 0.8;
+  background-color: hsl(220,50%,50%,0.8);
 }
 #signupbutton:hover{
-  opacity: 0.8;
+  background-color: hsl(220,50%,50%,0.8);
 }
-#loginbutton:hover {
-  opacity: 0.8;
+#cancelbutton{
+  border-radius: 5px;
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
 }
-
+#cancelbutton:hover{
+  background-color: hsla(0,100%,50%,0.6);
+}
 #avatar {
   width: 40%;
   border-radius: 50%;
@@ -328,15 +332,25 @@ h5{
   margin: 2vh 2vw 2vh 2vw;
   font-family: "Helvetica Neue";
 }
+
 #logout_button{
+  background-color: hsl(220,50%,50%);
+  color: white;
   margin-left: 1vw;
   margin-bottom: 2vh;
 }
 #switch_button{
+  background-color: hsl(220,50%,50%);
+  color: white;
   margin-right:0vw;
   margin-bottom: 2vh;
 }
-
+#logout_button:hover {
+  background-color: hsl(220,50%,50%,0.8);
+}
+#switch_button:hover{
+  background-color: hsl(220,50%,50%,0.8);
+}
 #closeButtonForSideBar{
   display: block; background-color: hsl(200,50%,90%);
   height: 36px; width: 18px; position: absolute; top: 55%; right: -18px;

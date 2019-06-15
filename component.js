@@ -354,34 +354,6 @@ function find_text(components, str){
 }
 
 var cnt = 0;
-function add_to_span(instruction, text){
-  var split = text.split(' ');
-
-  var instruct = document.getElementById(instruction); 
-  for(i=0;i<split.length;i++){
-    if(span_list.includes(split[i])){
-
-      var span = document.createElement('span');
-      span.innerHTML = split[i];
-      span.className = "popup_span";
-      console.log(split[i],"in",text);
-      span.addEventListener('click', function(){
-        console.log("aaaa");
-
-        var img = this.innerHTML;
-        console.log(img);
-        var name = '#carousel' + onlyLetter(img.toLowerCase());
-        console.log(name);
-        $(name).trigger( "click" );
-      })
-      instruct.appendChild(span);
-      instruct.appendChild(document.createTextNode(' ')) // instruct.innerHTML += ' ';
-    }
-    else{
-      instruct.appendChild(document.createTextNode(split[i]+ ' '));
-    }
-  }
-}
 function component_reloadSpan(){ 
   	for(var i = 0; i < lis.length; i++){
      if(component_sectionBody[lis[i]].innerHTML == fakeText) continue;

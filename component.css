@@ -7,13 +7,6 @@ h1{
   font-family: Raleway;
 
 }
-.btn-light{
-  background-color: hsl(0,0%,0%,0.0);
-}
-.btn-light:hover{
-  background-color: hsla(60,80%,30%,0.7);
-    color: white;
-}
 .grid-container {
   margin-left: 5%; 
   display: grid;
