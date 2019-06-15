@@ -11,6 +11,9 @@ document.getElementById('content').innerHTML = currentTutorialName;
 chatbox_username = currentUsername;
 chatbox_userImage = currentUserImage;
 
+var clickedImg = [];
+var currentImg = -1;
+
 function component_loadSpanHTML(name,text,allowDelete){
   if(component_spanListDict[name]){
     component_spanListDict[name].sort((a, b) => (parseInt(a.start) > parseInt(b.start)) ? 1 : -1);
@@ -147,6 +150,21 @@ function create_div_to_carousel(n, name, link){
       img_show.setAttribute('src',link);
       var instruction = document.getElementById('popup_text');
       var text = find_text(components, name);
+     
+      clickedImg = clickedImg.slice(0,currentImg + 1);
+      clickedImg.push(this.id);
+      currentImg  = currentImg + 1;
+      if(currentImg == 0){
+        document.getElementById('popup_img_backbutton').disabled = true;
+        document.getElementById('popup_img_backbutton').style = "margin-top: 1vh;\
+        box-shadow: 0px 0px 0px 0px; background-color: hsla(0,0%,0%,0.0);"
+      }
+      else{
+        document.getElementById('popup_img_backbutton').disabled = false;
+        document.getElementById('popup_img_backbutton').style = "margin-top: 1vh;\
+                   box-shadow: 1px 1px 0px 1px #888888; background-color: hsla(220,50%,80%,0.5);"
+      }
+     
       instruction.innerHTML ='';
       add_to_span('popup_text', text);
       
@@ -179,6 +197,17 @@ function create_div_to_carousel(n, name, link){
       var instruction = document.getElementById('popup_text');
 
       var text = find_text(components,name);
+     
+      clickedImg = clickedImg.slice(0,currentImg + 1);
+      clickedImg.push(this.id);
+      currentImg  = currentImg + 1;
+      if(currentImg == 0){
+        document.getElementById('popup_img_backbutton').disabled = true;
+      }
+      else{
+        document.getElementById('popup_img_backbutton').disabled = false;
+      }
+     
       instruction.innerHTML = '';
       add_to_span('popup_text', text);
 
@@ -354,34 +383,6 @@ function find_text(components, str){
 }
 
 var cnt = 0;
-function add_to_span(instruction, text){
-  var split = text.split(' ');
-
-  var instruct = document.getElementById(instruction); 
-  for(i=0;i<split.length;i++){
-    if(span_list.includes(split[i])){
-
-      var span = document.createElement('span');
-      span.innerHTML = split[i];
-      span.className = "popup_span";
-      console.log(split[i],"in",text);
-      span.addEventListener('click', function(){
-        console.log("aaaa");
-
-        var img = this.innerHTML;
-        console.log(img);
-        var name = '#carousel' + onlyLetter(img.toLowerCase());
-        console.log(name);
-        $(name).trigger( "click" );
-      })
-      instruct.appendChild(span);
-      instruct.appendChild(document.createTextNode(' ')) // instruct.innerHTML += ' ';
-    }
-    else{
-      instruct.appendChild(document.createTextNode(split[i]+ ' '));
-    }
-  }
-}
 function component_reloadSpan(){ 
   	for(var i = 0; i < lis.length; i++){
      if(component_sectionBody[lis[i]].innerHTML == fakeText) continue;
@@ -450,7 +451,20 @@ function component_display(){
     })
   document.getElementById('fail').addEventListener('click',component_change_theme);
   component_reloadSpan();
+
+
+  document.getElementById("popup_img_backbutton").addEventListener('click',function(){
+      if(currentImg > 0){
+        currentImg = currentImg - 1;
+        var name = "#" + clickedImg[currentImg];
+        currentImg = currentImg - 1;
+        $(name) .trigger('click');
+      }
+  });
+
 }
+
+
 function add_to_span(instruction, text){
   var components = pr_loadEditionComponentImage(currentTutorialName, 'Components');
   var span_list = [];
