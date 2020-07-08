@@ -1,5 +1,6 @@
 # Katie - The boardgame tutorial for everyone.  
 ### Contributors: Viet Anh Le, Hieu Dang, Mai Tung Duong (John)  
+# App: http://teamkatie.herokuapp.com/
 # Code briefing description:  
 - **MAIN:**  
     - 4 main pages: Home, Category, Edition, Tutorial  
