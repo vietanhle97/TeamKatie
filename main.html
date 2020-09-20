@@ -59,55 +59,61 @@
             <li class="nav-item" id = 'login_icon'>
               <a class="nav-link" href="#">
                 <i id = 'check_login' class="fas link_icon login_button" onclick="document.getElementById('id01').style.display='block'" style="width:auto;" click = 'false'>
-                  Login
+                  <div class = 'management_text'>Login</div>
                 </i>
               </a>
             </li>
           </ul>
         </div>
       </nav>
+
       <div class="progress">
         <div class="progress-bar" id="progressBar" role="progressbar" style="width:0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
 
-
-    <div id="katie_slogan">
-
-      <h1 id="webname"><span id="welcome">KATIE</span></h1>
-      <h2 id="slogan"><span id="slogan">Please find your games by selecting category icons</span></h2>
-    </div>
-    <div id="banner" class="bg-grey" style="overflow-x: scroll;">
-    </div>
-  </div>
-  <div id="id01" class="modal"> 
-    <form class="modal-content animate">
-      <div class="imgcontainer">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-        <img id = 'avatar' src="https://66.media.tumblr.com/7344adf8e9f50da39749ee5a276036a3/tumblr_plhy9hyJKE1wzh093o1_1280.jpg">
+      <div id="katie_slogan">
+        <h1 id="webname"><span id="welcome">KATIE</span></h1>
+        <h2 id="slogan"><span id="slogan">Please find your games by selecting category icons</span></h2>
       </div>
 
-      <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input id = 'username' type="text" placeholder="Enter Username" name="uname" required autofocus>
-
-        <label for="psw"><b>Password</b></label>
-        <input id = 'password' type="password" placeholder="Enter Password" name="psw" required>
-          
-        <button id = 'loginbutton' type="button" onclick = 'login()'>Login</button>
-        <button id = 'signupbutton' type="button" onclick = 'register()'>Create New Account</button>
-      </div>
-
-      <div class="container" style="background-color:#fefefe">
-        <button id = 'cancelbutton' type="button" onclick='cancel_login()' class="cancelbtn">Cancel</button>
-      </div>
-    </form>
-  </div>
-  <div class="dropdown-content">
-    <div id='profile_card' class="card">
+      <div id="banner" class="bg-grey" style="overflow-x: scroll;">
+      </div>  
     </div>
-  </div>
-  <script src="./main.js"></script>
-  <script src="./login.js"></script>
-  <script src="./searchEngine.js"></script>
+
+
+    <div id="id01" class="modal"> 
+      <div id = 'formdiv'>
+      <form class="modal-content animate">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <img id ='katie_logo' style="width:100px; height:100px; border-radius: 50px;"src="https://i.imgur.com/XOhlvz6.png?1">
+        </div>
+
+        <div class="container">
+          <label for="uname"><b class = 'io_text'>Username</b></label>
+          <input class = 'io_text' id = 'username' type="text" placeholder="Enter Username" name="uname" required autofocus>
+
+          <label for="psw"><b class = 'io_text'>Password</b></label>
+          <input class = 'io_text' id = 'password' type="password" placeholder="Enter Password" name="psw" required>
+            
+          <button id = 'loginbutton' type="button" onclick = 'login()' class = 'io_text'>Login</button>
+          <button id = 'signupbutton' type="button" onclick = 'register()' class="io_text">Create New Account</button>
+        </div>
+
+        <div class="container" style="background-color:#fefefe">
+          <button id = 'cancelbutton' type="button" onclick='cancel_login()' class="cancelbtn" class="io_text">Cancel</button>
+        </div>
+      </form>
+    </div>
+    </div>
+
+
+    <div class="dropdown-content">
+      <div id='profile_card' class="card">
+      </div>
+    </div>
+    <script src="./main.js"></script>
+    <script src="./login.js"></script>
+    <script src="./searchEngine.js"></script>
   </body>
 </html>

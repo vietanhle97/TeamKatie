@@ -4,7 +4,7 @@
     background-repeat: no-repeat;
 }*/
 body { 
-	background-image: url("https://png.pngtree.com/thumb_back/fw800/back_pic/03/79/52/6457c2b288a9f53.jpg");
+	background-image: url("main.jpg");
 	object-fit: contain;
 	position:absolute; 
 	top:0; 
@@ -69,7 +69,20 @@ body {
 	padding-right: 1vw;
 	padding-left: 1vw;
 }
+.management_text{
+  font-size: 20px;
+  font-family: "Raleway";
+  padding: 5px;
+}
+.io_text{
+  font-family: "Raleway"
+}
 
+#formdiv{
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
 #webname{
 	font-family: "Bad Script", serif;
 	color:#F2BEA0;

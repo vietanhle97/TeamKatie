@@ -54,6 +54,10 @@ function display_avatar(){
 	profile_card.appendChild(card_name);
 	year.appendChild(document.createTextNode('Experience: ' + experience));
 	profile_card.appendChild(year);
+	card_name.style.fontFamily ='Raleway';
+	year.style.fontFamily = 'Raleway';
+	card_name.style.fontSize = '15px';
+	year.style.fontSize = '15px';
 	var row = document.createElement('div');
 	row.className = 'row';
 	var col_1 = document.createElement('div');
@@ -66,6 +70,7 @@ function display_avatar(){
 	logout_button.className = 'btn btn-light';
 	logout_button.id = 'logout_button';
 	logout_button.appendChild(document.createTextNode('Logout'));
+	logout_button.style.fontFamily = 'Raleway';
 	logout_button.addEventListener('click', function(){
 		logout();
 	})
@@ -74,7 +79,8 @@ function display_avatar(){
 	var switch_button = document.createElement('button');
 	switch_button.className = 'btn btn-light';
 	switch_button.id = 'switch_button';
-	switch_button.appendChild(document.createTextNode('Switch Account'));
+	switch_button.appendChild(document.createTextNode('Change Acc'));
+	switch_button.style.fontFamily = 'Raleway';
 	switch_button.addEventListener('click', function(){
 		document.getElementById('id01').style.display = 'block';
 		document.getElementById('profile_card').style.display = 'none'
